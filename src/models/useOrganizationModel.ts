@@ -68,7 +68,9 @@ export default function useOrganizationModel() {
     const loadOrganizations = useCallback(async () => {
         setLoading(true);
         try {
-            const res = await OrganizationInfoGetCurrentUserOrganizationsAsync();
+            const res = await OrganizationInfoGetCurrentUserOrganizationsAsync({
+                headers: { 'x-skip-organization': '1' },
+            });
             const list = (res || []).map(normalizeOrganization).filter(item => item.key);
             const seen = new Set<string>();
             const uniqueList = list.filter(item => {

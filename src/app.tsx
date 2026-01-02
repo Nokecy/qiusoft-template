@@ -173,6 +173,18 @@ export const request: RequestConfig = {
                           ...config.headers,
                           Authorization: `Bearer ${accessToken}`
                   }
+                  const skipOrganization =
+                          headers['x-skip-organization'] ||
+                          headers['X-Skip-Organization'] ||
+                          //@ts-ignore
+                          config.skipOrganization;
+                  if (skipOrganization) {
+                          //@ts-ignore
+                          delete headers['x-skip-organization'];
+                          //@ts-ignore
+                          delete headers['X-Skip-Organization'];
+                          return { ...config, headers: headers, url };
+                  }
                   if (normalizedOrganizationCode) {
                           //@ts-ignore
                           headers._organizationCode = normalizedOrganizationCode;

@@ -1,0 +1,243 @@
+// 特性组详情页面样式
+.attribute-group-detail {
+  padding: 0;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+
+  // 页面头部
+  .detail-header {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 6%);
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        .back-button {
+          display: flex;
+          align-items: center;
+          padding: 8px 12px;
+          border-radius: 6px;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background-color: #f0f0f0;
+          }
+        }
+
+        .page-title {
+          h2 {
+            margin: 0;
+            color: #262626;
+            font-size: 20px;
+            font-weight: 600;
+          }
+
+          .subtitle {
+            color: #8c8c8c;
+            font-size: 12px;
+            margin-left: 8px;
+          }
+        }
+      }
+
+      .header-right {
+        .ant-btn {
+          height: 36px;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+
+  // 信息卡片
+  .info-card {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 6%);
+
+    .ant-card-head-title {
+      color: #262626;
+      font-weight: 600;
+    }
+
+    .info-value {
+      color: #262626;
+      font-weight: 500;
+
+      &.description {
+        color: #595959;
+        line-height: 1.6;
+        max-width: 600px;
+        word-break: break-all;
+      }
+    }
+
+    .ant-descriptions-item-label {
+      color: #8c8c8c;
+      font-weight: 500;
+    }
+  }
+
+  // 特性管理卡片
+  .attributes-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 6%);
+
+    .ant-card-head {
+      .ant-card-head-title {
+        color: #262626;
+        font-weight: 600;
+      }
+
+      .ant-card-extra {
+        .selection-info {
+          color: #1890ff;
+          font-size: 12px;
+          margin-right: 8px;
+          font-weight: 500;
+        }
+
+        .ant-btn {
+          border-radius: 6px;
+          height: 32px;
+
+          &.ant-btn-primary {
+            box-shadow: 0 2px 4px rgba(24, 144, 255, 30%);
+          }
+
+          &.ant-btn-dangerous {
+            box-shadow: 0 2px 4px rgba(255, 77, 79, 30%);
+          }
+        }
+      }
+    }
+
+    .ant-card-body {
+      padding: 0;
+    }
+  }
+}
+
+// 响应式设计
+@media (max-width: 992px) {
+  .attribute-group-detail {
+    .detail-header .header-content {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+
+      .header-left,
+      .header-right {
+        width: 100%;
+      }
+
+      .header-right {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    .info-card .ant-descriptions {
+      .ant-descriptions-item {
+        padding-bottom: 12px;
+      }
+    }
+
+    .attributes-card .ant-card-head {
+      .ant-card-extra {
+        .selection-info {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .attribute-group-detail {
+    padding: 0 8px;
+
+    .detail-header .header-content .header-left {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+
+      .back-button {
+        align-self: flex-start;
+      }
+    }
+
+    .info-card .ant-descriptions {
+      .ant-descriptions-item {
+        padding-bottom: 16px;
+      }
+    }
+
+    .attributes-card .ant-card-head .ant-card-extra {
+      flex-wrap: wrap;
+      gap: 8px;
+
+      .ant-space {
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
+
+// 暗色主题适配
+@media (prefers-color-scheme: dark) {
+  .attribute-group-detail {
+    background-color: #141414;
+
+    .detail-header,
+    .info-card,
+    .attributes-card {
+      background-color: #1f1f1f;
+      border-color: #303030;
+    }
+
+    .header-content .header-left {
+      .back-button:hover {
+        background-color: #262626;
+      }
+
+      .page-title h2 {
+        color: #fff;
+      }
+    }
+
+    .info-value {
+      color: #fff;
+
+      &.description {
+        color: #d9d9d9;
+      }
+    }
+  }
+}
+
+// 打印样式
+@media print {
+  .attribute-group-detail {
+    .detail-header .header-right,
+    .attributes-card .ant-card-extra {
+      display: none !important;
+    }
+
+    .detail-header,
+    .info-card,
+    .attributes-card {
+      box-shadow: none;
+      border: 1px solid #d9d9d9;
+    }
+  }
+}

@@ -1,0 +1,95 @@
+@import '../mixin.less';
+
+// inline inline-block 元素  居左 | 居中 | 居右
+:global(.tl){.tl()}
+:global(.tc){.tc()}
+:global(.tr){.tr()}
+
+//字体大小
+:global(.bsfts){.bsfts()} // 12
+:global(.mdfts){.mdfts()} // 14
+:global(.lgfts){.lgfts()} // 16
+:global(.hgfts){.hgfts()} // 18
+
+// 外边距
+:global(.mt-8){.mt-8()}
+:global(.mt-16){.mt-16()}
+:global(.mt-24){.mt-24()}
+:global(.mr-4){.mr-4()}
+:global(.mr-8){.mr-8()}
+:global(.mr-16){.mr-16()}
+:global(.mr-24){.mr-24()}
+:global(.mb-8){.mb-8()}
+:global(.mb-16){.mb-16()}
+:global(.mb-24){.mb-24()}
+:global(.ml-8){.ml-8()}
+:global(.ml-16){.ml-16()}
+:global(.ml-24){.ml-24()}
+
+// 内边距
+:global(.pt-8){.pt-8()}
+:global(.pt-16){.pt-16()}
+:global(.pt-24){.pt-24()}
+:global(.pr-8){.pr-8()}
+:global(.pr-16){.pr-16()}
+:global(.pr-24){.pr-24()}
+:global(.pb-8){.pb-8()}
+:global(.pb-16){.pb-16()}
+:global(.pb-24){.pb-24()}
+:global(.pl-8){.pl-8()}
+:global(.pl-16){.pl-16()}
+:global(.pl-24){.pl-24()}
+
+// 浮动
+:global(.fl){.fl()}
+:global(.fr){.fr()}
+// 清除浮动
+:global(.clearFloat){.clearFloat()}
+
+// 单行超出省略
+:global(.singleRowOmit){.oneRowOverflowOmit()}
+
+// AG Grid 斑马线样式
+:global(.ag-theme-alpine .ag-row-even) {
+  background-color: #fafafa !important;
+}
+
+:global(.ag-theme-alpine .ag-row-odd) {
+  background-color: #fff !important;
+}
+
+:global(.ag-theme-balham .ag-row-even) {
+  background-color: #fafafa !important;
+}
+
+:global(.ag-theme-balham .ag-row-odd) {
+  background-color: #fff !important;
+}
+
+:global(.ag-theme-material .ag-row-even) {
+  background-color: #fafafa !important;
+}
+
+:global(.ag-theme-material .ag-row-odd) {
+  background-color: #fff !important;
+}
+
+// 通用样式（兜底）
+:global(.ag-row.ag-row-even) {
+  background-color: #fafafa !important;
+}
+
+:global(.ag-row.ag-row-odd) {
+  background-color: #fff !important;
+}
+
+// 鼠标悬停效果
+:global(.ag-row-even:hover),
+:global(.ag-row.ag-row-even:hover) {
+  background-color: #e6f7ff !important;
+}
+
+:global(.ag-row-odd:hover),
+:global(.ag-row.ag-row-odd:hover) {
+  background-color: #e6f7ff !important;
+}

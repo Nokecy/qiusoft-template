@@ -1,0 +1,72 @@
+.milestone-list-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+  border-right: 1px solid #f0f0f0;
+
+  .milestone-list-header {
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    background: #fff;
+  }
+
+  .ant-list {
+    flex: 1;
+    overflow-y: auto;
+    background: #fafafa;
+
+    .ant-list-item {
+      padding: 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+  }
+
+  .milestone-list-item {
+    cursor: pointer;
+    transition: all 0.3s;
+    background: #fff;
+
+    &:hover {
+      background: #f5f5f5;
+    }
+
+    &.milestone-list-item-active {
+      background: #e6f7ff;
+      border-right: 3px solid #1890ff;
+    }
+  }
+
+  .milestone-all-item {
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .milestone-item-content {
+    width: 100%;
+    padding: 10px 16px;
+  }
+
+  .milestone-item-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+
+    .milestone-item-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #262626;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+
+    .ant-tag {
+      flex-shrink: 0;
+      margin-right: 0;
+    }
+  }
+}

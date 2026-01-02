@@ -1,0 +1,84 @@
+.process-procedure-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .panel-search {
+    margin-bottom: 8px;
+  }
+
+  .panel-tip {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 8px;
+    padding: 4px 8px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .panel-list {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .ant-list-item {
+      padding: 0;
+    }
+  }
+
+  .procedure-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin-bottom: 4px;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    cursor: grab;
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: #1890ff;
+      box-shadow: 0 2px 8px rgba(24, 144, 255, 0.15);
+      background: #e6f7ff;
+    }
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    .procedure-info {
+      flex: 1;
+      min-width: 0;
+
+      .procedure-code {
+        font-size: 12px;
+        color: #1890ff;
+        font-weight: 500;
+      }
+
+      .procedure-name {
+        font-size: 13px;
+        color: #333;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .procedure-tag {
+      flex-shrink: 0;
+      margin: 0 8px;
+      font-size: 10px;
+    }
+
+    .drag-handle {
+      color: #bbb;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+  }
+}

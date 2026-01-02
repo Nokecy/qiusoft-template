@@ -1,0 +1,22 @@
+.dependency-graph-viewer {
+  &-canvas {
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    background-color: #fafafa;
+    overflow: hidden;
+
+    // G6 图表样式优化
+    :global {
+      canvas {
+        background-color: transparent;
+      }
+    }
+  }
+
+  // 卡片内边距调整
+  :global {
+    .ant-card-body {
+      padding: 16px;
+    }
+  }
+}

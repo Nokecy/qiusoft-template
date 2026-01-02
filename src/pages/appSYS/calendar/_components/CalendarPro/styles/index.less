@@ -1,0 +1,165 @@
+/**
+ * CalendarPro 样式文件
+ */
+
+.calendar-pro {
+  // 主容器
+  position: relative;
+  width: 100%;
+
+  // 头部
+  &-header {
+    background: #fff;
+    border-radius: 2px 2px 0 0;
+
+    .ant-picker {
+      border-radius: 2px;
+    }
+  }
+
+  // 月视图
+  &-month-view {
+    background: #fff;
+    border-radius: 0 0 2px 2px;
+
+    // 日期单元格
+    .calendar-pro-cell {
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+      &:hover:not(.disabled) {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        z-index: 1;
+      }
+
+      &.today {
+        border: 2px solid #1890ff;
+      }
+
+      &.selected {
+        border: 2px solid #1890ff;
+        box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+      }
+
+      &.other-month {
+        .ant-badge-status-text {
+          opacity: 0.6;
+        }
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+
+        &:hover {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  // 底部统计
+  &-footer {
+    .ant-card-body {
+      padding: 16px;
+    }
+
+    .ant-statistic {
+      .ant-statistic-title {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.45);
+        margin-bottom: 4px;
+      }
+
+      .ant-statistic-content {
+        font-size: 20px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  // 响应式设计
+  @media (max-width: 768px) {
+    &-header {
+      .ant-row {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    &-month-view {
+      .calendar-pro-cell {
+        min-height: 60px !important;
+        font-size: 12px;
+      }
+    }
+
+    &-footer {
+      .ant-statistic-content {
+        font-size: 16px;
+      }
+    }
+  }
+
+  // 暗色主题
+  &.dark-theme {
+    .calendar-pro-header {
+      background: #141414;
+      border-color: #303030;
+    }
+
+    .calendar-pro-month-view {
+      background: #141414;
+
+      .calendar-pro-cell {
+        background: #1f1f1f;
+        border-color: #303030;
+        color: rgba(255, 255, 255, 0.85);
+
+        &:hover:not(.disabled) {
+          background: #262626;
+        }
+
+        &.selected {
+          background: #111b26;
+        }
+
+        &.today {
+          border-color: #177ddc;
+        }
+      }
+    }
+
+    .calendar-pro-footer {
+      background: #141414;
+
+      .ant-statistic-title {
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      .ant-statistic-content {
+        color: rgba(255, 255, 255, 0.85);
+      }
+    }
+  }
+
+  // 加载状态
+  .ant-spin-container {
+    min-height: 400px;
+  }
+
+  // 动画效果
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .calendar-pro-cell {
+    animation: fadeIn 0.3s ease-out;
+  }
+}

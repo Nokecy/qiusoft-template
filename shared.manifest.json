@@ -1,0 +1,39 @@
+{
+  "includes": [
+    { "from": ".eslintrc.js", "to": ".eslintrc.js" },
+    { "from": ".stylelintrc.js", "to": ".stylelintrc.js" },
+    { "from": ".prettierrc", "to": ".prettierrc" },
+    { "from": ".lintstagedrc", "to": ".lintstagedrc" },
+    { "from": ".eslintignore", "to": ".eslintignore" },
+    { "from": ".prettierignore", "to": ".prettierignore" },
+    { "from": ".yarnrc.yml", "to": ".yarnrc.yml" },
+    { "from": "tsconfig.json", "to": "tsconfig.json" },
+    { "from": ".husky", "to": ".husky" },
+    { "from": "config", "to": "config" },
+    { "from": "plugins", "to": "plugins" },
+    { "from": "scripts", "to": "scripts" },
+    { "from": "public", "to": "public" },
+    { "from": "src/hooks", "to": "src/hooks" },
+    { "from": "src/initStates", "to": "src/initStates" },
+    { "from": "src/layouts", "to": "src/layouts" },
+    { "from": "src/models", "to": "src/models" },
+    { "from": "src/access.ts", "to": "src/access.ts" },
+    { "from": "src/app.tsx", "to": "src/app.tsx" },
+    { "from": "src/feature.ts", "to": "src/feature.ts" },
+    { "from": "src/formSchema.ts", "to": "src/formSchema.ts" },
+    { "from": "src/global.less", "to": "src/global.less" },
+    { "from": "src/global.tsx", "to": "src/global.tsx" },
+    { "from": "src/loading.tsx", "to": "src/loading.tsx" },
+    { "from": "src/setting.ts", "to": "src/setting.ts" },
+    { "from": "src/tableLayout.ts", "to": "src/tableLayout.ts" }
+  ],
+  "exclude": [
+    "**/node_modules/**",
+    "**/.umi/**",
+    "**/.umi-production/**",
+    "**/dist/**",
+    "**/build.log",
+    "**/.yarn/**",
+    "**/config/project.local.ts"
+  ]
+}

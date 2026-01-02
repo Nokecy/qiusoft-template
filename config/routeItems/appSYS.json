@@ -1,0 +1,343 @@
+[
+  {
+    "path": "/appSYS/apiKeySecret",
+    "component": "./appSYS/apiKeySecret",
+    "name": "应用列表",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/appOpenIddict/applications",
+    "component": "./appSYS/appOpenIddict/applications",
+    "name": "应用程序列表",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/appOpenIddict/scopes",
+    "component": "./appSYS/appOpenIddict/scopes",
+    "name": "Scope列表",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/auditLogging",
+    "component": "./appSYS/auditLogging",
+    "name": "审计日志",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/bnrResolveRuleDefinition",
+    "component": "./appSYS/bnrResolveRuleDefinition",
+    "name": "条码解析规则列表",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/BNRRule",
+    "component": "./appSYS/BNRRule",
+    "name": "动态规则",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/bnrRuleDefinition",
+    "component": "./appSYS/bnrRuleDefinition",
+    "name": "序列号定义",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/BNRRuleEvaluationConfig",
+    "component": "./appSYS/BNRRuleEvaluationConfig",
+    "name": "序列号规则评估配置",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/bnrSequenceData",
+    "component": "./appSYS/bnrSequenceData",
+    "name": "序列号序号",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/bnrSequenceItem",
+    "component": "./appSYS/bnrSequenceItem",
+    "name": "序列号信息",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/bnrSequenceType",
+    "component": "./appSYS/bnrSequenceType",
+    "name": "条码类型",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/calendar/calendarDefinition/detail",
+    "component": "./appSYS/calendar/calendarDefinition/detail",
+    "name": "日历详情",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/calendar/calendarDefinition",
+    "component": "./appSYS/calendar/calendarDefinition",
+    "name": "日历定义",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/calendar/holidaySet/detail",
+    "component": "./appSYS/calendar/holidaySet/detail",
+    "name": "假期集详情",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/calendar/holidaySet",
+    "component": "./appSYS/calendar/holidaySet",
+    "name": "假期集",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/calendar/workdayConfigure",
+    "component": "./appSYS/calendar/workdayConfigure",
+    "name": "工作日配置",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/downloadManagers",
+    "component": "./appSYS/downloadManagers",
+    "name": "下载中心",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/dynamic-schema/applications/config",
+    "component": "./appSYS/dynamic-schema/applications/config",
+    "name": "应用配置",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/dynamic-schema/applications",
+    "component": "./appSYS/dynamic-schema/applications",
+    "name": "应用管理",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/dynamic-schema/data/detail",
+    "component": "./appSYS/dynamic-schema/data/detail",
+    "name": "数据详情",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/dynamic-schema/data",
+    "component": "./appSYS/dynamic-schema/data",
+    "name": "数据管理",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/dynamic-schema/form-schemas/designer",
+    "component": "./appSYS/dynamic-schema/form-schemas/designer",
+    "name": "表单设计器",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/dynamic-schema/form-schemas",
+    "component": "./appSYS/dynamic-schema/form-schemas",
+    "name": "表单设计",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/dynamic-schema/host-entities/config",
+    "component": "./appSYS/dynamic-schema/host-entities/config",
+    "name": "宿主实体配置",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/dynamic-schema/host-entities",
+    "component": "./appSYS/dynamic-schema/host-entities",
+    "name": "宿主实体管理",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/dynamic-schema/schema-management",
+    "component": "./appSYS/dynamic-schema/schema-management",
+    "name": "高级管理",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/entityChanges",
+    "component": "./appSYS/entityChanges",
+    "name": "实体变更历史",
+    "layout": true
+  },
+  {
+    "path": "/appSYS",
+    "component": "./appSYS",
+    "name": "系统仪表板",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/labelManagement/labelCategory",
+    "component": "./appSYS/labelManagement/labelCategory",
+    "name": "标签分类",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/labelManagement/labelPrintDefinition",
+    "component": "./appSYS/labelManagement/labelPrintDefinition",
+    "name": "标签打印定义",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/labelManagement/labelPrintFeatureDefinition",
+    "component": "./appSYS/labelManagement/labelPrintFeatureDefinition",
+    "name": "打印功能定义",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/labelManagement/labelPrintSetting",
+    "component": "./appSYS/labelManagement/labelPrintSetting",
+    "name": "标签打印设置",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/labelManagement/labelPrintTemplate/designer",
+    "component": "./appSYS/labelManagement/labelPrintTemplate/designer",
+    "name": "设计模板",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/labelManagement/labelPrintTemplate",
+    "component": "./appSYS/labelManagement/labelPrintTemplate",
+    "name": "标签打印模板",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/labelManagement/labelType",
+    "component": "./appSYS/labelManagement/labelType",
+    "name": "标签类型",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/labelManagement/labelTypeAdvancedSetting",
+    "component": "./appSYS/labelManagement/labelTypeAdvancedSetting",
+    "name": "标签类型高级设置",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/labelManagement/userPrintFeaturePrinter",
+    "component": "./appSYS/labelManagement/userPrintFeaturePrinter",
+    "name": "用户打印功能打印机设置",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/language",
+    "component": "./appSYS/language",
+    "name": "语言列表",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/languageText",
+    "component": "./appSYS/languageText",
+    "name": "语言文本列表",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/menuItems",
+    "component": "./appSYS/menuItems",
+    "name": "菜单列表",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/multiFactory/companys",
+    "component": "./appSYS/multiFactory/companys",
+    "name": "公司",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/multiFactory/factorys",
+    "component": "./appSYS/multiFactory/factorys",
+    "name": "工厂",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/multiFactory/organizations",
+    "component": "./appSYS/multiFactory/organizations",
+    "name": "组织机构",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/multiFactory/organizations/user",
+    "component": "./appSYS/multiFactory/organizations/user",
+    "name": "组织机构用户",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/multiTenant/tenants",
+    "component": "./appSYS/multiTenant/tenants",
+    "name": "租户管理",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/OrganizationUnits",
+    "component": "./appSYS/OrganizationUnits",
+    "name": "部门管理",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/printManagement/printerClient",
+    "component": "./appSYS/printManagement/printerClient",
+    "name": "打印机列表",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/printManagement/printTask",
+    "component": "./appSYS/printManagement/printTask",
+    "name": "打印任务",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/printTemplate/edit",
+    "component": "./appSYS/printTemplate/edit",
+    "name": "编辑打印模板",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/printTemplate",
+    "component": "./appSYS/printTemplate",
+    "name": "打印模板列表",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/roles",
+    "component": "./appSYS/roles",
+    "name": "角色管理",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/roles/roleMember",
+    "component": "./appSYS/roles/roleMember",
+    "name": "角色成员管理",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/settings/generationForm",
+    "component": "./appSYS/settings/generationForm",
+    "name": ""
+  },
+  {
+    "path": "/appSYS/settings",
+    "component": "./appSYS/settings",
+    "name": "设置管理",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/textTemplate",
+    "component": "./appSYS/textTemplate",
+    "name": "文本模板列表",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/userProfile",
+    "component": "./appSYS/userProfile",
+    "name": "个人信息",
+    "layout": true
+  },
+  {
+    "path": "/appSYS/users",
+    "component": "./appSYS/users",
+    "name": "用户列表",
+    "layout": true
+  }
+]

@@ -1,0 +1,127 @@
+// 里程碑节点样式（参考工艺路线 ProcessNode 风格）
+.milestone-node {
+  width: 200px;
+  min-height: 120px;
+  border: 2px solid #d9d9d9;
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &.selected {
+    border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  }
+
+  &.hovered {
+    border-color: #40a9ff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  }
+
+  &.approval-node {
+    border-color: #faad14;
+
+    .node-header {
+      background: #fffbe6;
+      border-bottom-color: #faad14;
+    }
+  }
+
+  .node-header {
+    display: flex;
+    align-items: center;
+    padding: 6px 8px;
+    background: #fafafa;
+    border-bottom: 1px solid #e8e8e8;
+    border-radius: 2px 2px 0 0;
+
+    .node-indicator {
+      font-size: 12px;
+      color: #1890ff;
+      margin-right: 6px;
+      font-weight: 600;
+    }
+
+    .node-title {
+      flex: 1;
+      font-weight: 600;
+      color: #262626;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .node-badges {
+      display: flex;
+      gap: 6px;
+      margin-left: 8px;
+      flex-shrink: 0;
+
+      .badge {
+        font-size: 10px;
+        line-height: 16px;
+        padding: 0 4px;
+        border-radius: 2px;
+        border: 1px solid #d9d9d9;
+        color: #595959;
+        background: #ffffff;
+        white-space: nowrap;
+      }
+
+      .badge-approval {
+        color: #d48806;
+        border-color: #faad14;
+        background: #fffbe6;
+      }
+    }
+  }
+
+  .node-content {
+    padding: 8px;
+    background: #ffffff;
+
+    .node-info-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 4px;
+      line-height: 1.4;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .info-label {
+        min-width: 60px;
+        color: #8c8c8c;
+        margin-right: 6px;
+        flex-shrink: 0;
+      }
+
+      .info-value {
+        flex: 1;
+        color: #262626;
+        word-break: break-all;
+        font-size: 12px;
+      }
+    }
+  }
+
+  // ReactFlow Handle 样式（对齐工艺路线）
+  :global {
+    .react-flow__handle {
+      width: 10px;
+      height: 10px;
+      background: #1890ff;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+
+      &:hover {
+        width: 12px;
+        height: 12px;
+        background: #40a9ff;
+      }
+    }
+  }
+}

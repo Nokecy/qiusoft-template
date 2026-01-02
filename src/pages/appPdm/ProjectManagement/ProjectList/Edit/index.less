@@ -1,0 +1,71 @@
+// 项目编辑页面样式
+
+// 移除所有 Input 和 Select 的边框
+:global {
+  .ant-card {
+    // 针对表单中的 Input 组件
+    .ant-input,
+    .ant-input-number,
+    .ant-picker,
+    .ant-input-affix-wrapper {
+      border: none !important;
+      box-shadow: none !important;
+      background-color: transparent !important;
+
+      &:hover,
+      &:focus,
+      &:focus-within {
+        border: none !important;
+        box-shadow: none !important;
+      }
+    }
+
+    // 针对 Select 组件
+    .ant-select-selector {
+      border: none !important;
+      box-shadow: none !important;
+      background-color: transparent !important;
+
+      &:hover,
+      &:focus {
+        border: none !important;
+        box-shadow: none !important;
+      }
+    }
+
+    // Select 聚焦状态
+    .ant-select-focused .ant-select-selector {
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    // TextArea 去掉边框，禁用超行显示
+    .ant-input-textarea {
+      .ant-input {
+        border: none !important;
+        box-shadow: none !important;
+        background-color: transparent !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        resize: none !important;
+
+        &:hover,
+        &:focus {
+          border: none !important;
+          box-shadow: none !important;
+        }
+      }
+    }
+
+    // InputNumber 的控制按钮
+    .ant-input-number-handler-wrap {
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .ant-input-number:hover .ant-input-number-handler-wrap {
+      opacity: 1;
+    }
+  }
+}

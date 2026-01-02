@@ -1,0 +1,678 @@
+[
+  {
+    "path": "/appWMS/baseInfo/BoxLotResolveRule",
+    "component": "./appWMS/baseInfo/BoxLotResolveRule",
+    "name": "Lpn箱批次条码解析",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/cargoArea",
+    "component": "./appWMS/baseInfo/cargoArea",
+    "name": "货台管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/factoryZone",
+    "component": "./appWMS/baseInfo/factoryZone",
+    "name": "区域管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/instructionConfig",
+    "component": "./appWMS/baseInfo/instructionConfig",
+    "name": "出入库指令配置",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/LessReason",
+    "component": "./appWMS/baseInfo/LessReason",
+    "name": "欠料原因",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/lotAttrGroup",
+    "component": "./appWMS/baseInfo/lotAttrGroup",
+    "name": "批次属性组",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/lotAttrItem",
+    "component": "./appWMS/baseInfo/lotAttrItem",
+    "name": "批次属性管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/materialItem",
+    "component": "./appWMS/baseInfo/materialItem",
+    "name": "物料管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/materialItemCategory",
+    "component": "./appWMS/baseInfo/materialItemCategory",
+    "name": "物料分类管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/materialItemLifeDay",
+    "component": "./appWMS/baseInfo/materialItemLifeDay",
+    "name": "物料存储期",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/materialItemManageSetting",
+    "component": "./appWMS/baseInfo/materialItemManageSetting",
+    "name": "物料管理人",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/MaterialPickTaskType",
+    "component": "./appWMS/baseInfo/MaterialPickTaskType",
+    "name": "下架任务类型",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/OutInspectionProject",
+    "component": "./appWMS/baseInfo/OutInspectionProject",
+    "name": "出库检验属性",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/outInspectionScheme",
+    "component": "./appWMS/baseInfo/outInspectionScheme",
+    "name": "出库检验方案",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/overduePushRule",
+    "component": "./appWMS/baseInfo/overduePushRule",
+    "name": "超期预警规则",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/pickTaskAgent",
+    "component": "./appWMS/baseInfo/pickTaskAgent",
+    "name": "任务代理人信息",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/realRightInfo",
+    "component": "./appWMS/baseInfo/realRightInfo",
+    "name": "物权管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/RecommendStrategy",
+    "component": "./appWMS/baseInfo/RecommendStrategy",
+    "name": "上架推荐策略",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/stockAgePushRule",
+    "component": "./appWMS/baseInfo/stockAgePushRule",
+    "name": "库龄推送规则",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/storeTransferMap",
+    "component": "./appWMS/baseInfo/storeTransferMap",
+    "name": "调拨设置",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/traceIdInfo",
+    "component": "./appWMS/baseInfo/traceIdInfo",
+    "name": "栈板管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/wareHouse",
+    "component": "./appWMS/baseInfo/wareHouse",
+    "name": "库房管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/wareHouseLocation",
+    "component": "./appWMS/baseInfo/wareHouseLocation",
+    "name": "库位管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/warehouseMan",
+    "component": "./appWMS/baseInfo/warehouseMan",
+    "name": "仓管员管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/wareHouseTeam",
+    "component": "./appWMS/baseInfo/wareHouseTeam",
+    "name": "仓库班组管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/baseInfo/warehouseZone",
+    "component": "./appWMS/baseInfo/warehouseZone",
+    "name": "库区管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/countStore/countDiff",
+    "component": "./appWMS/countStore/countDiff",
+    "name": "盘点差异",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/countStore/countDiffReason",
+    "component": "./appWMS/countStore/countDiffReason",
+    "name": "盘点差异原因",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/countStore/countOrder",
+    "component": "./appWMS/countStore/countOrder",
+    "name": "盘点清单",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/countStore/countParam",
+    "component": "./appWMS/countStore/countParam",
+    "name": "盘点参数",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/countStore/countRule",
+    "component": "./appWMS/countStore/countRule",
+    "name": "盘点规则",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/countStore/countTask",
+    "component": "./appWMS/countStore/countTask",
+    "name": "盘点任务",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/countStore/countTaskDetail",
+    "component": "./appWMS/countStore/countTaskDetail",
+    "name": "盘点任务明细",
+    "layout": true
+  },
+  {
+    "path": "/appWMS",
+    "component": "./appWMS",
+    "name": "WMS仪表板",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/customerIncomingInInstruction/form",
+    "component": "./appWMS/inInstruction/customerIncomingInInstruction/form",
+    "name": "创建客供入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/customerIncomingInInstruction",
+    "component": "./appWMS/inInstruction/customerIncomingInInstruction",
+    "name": "客供入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/defaultInInstruction/form",
+    "component": "./appWMS/inInstruction/defaultInInstruction/form",
+    "name": "创建期指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/defaultInInstruction",
+    "component": "./appWMS/inInstruction/defaultInInstruction",
+    "name": "期初入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/inInstructionBatch",
+    "component": "./appWMS/inInstruction/inInstructionBatch",
+    "name": "入库批次列表",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/inInstructionBox",
+    "component": "./appWMS/inInstruction/inInstructionBox",
+    "name": "入库箱列表",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/inInstructionOrderItem",
+    "component": "./appWMS/inInstruction/inInstructionOrderItem",
+    "name": "入库指令明细",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/inInstructionSN",
+    "component": "./appWMS/inInstruction/inInstructionSN",
+    "name": "入库SN列表",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/issueReturnInInstruction/form",
+    "component": "./appWMS/inInstruction/issueReturnInInstruction/form",
+    "name": "创建退料入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/issueReturnInInstruction",
+    "component": "./appWMS/inInstruction/issueReturnInInstruction",
+    "name": "生产退料指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/noOrderInInstruction/form",
+    "component": "./appWMS/inInstruction/noOrderInInstruction/form",
+    "name": "创建杂入指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/noOrderInInstruction",
+    "component": "./appWMS/inInstruction/noOrderInInstruction",
+    "name": "杂入指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/productionAssistInInstruction/form",
+    "component": "./appWMS/inInstruction/productionAssistInInstruction/form",
+    "name": "创建减配入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/productionAssistInInstruction",
+    "component": "./appWMS/inInstruction/productionAssistInInstruction",
+    "name": "减配入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/productionInInstruction/form",
+    "component": "./appWMS/inInstruction/productionInInstruction/form",
+    "name": "创建生产入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/productionInInstruction",
+    "component": "./appWMS/inInstruction/productionInInstruction",
+    "name": "生产入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/productionInInstructionItem",
+    "component": "./appWMS/inInstruction/productionInInstructionItem",
+    "name": "流水入库明细",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/purchaseInInstruction/form",
+    "component": "./appWMS/inInstruction/purchaseInInstruction/form",
+    "name": "创建入库指令单",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/purchaseInInstruction",
+    "component": "./appWMS/inInstruction/purchaseInInstruction",
+    "name": "采购入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/saleReturnInInstruction/form",
+    "component": "./appWMS/inInstruction/saleReturnInInstruction/form",
+    "name": "创建退货入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/saleReturnInInstruction",
+    "component": "./appWMS/inInstruction/saleReturnInInstruction",
+    "name": "销售退库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/serviceReturnInInstruction/form",
+    "component": "./appWMS/inInstruction/serviceReturnInInstruction/form",
+    "name": "创建服务退料入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/serviceReturnInInstruction",
+    "component": "./appWMS/inInstruction/serviceReturnInInstruction",
+    "name": "服务退料入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/transactionOrderInInstruction/form",
+    "component": "./appWMS/inInstruction/transactionOrderInInstruction/form",
+    "name": "创建转库入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inInstruction/transactionOrderInInstruction",
+    "component": "./appWMS/inInstruction/transactionOrderInInstruction",
+    "name": "转库入库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/instructionPendRecord/instructionPendRecordInfo",
+    "component": "./appWMS/instructionPendRecord/instructionPendRecordInfo",
+    "name": "外部指令列表",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inventoryTransaction/inventoryTransactionBoxLotItem",
+    "component": "./appWMS/inventoryTransaction/inventoryTransactionBoxLotItem",
+    "name": "库存交易批次记录",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inventoryTransaction/inventoryTransactionItem",
+    "component": "./appWMS/inventoryTransaction/inventoryTransactionItem",
+    "name": "库存交易记录",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/inventoryTransaction/inventoryTransactionSNItem",
+    "component": "./appWMS/inventoryTransaction/inventoryTransactionSNItem",
+    "name": "库存SN交易记录",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/customerOutInstruction/form",
+    "component": "./appWMS/outInstruction/customerOutInstruction/form",
+    "name": "创建采购退货指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/customerOutInstruction",
+    "component": "./appWMS/outInstruction/customerOutInstruction",
+    "name": "采购退货指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/deliveryOrder/createByTraceId",
+    "component": "./appWMS/outInstruction/deliveryOrder/createByTraceId",
+    "name": ""
+  },
+  {
+    "path": "/appWMS/outInstruction/deliveryOrder/form",
+    "component": "./appWMS/outInstruction/deliveryOrder/form",
+    "name": "创建送货单",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/deliveryOrder",
+    "component": "./appWMS/outInstruction/deliveryOrder",
+    "name": "送货单",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/materialOutInstruction/form",
+    "component": "./appWMS/outInstruction/materialOutInstruction/form",
+    "name": "创建领料出库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/materialOutInstruction",
+    "component": "./appWMS/outInstruction/materialOutInstruction",
+    "name": "领料出库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/miscOutInstructionOrder/form",
+    "component": "./appWMS/outInstruction/miscOutInstructionOrder/form",
+    "name": "创建原料杂出指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/miscOutInstructionOrder",
+    "component": "./appWMS/outInstruction/miscOutInstructionOrder",
+    "name": "杂出出库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/outInspectionTasks",
+    "component": "./appWMS/outInstruction/outInspectionTasks",
+    "name": "出库复核任务",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/outInstructionDemand",
+    "component": "./appWMS/outInstruction/outInstructionDemand",
+    "name": "出库需求",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/outInstructionDemandItem",
+    "component": "./appWMS/outInstruction/outInstructionDemandItem",
+    "name": "出库需求明细",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/outInstructionDemandMergeRule",
+    "component": "./appWMS/outInstruction/outInstructionDemandMergeRule",
+    "name": "出库需求合并策略",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/outInstructionItem",
+    "component": "./appWMS/outInstruction/outInstructionItem",
+    "name": "出库指令查询",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/pickTaskItem",
+    "component": "./appWMS/outInstruction/pickTaskItem",
+    "name": "下架任务",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/productionReturnOutInstruction/form",
+    "component": "./appWMS/outInstruction/productionReturnOutInstruction/form",
+    "name": "创建生产退回出库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/productionReturnOutInstruction",
+    "component": "./appWMS/outInstruction/productionReturnOutInstruction",
+    "name": "生产退回指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/purchaseOutInstructionOrder/form",
+    "component": "./appWMS/outInstruction/purchaseOutInstructionOrder/form",
+    "name": "创建采购退货指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/purchaseOutInstructionOrder",
+    "component": "./appWMS/outInstruction/purchaseOutInstructionOrder",
+    "name": "采购退货指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/saleOutInstruction/form",
+    "component": "./appWMS/outInstruction/saleOutInstruction/form",
+    "name": "创建销售出库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/saleOutInstruction",
+    "component": "./appWMS/outInstruction/saleOutInstruction",
+    "name": "销售出库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/servicePickingOutInstruction/form",
+    "component": "./appWMS/outInstruction/servicePickingOutInstruction/form",
+    "name": "创建服务领料出库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/servicePickingOutInstruction",
+    "component": "./appWMS/outInstruction/servicePickingOutInstruction",
+    "name": "服务领料出库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/transactionOutInstructionOrder/form",
+    "component": "./appWMS/outInstruction/transactionOutInstructionOrder/form",
+    "name": "创建转库出库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/outInstruction/transactionOutInstructionOrder",
+    "component": "./appWMS/outInstruction/transactionOutInstructionOrder",
+    "name": "转库出库指令",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/locationMove",
+    "component": "./appWMS/stock/locationMove",
+    "name": "库位转移记录",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/pickByStockBin",
+    "component": "./appWMS/stock/pickByStockBin",
+    "name": "库位下架",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/pickStockBinByWorkJob",
+    "component": "./appWMS/stock/pickStockBinByWorkJob",
+    "name": "任务令库位库存",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/stock",
+    "component": "./appWMS/stock/stock",
+    "name": "ITEM库存",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/stockBin",
+    "component": "./appWMS/stock/stockBin",
+    "name": "库位库存",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/stockBinBoxInfo",
+    "component": "./appWMS/stock/stockBinBoxInfo",
+    "name": "库位库存",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/stockBinBoxLotInfo",
+    "component": "./appWMS/stock/stockBinBoxLotInfo",
+    "name": "LPN箱批次列表",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/stockBinBoxTypeInfo",
+    "component": "./appWMS/stock/stockBinBoxTypeInfo",
+    "name": "LPN箱包规列表",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/stockBinCompare",
+    "component": "./appWMS/stock/stockBinCompare",
+    "name": "库存对账",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/stockBinDelay",
+    "component": "./appWMS/stock/stockBinDelay",
+    "name": "库存延期记录",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/stockBinSNInfo",
+    "component": "./appWMS/stock/stockBinSNInfo",
+    "name": "LPN SN列表",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/stockBinSplitCombinRecord",
+    "component": "./appWMS/stock/stockBinSplitCombinRecord",
+    "name": "库位拆合记录",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/timeOutStockBin",
+    "component": "./appWMS/stock/timeOutStockBin",
+    "name": "超期库存列表",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/stock/timeOutStockBin/LPNdelay",
+    "component": "./appWMS/stock/timeOutStockBin/LPNdelay",
+    "name": ""
+  },
+  {
+    "path": "/appWMS/storeCompare/compareSetting",
+    "component": "./appWMS/storeCompare/compareSetting",
+    "name": "对账配置",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/storeCompare/historyCompare",
+    "component": "./appWMS/storeCompare/historyCompare",
+    "name": "三方对账历史",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/storeCompare/storeCompare",
+    "component": "./appWMS/storeCompare/storeCompare",
+    "name": "三方库存对账",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/storeQuery/loopPickItemInfo",
+    "component": "./appWMS/storeQuery/loopPickItemInfo",
+    "name": "滚动发料记录",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/storeQuery/materialPicking",
+    "component": "./appWMS/storeQuery/materialPicking",
+    "name": "下架记录",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/storeQuery/materialPickItemBoxDetail",
+    "component": "./appWMS/storeQuery/materialPickItemBoxDetail",
+    "name": "下架箱明细",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/storeQuery/putAwayItem",
+    "component": "./appWMS/storeQuery/putAwayItem",
+    "name": "上架记录",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/storeQuery/receiptItem",
+    "component": "./appWMS/storeQuery/receiptItem",
+    "name": "收货信息",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/storeTransfer/storeTransferOrder",
+    "component": "./appWMS/storeTransfer/storeTransferOrder",
+    "name": "调拨单管理",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/storeTransfer/storeTransferOrderItem",
+    "component": "./appWMS/storeTransfer/storeTransferOrderItem",
+    "name": "调拨明细列表",
+    "layout": true
+  },
+  {
+    "path": "/appWMS/storeTransfer/storeTransferTask",
+    "component": "./appWMS/storeTransfer/storeTransferTask",
+    "name": "调拨任务列表",
+    "layout": true
+  }
+]

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>项目管理可操控原型（前端/静态）</title>
+    <link rel="stylesheet" href="./prototype.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <div class="brand">
+          <div class="brand-title">项目管理可操控原型</div>
+          <div class="brand-subtitle">方案2：docs 静态页 · mock 数据 · 可拖拽/连线</div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-ghost" data-action="reset">重置数据</button>
+          <button class="btn btn-primary" data-action="export">导出 JSON</button>
+        </div>
+      </header>
+
+      <div class="app-body">
+        <aside class="sidebar">
+          <div class="sidebar-section">
+            <div class="sidebar-title">导航</div>
+            <a class="nav-item is-active" href="#milestones" data-view="milestones">里程碑拖拽连线</a>
+            <a class="nav-item" href="#project-detail" data-view="project-detail">项目详情（列表/编辑入口）</a>
+            <a class="nav-item" href="#workspace" data-view="workspace">我的工作区（Tabs）</a>
+            <a class="nav-item" href="#attention" data-view="attention">我的关注（取消关注）</a>
+          </div>
+
+          <div class="sidebar-section">
+            <div class="sidebar-title">提示</div>
+            <div class="hint">
+              <div class="hint-title">连线方式</div>
+              <div class="hint-body">
+                <div>1) 开启“连线模式”</div>
+                <div>2) 从节点右侧圆点拖拽到另一节点</div>
+                <div>3) 松开生成父子关系（写入 target.parentCodes）</div>
+              </div>
+            </div>
+            <div class="hint">
+              <div class="hint-title">循环保护</div>
+              <div class="hint-body">如果连线会形成循环依赖，会阻止并提示。</div>
+            </div>
+          </div>
+        </aside>
+
+        <main class="content">
+          <section class="view is-active" id="milestones" data-view="milestones">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="panel-title">里程碑拖拽连线（可操控）</div>
+                  <div class="panel-desc">拖拽节点位置；连线设置父子（父 → 子）。</div>
+                </div>
+                <div class="panel-actions">
+                  <label class="toggle">
+                    <input type="checkbox" id="connectionMode" />
+                    <span>连线模式</span>
+                  </label>
+                  <button class="btn" data-action="autoLayout">自动排布</button>
+                </div>
+              </div>
+
+              <div class="milestone-layout">
+                <div class="canvas-wrap">
+                  <div class="canvas-toolbar">
+                    <div class="pill">操作：<span id="canvasStatus">拖拽节点 / 关闭连线模式</span></div>
+                    <div class="pill pill-muted">提示：点击一条连线可删除</div>
+                  </div>
+                  <div class="milestone-canvas" id="milestoneCanvas">
+                    <svg class="canvas-edges" id="edgesSvg"></svg>
+                  </div>
+                </div>
+
+                <div class="sidepanel">
+                  <div class="sidepanel-title">当前里程碑数据</div>
+                  <div class="sidepanel-desc">父子关系存储在 <code>parentCodes</code>（名称数组）</div>
+                  <textarea class="code" id="milestonesJson" spellcheck="false"></textarea>
+
+                  <div class="sidepanel-title" style="margin-top: 12px">连线列表</div>
+                  <div class="sidepanel-desc">用于快速核对 parentCodes 写入是否正确</div>
+                  <div class="edge-list" id="edgeList"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="view" id="project-detail" data-view="project-detail">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="panel-title">项目详情（列表 + 轻量编辑入口）</div>
+                  <div class="panel-desc">点击名称查看详情；“编辑”跳转/入口在原型中用弹窗模拟。</div>
+                </div>
+              </div>
+
+              <div class="grid-3">
+                <div class="card">
+                  <div class="card-title">项目任务</div>
+                  <div class="list" id="projectTasks"></div>
+                </div>
+                <div class="card">
+                  <div class="card-title">项目问题</div>
+                  <div class="list" id="projectIssues"></div>
+                </div>
+                <div class="card">
+                  <div class="card-title">项目风险</div>
+                  <div class="list" id="projectRisks"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="view" id="workspace" data-view="workspace">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="panel-title">我的工作区（Tabs）</div>
+                  <div class="panel-desc">补齐“我的任务/我的问题/我的风险”三个列表页签（原型中用 mock）。</div>
+                </div>
+              </div>
+
+              <div class="tabs" id="workspaceTabs">
+                <button class="tab is-active" data-tab="pending">待我审批</button>
+                <button class="tab" data-tab="apply">我的申请</button>
+                <button class="tab" data-tab="myTasks">我的任务</button>
+                <button class="tab" data-tab="myIssues">我的问题</button>
+                <button class="tab" data-tab="myRisks">我的风险</button>
+              </div>
+
+              <div class="tab-panels">
+                <div class="tab-panel is-active" data-tab="pending">
+                  <div class="empty">原型占位：待我审批列表</div>
+                </div>
+                <div class="tab-panel" data-tab="apply">
+                  <div class="empty">原型占位：我的申请列表</div>
+                </div>
+                <div class="tab-panel" data-tab="myTasks">
+                  <div class="table-wrap" id="myTasksTable"></div>
+                </div>
+                <div class="tab-panel" data-tab="myIssues">
+                  <div class="table-wrap" id="myIssuesTable"></div>
+                </div>
+                <div class="tab-panel" data-tab="myRisks">
+                  <div class="table-wrap" id="myRisksTable"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="view" id="attention" data-view="attention">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="panel-title">我的关注（管理关注）</div>
+                  <div class="panel-desc">支持“取消关注”；问题关注补齐 requiresApproval 字段。</div>
+                </div>
+              </div>
+
+              <div class="tabs" id="attentionTabs">
+                <button class="tab is-active" data-tab="task">任务关注</button>
+                <button class="tab" data-tab="issue">问题关注</button>
+                <button class="tab" data-tab="risk">风险关注</button>
+              </div>
+
+              <div class="tab-panels">
+                <div class="tab-panel is-active" data-tab="task">
+                  <div class="table-wrap" id="attentionTaskTable"></div>
+                </div>
+                <div class="tab-panel" data-tab="issue">
+                  <div class="table-wrap" id="attentionIssueTable"></div>
+                </div>
+                <div class="tab-panel" data-tab="risk">
+                  <div class="table-wrap" id="attentionRiskTable"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <div class="toast" id="toast"></div>
+
+      <div class="modal" id="modal" aria-hidden="true">
+        <div class="modal-mask" data-action="closeModal"></div>
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+          <div class="modal-header">
+            <div class="modal-title" id="modalTitle">详情</div>
+            <button class="btn btn-ghost" data-action="closeModal">关闭</button>
+          </div>
+          <div class="modal-body" id="modalBody"></div>
+          <div class="modal-footer" id="modalFooter"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./prototype.js"></script>
+  </body>
+</html>
+

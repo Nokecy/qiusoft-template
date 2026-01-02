@@ -1,0 +1,304 @@
+@import '../mixin.less';
+
+:global(.longCol){
+    // width: 150px;
+    position: relative;
+
+    .longColDiv{
+    // width:0px;
+    position: absolute;
+    //  width:100px;
+     top:-8px;
+    // top:8px;
+    //用了bordered的表格，有时候某些列超长，导致线条对不上，
+    //可以用这个设定列和里面的div的classname,长度自设
+    }
+}
+
+:global(.greenBtn){ // 绿色button
+    color: #fff;
+    background : #1DA57A;
+    border-color: transparent;
+}
+
+:global(.greenBtn:focus){
+    color: #fff;
+    background : #52A591;
+    border-color: #52A591;
+}
+
+:global(.greenBtn:hover){
+    color: #fff;
+    background : #52A591;
+    border-color: #52A591;
+}
+
+    // 表格 单元格内容居中 以及 特殊列的样式
+    :global(.tableBar){
+        & table{
+            table-layout: fixed;
+            cursor: default;
+        }
+
+        & tr,& th{
+            .tc() !important;
+        }
+
+        & :global(.redList){
+            color: @red;
+        }
+
+        & :global(.canOperate):hover{
+            color: @red;
+        }
+
+        & :global(.greenList){
+            color: @green
+        }
+    }
+
+
+
+    // 鼠标样式
+    :global(.cursor-pointer){cursor: pointer}
+
+
+    // alert 提示语 用到的 内边距 -- houses 模块
+    :global(.alertPadding){
+        padding : 8px 16px !important;
+    }
+
+    :global(.normalSpace){
+        white-space: normal;
+    }
+
+    //一些排版间隔的公共样式
+    :global(.orangelabel){
+        color:@orange;
+    }
+
+    :global(.bluelabel){
+        color:#5c8bbf;
+    }
+
+    :global(.redlabel){
+        color:@red;
+    }
+
+    :global(.greenlabel){
+        color: @green;
+    }
+
+    :global(.tiplabel){
+        .mdfts;
+
+        font-weight: bold;
+        .tc();
+    }
+
+    :global(.inlinediv){
+        display: inline-block;
+        .mr-16();
+
+        vertical-align: middle
+    }
+
+    :global(.centerfont){
+        .tc();
+        .lgfts();
+    }
+
+    :global(.normallayout){// 视图页面中 **表格分页条 置于最下方** 或 **有Tabs** 用该布局 -- 用法及效果参考：视图组件 sersionUpdateImgList | actualMaterailForm
+        padding: 8px 16px 0;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        // & .ant-tabs{
+        //     flex: 1;
+        //     display: flex;
+        //     flex-direction: column;
+        //     .ant-tabs-content{
+        //         flex: 1;
+        //         overflow: hidden;
+        //         .ant-tabs-tabpane{
+        //             height: 100%;
+        //             overflow: auto;
+        //         }
+        //     }
+        // }
+    }
+
+    :global(.panelayout){
+        padding: 0 16px;
+       // height: auto;
+        position: relative;
+        overflow-x: hidden;
+        padding-bottom: 32px;
+        overflow-y: auto
+    }
+
+    :global(.simpleNormallayout){// 视图页面中 **表格分页条 不置于最下方** 用该布局 -- 用法及效果参考：视图组件 brand
+        padding: 8px 16px 0;
+        height: auto;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    :global(.inbuttonbar){
+        display: inline-block;
+        .mr-8();
+    }
+    //表格下拉搜索框样式start
+    :global(.filter-dropdown) {
+      padding: 8px;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 20%);
+
+      & input {
+        width: 130px;
+        .mr-8();
+      }
+    }
+
+    // disabled
+    :global(.disabled){
+        color: rgba(0, 0, 0, 25%) !important;
+        background-color: #f7f7f7 !important;
+        border-color: #d9d9d9 !important;
+        cursor: not-allowed !important;
+    }
+    // inline-block top
+    :global(.inlineBlockTop){
+        display: inline-block;
+        vertical-align: top;
+    }
+    // inline-block middle
+    :global(.inlineBlockMiddle){
+        display: inline-block;
+        vertical-align: middle;
+    }
+    // inline-block middle
+    :global(.inlineBlockBottom){
+        display: inline-block;
+        vertical-align: bottom;
+    }
+    // 穿梭框 公用样式
+    :global(.orderSortModal){
+        :global(.ant-transfer){
+            display: flex;
+            align-items: center;
+
+            :global(.ant-transfer-list){
+                flex: 1;
+
+                :global(.ant-transfer-list-content-item){
+                    display: flex;
+
+                    &>span{
+                        flex: 1;
+
+                        &>div{
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // 附件上传公用
+    :global(.accessory){
+        line-height: 32px;
+
+        :global(.accessoryContent){
+            display: inline-block;
+            vertical-align: top;
+
+            &>:global(.ant-upload){
+                padding: 0 8px;
+                margin-right: 24px;
+                background-color: #eee;
+                cursor: pointer;
+            }
+
+            :global(.ant-upload-list-item-name){
+                width: 84px;
+            }
+
+            :global(.anticon-cross){
+                opacity: 1;
+                top: 2px;
+                right: 0;
+            }
+        }
+    }
+    // 类Form Select 选择组件公用 例：人员弹窗选择|联系人弹窗选择|标签弹窗选择
+    :global(.openModalSelectWrapper){
+        position: relative;
+        line-height: 33px;
+
+        :global(.openModalSelectContain){
+            position: relative;
+            min-height: 33px;
+            line-height: 1;
+            .mdfts();
+
+            padding: 4px 24px 0 4px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+
+            &>span{
+                display: inline-block;
+                height: 24px;
+                line-height: 24px;
+                padding: 0 10px;
+                margin: 0 4px 4px 0;
+                color: rgba(0, 0, 0, 64.7%);
+                background-color: #F7F7F7;
+                border: 1px solid #EBEBEB;
+                border-radius: 4px;
+                user-select: none;
+
+                :global(.anticon){
+                    .ml-8();
+
+                    cursor: pointer;
+                    vertical-align: middle;
+                }
+            }
+
+            &>:global(.newAdd){
+                position: absolute;
+                right: 4px;
+                bottom: 6px;
+                cursor: pointer;
+                .hgfts();
+
+                color: @blue;
+            }
+        }
+
+        :global(.warn){
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            .oneRowOverflowOmit();
+        }
+    }
+
+    :global(.bf-container){ // 富文本编辑器边框
+        border: 1px solid @grey;
+    }
+
+    :global(.greyColor){ // 字体颜色
+       color:@grey;
+    }
+
+    :global(.blueColor){ // 
+        color:@blue;
+     }

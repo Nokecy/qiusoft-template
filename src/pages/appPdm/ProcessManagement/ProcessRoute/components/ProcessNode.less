@@ -1,0 +1,168 @@
+// 工序节点样式
+.process-node {
+  width: 240px;
+  min-height: 150px;
+  border: 2px solid #d9d9d9;
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  // 选中状态
+  &.selected {
+    border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  }
+
+  // 悬停状态
+  &.hovered {
+    border-color: #40a9ff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  }
+
+  // 起始节点
+  &.start-node {
+    border-color: #52c41a;
+    background: #f6ffed;
+
+    .node-header {
+      background: #d9f7be;
+      border-bottom-color: #52c41a;
+    }
+  }
+
+  // 结束节点
+  &.end-node {
+    border-color: #faad14;
+    background: #fffbe6;
+
+    .node-header {
+      background: #fff1b8;
+      border-bottom-color: #faad14;
+    }
+  }
+
+  // 节点头部
+  .node-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: #fafafa;
+    border-bottom: 1px solid #e8e8e8;
+    border-radius: 2px 2px 0 0;
+
+    .node-indicator {
+      font-size: 14px;
+      color: #1890ff;
+      margin-right: 8px;
+      font-weight: 600;
+    }
+
+    .node-title {
+      flex: 1;
+      font-weight: 600;
+      color: #262626;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  // 节点内容
+  .node-content {
+    padding: 12px;
+    background: #ffffff;
+
+    .node-info-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 6px;
+      line-height: 1.5;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .info-label {
+        min-width: 70px;
+        color: #8c8c8c;
+        margin-right: 8px;
+        flex-shrink: 0;
+      }
+
+      .info-value {
+        flex: 1;
+        color: #262626;
+        word-break: break-all;
+      }
+    }
+  }
+
+  // 节点操作
+  .node-actions {
+    padding: 6px 10px;
+    border-top: 1px solid #e8e8e8;
+    display: flex;
+    justify-content: flex-end;
+    background: #fafafa;
+
+    .ant-btn-text {
+      padding: 4px 8px;
+      height: auto;
+
+      &:hover {
+        background: #e6f7ff;
+      }
+    }
+  }
+
+  // ReactFlow Handle 样式
+  .react-flow__handle {
+    width: 10px;
+    height: 10px;
+    background: #1890ff;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+
+    &:hover {
+      width: 12px;
+      height: 12px;
+      background: #40a9ff;
+    }
+
+    &.react-flow__handle-top {
+      top: -5px;
+    }
+
+    &.react-flow__handle-bottom {
+      bottom: -5px;
+    }
+  }
+}
+
+// 连接线样式
+.react-flow__edge-path {
+  stroke: #8c8c8c;
+  stroke-width: 2px;
+}
+
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:focus .react-flow__edge-path,
+.react-flow__edge:focus-visible .react-flow__edge-path {
+  stroke: #1890ff;
+  stroke-width: 2.5px;
+}
+
+// 连接线动画效果
+.react-flow__edge.animated path {
+  stroke-dasharray: 6;
+  animation: dashdraw 0.6s linear infinite;
+}
+
+@keyframes dashdraw {
+  to {
+    stroke-dashoffset: -12;
+  }
+}

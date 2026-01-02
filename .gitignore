@@ -1,0 +1,9 @@
+node_modules
+.umi
+.umi-production
+dist
+public/OidcTrustedDomains.js
+.vscode
+.idea
+.shared-backup
+tools/**/dist

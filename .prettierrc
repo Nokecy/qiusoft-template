@@ -1,0 +1,51 @@
+{
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ],
+  "plugins": [
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-packagejson"
+  ],
+  "printWidth": 180,
+  "tabWidth": 2,
+  "useTabs": true,
+  "semi": true,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "trailingComma": "es5",
+  "jsxSingleQuote": true,
+  "jsxBracketSameLine": false,
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "insertPragma": false,
+  "disableLanguages": [
+    "vue"
+  ],
+  "proseWrap": "preserve",
+  "endOfLine": "auto",
+  "htmlWhitespaceSensitivity": "css",
+  "format": {
+    "defaultFormatter": {
+      "html": "js-beautify-html",
+      "js": "prettier"
+    },
+    "defaultFormatterOptions": {
+      "js-beautify-html": {
+        "wrap_attributes": "auto",
+        "wrap_line_length": 100,
+        "end_with_newline": false,
+        "semi": true,
+        "singleQuote": true
+      },
+      "prettier": {
+        "semi": true,
+        "singleQuote": true
+      }
+    }
+  }
+}

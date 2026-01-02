@@ -1,0 +1,162 @@
+.milestone-flowchart-container {
+  width: 100%;
+  padding: 12px 0;
+  background: #fff;
+  border-radius: 0;
+  margin-top: 12px;
+  box-shadow: none;
+  position: relative;
+
+  .milestone-flowchart-wrapper {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
+    overflow-y: auto;
+    min-height: 220px;
+    max-height: 320px;
+    display: block;
+    position: relative;
+
+    // 自定义滚动条样式
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #FFB74D;
+      border-radius: 4px;
+
+      &:hover {
+        background: #FF9800;
+      }
+    }
+
+    // Mermaid SVG 样式 - 卡通风格
+    :global {
+      svg {
+        min-width: 0;
+        width: auto !important;
+        max-width: none !important;
+        height: auto;
+        filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.12));
+      }
+
+      // 节点样式 - 圆形卡通风格
+      .node rect,
+      .node circle,
+      .node ellipse,
+      .node polygon {
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      // 节点文本样式
+      .nodeLabel {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.5;
+
+        div {
+          text-align: center;
+          white-space: nowrap;
+        }
+      }
+
+      // 连接线 - 粗虚线样式
+      .flowchart-link {
+        stroke: #E91E63;
+        stroke-width: 5px;
+        stroke-dasharray: 10, 5;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: drop-shadow(0 2px 4px rgba(233, 30, 99, 0.3));
+        transition: all 0.3s ease;
+        opacity: 0.8;
+      }
+
+      // 箭头 - 卡通箭头
+      .arrowheadPath {
+        fill: #E91E63;
+        filter: drop-shadow(0 2px 4px rgba(233, 30, 99, 0.4));
+        opacity: 0.9;
+      }
+
+      // 边标签 - 卡通风格标签
+      .edgeLabel {
+        background: linear-gradient(135deg, #FF4081 0%, #F50057 100%);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #fff;
+        box-shadow: 0 3px 12px rgba(245, 0, 87, 0.3);
+        border: 3px solid #fff;
+      }
+
+      .label {
+        color: #fff;
+        font-weight: 700;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      // hover 效果 - 弹跳动画
+      .node:hover rect,
+      .node:hover circle,
+      .node:hover ellipse,
+      .node:hover polygon {
+        filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.3));
+        transform: scale(1.1) translateY(-3px);
+        cursor: pointer;
+      }
+
+      // 连接线 hover
+      .flowchart-link:hover {
+        stroke-width: 6px;
+        opacity: 1;
+      }
+
+      // 添加脉动动画
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes dash {
+        to {
+          stroke-dashoffset: -30;
+        }
+      }
+
+      .flowchart-link {
+        animation: pulse 2s ease-in-out infinite, dash 1.5s linear infinite;
+      }
+
+      // 节点呼吸效果
+      @keyframes breathe {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+      }
+
+      .node circle,
+      .node ellipse {
+        animation: breathe 3s ease-in-out infinite;
+      }
+    }
+  }
+}

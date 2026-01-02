@@ -1,0 +1,7448 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"title": "HuaWeiWMS API",
+		"version": "HuaWeiWMS"
+	},
+	"paths": {
+		"/api/wms/input-instruction-order/create": {
+			"post": {
+				"tags": ["InputInstructionOrder"],
+				"operationId": "InputInstructionOrder_CreateAsync",
+				"parameters": [
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json-patch+json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_InputInstructionOrderDto"
+							}
+						},
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_InputInstructionOrderDto"
+							}
+						},
+						"text/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_InputInstructionOrderDto"
+							}
+						},
+						"application/*+json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_InputInstructionOrderDto"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/input-instruction-order/getlists": {
+			"get": {
+				"tags": ["InputInstructionOrder"],
+				"operationId": "InputInstructionOrder_GetListAsync",
+				"parameters": [
+					{
+						"name": "MaxResultCount",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "SkipCount",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "Sorting",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "Filter",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "Page",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "PageSize",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "OrderBy",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_InInstructionOrders_WisOrderHeaderDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_InInstructionOrders_WisOrderHeaderDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_InInstructionOrders_WisOrderHeaderDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/input-instruction-order/{id}": {
+			"get": {
+				"tags": ["InputInstructionOrder"],
+				"operationId": "InputInstructionOrder_GetAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_InputInstructionOrderDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_InputInstructionOrderDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_InputInstructionOrderDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/input-instruction-order/getinorderlines": {
+			"get": {
+				"tags": ["InputInstructionOrder"],
+				"operationId": "InputInstructionOrder_GetInOrderLineAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisOrderLinesDto"
+									}
+								}
+							},
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisOrderLinesDto"
+									}
+								}
+							},
+							"text/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisOrderLinesDto"
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/input-instruction-order/getinorderlpnlines": {
+			"get": {
+				"tags": ["InputInstructionOrder"],
+				"operationId": "InputInstructionOrder_GetInOrderLpnLineAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisLpnLinesDto"
+									}
+								}
+							},
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisLpnLinesDto"
+									}
+								}
+							},
+							"text/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisLpnLinesDto"
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/input-instruction-order/getinordersnlines": {
+			"get": {
+				"tags": ["InputInstructionOrder"],
+				"operationId": "InputInstructionOrder_GetInOrderSnLineAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisSnLinesDto"
+									}
+								}
+							},
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisSnLinesDto"
+									}
+								}
+							},
+							"text/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisSnLinesDto"
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/input-instruction-order/getinorderwaferlines": {
+			"get": {
+				"tags": ["InputInstructionOrder"],
+				"operationId": "InputInstructionOrder_GetInOrderWaferLineAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisWaferLinesDto"
+									}
+								}
+							},
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisWaferLinesDto"
+									}
+								}
+							},
+							"text/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisWaferLinesDto"
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/instruction-interception/create": {
+			"post": {
+				"tags": ["InstructionInterception"],
+				"operationId": "InstructionInterception_CreateAsync",
+				"parameters": [
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json-patch+json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+							}
+						},
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+							}
+						},
+						"text/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+							}
+						},
+						"application/*+json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/instruction-interception/delete/{id}": {
+			"post": {
+				"tags": ["InstructionInterception"],
+				"operationId": "InstructionInterception_DeleteAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/instruction-interception/get": {
+			"get": {
+				"tags": ["InstructionInterception"],
+				"operationId": "InstructionInterception_GetAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/instruction-interception/list": {
+			"get": {
+				"tags": ["InstructionInterception"],
+				"operationId": "InstructionInterception_GetListAsync",
+				"parameters": [
+					{
+						"name": "MaxResultCount",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "SkipCount",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "Sorting",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "Filter",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "Page",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "PageSize",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "OrderBy",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/instruction-interception/update": {
+			"post": {
+				"tags": ["InstructionInterception"],
+				"operationId": "InstructionInterception_UpdateAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json-patch+json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+							}
+						},
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+							}
+						},
+						"text/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+							}
+						},
+						"application/*+json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/logger-info-query/list": {
+			"get": {
+				"tags": ["LoggerSystem"],
+				"operationId": "LoggerSystem_GetListAsync",
+				"parameters": [
+					{
+						"name": "MaxResultCount",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "SkipCount",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "Sorting",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "Filter",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "Page",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "PageSize",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "OrderBy",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_LoggerSystem_IoInstructionLifeCycleDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_LoggerSystem_IoInstructionLifeCycleDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_LoggerSystem_IoInstructionLifeCycleDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/out-instruction-order/create": {
+			"post": {
+				"tags": ["OutputInstructionOrder"],
+				"operationId": "OutputInstructionOrder_CreateAsync",
+				"parameters": [
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json-patch+json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto"
+							}
+						},
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto"
+							}
+						},
+						"text/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto"
+							}
+						},
+						"application/*+json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/out-instruction-order/{id}": {
+			"get": {
+				"tags": ["OutputInstructionOrder"],
+				"operationId": "OutputInstructionOrder_GetAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/out-instruction-order/getlist": {
+			"get": {
+				"tags": ["OutputInstructionOrder"],
+				"operationId": "OutputInstructionOrder_GetListAsync",
+				"parameters": [
+					{
+						"name": "MaxResultCount",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "SkipCount",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "Sorting",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "Filter",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "Page",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "PageSize",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "OrderBy",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/wms/out-instruction-order/getoutorderline": {
+			"get": {
+				"tags": ["OutputInstructionOrder"],
+				"operationId": "OutputInstructionOrder_GetOutOrderLineAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_WisOutInstructionOrderLineDto"
+									}
+								}
+							},
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_WisOutInstructionOrderLineDto"
+									}
+								}
+							},
+							"text/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_WisOutInstructionOrderLineDto"
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/huawei-wms/warehouse-map/create": {
+			"post": {
+				"tags": ["WareHouseMap"],
+				"operationId": "WareHouseMap_CreateAsync",
+				"parameters": [
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json-patch+json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+							}
+						},
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+							}
+						},
+						"text/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+							}
+						},
+						"application/*+json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/huawei-wms/warehouse-map/delete": {
+			"post": {
+				"tags": ["WareHouseMap"],
+				"operationId": "WareHouseMap_DeleteAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/huawei-wms/warehouse-map/get": {
+			"get": {
+				"tags": ["WareHouseMap"],
+				"operationId": "WareHouseMap_GetAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/huawei-wms/warehouse-map/import-template": {
+			"get": {
+				"tags": ["WareHouseMap"],
+				"operationId": "WareHouseMap_GetImportTemplateAsync",
+				"parameters": [
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"type": "string",
+									"format": "binary"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "binary"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"type": "string",
+									"format": "binary"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/huawei-wms/warehouse-map/getlists": {
+			"get": {
+				"tags": ["WareHouseMap"],
+				"operationId": "WareHouseMap_GetListAsync",
+				"parameters": [
+					{
+						"name": "MaxResultCount",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "SkipCount",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "Sorting",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "Filter",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "Page",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "PageSize",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					{
+						"name": "OrderBy",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/huawei-wms/warehouse-map/import": {
+			"post": {
+				"tags": ["WareHouseMap"],
+				"operationId": "WareHouseMap_ImportAsync",
+				"parameters": [
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"required": ["File"],
+								"type": "object",
+								"properties": {
+									"File": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							},
+							"encoding": {
+								"File": {
+									"style": "form"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/huawei-wms/warehouse-map/update": {
+			"post": {
+				"tags": ["WareHouseMap"],
+				"operationId": "WareHouseMap_UpdateAsync",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json-patch+json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+							}
+						},
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+							}
+						},
+						"text/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+							}
+						},
+						"application/*+json": {
+							"schema": {
+								"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "Forbidden",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server Error",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							},
+							"text/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"Burn_Abp_HuaWei_WMS_InInstructionOrders_InputInstructionOrderDto": {
+				"type": "object",
+				"properties": {
+					"wisOrderHeader": {
+						"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisOrderHeaderDto"
+					},
+					"wisOrderLines": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisOrderLinesDto"
+						},
+						"nullable": true
+					},
+					"wisLpnLines": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisLpnLinesDto"
+						},
+						"nullable": true
+					},
+					"wisSnLines": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisSnLinesDto"
+						},
+						"nullable": true
+					},
+					"wisWaferLines": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisWaferLinesDto"
+						},
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			},
+			"Burn_Abp_HuaWei_WMS_InInstructionOrders_WisLpnLinesDto": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "Lpn主键Id",
+						"format": "uuid"
+					},
+					"orderHeaderId": {
+						"type": "string",
+						"description": "OrderHeaderId",
+						"format": "uuid"
+					},
+					"lpnBarcode": {
+						"type": "string",
+						"description": "LPN条码",
+						"nullable": true
+					},
+					"parentLpnName": {
+						"type": "string",
+						"description": "父项LPN条码",
+						"nullable": true
+					},
+					"lpnType": {
+						"type": "string",
+						"description": "LPN类型(栈板/料箱/外包装/内包装)",
+						"nullable": true
+					},
+					"lpnName": {
+						"type": "string",
+						"description": "箱名",
+						"nullable": true
+					},
+					"volume": {
+						"type": "number",
+						"description": "体积",
+						"format": "double",
+						"nullable": true
+					},
+					"weight": {
+						"type": "number",
+						"description": "重量(毛重)",
+						"format": "double",
+						"nullable": true
+					},
+					"netWeight": {
+						"type": "number",
+						"description": "净重",
+						"format": "double",
+						"nullable": true
+					},
+					"grossWeight": {
+						"type": "number",
+						"description": "重量(毛重)",
+						"format": "double",
+						"nullable": true
+					},
+					"length": {
+						"type": "number",
+						"description": "长",
+						"format": "double",
+						"nullable": true
+					},
+					"width": {
+						"type": "number",
+						"description": "宽",
+						"format": "double",
+						"nullable": true
+					},
+					"height": {
+						"type": "number",
+						"description": "高",
+						"format": "double",
+						"nullable": true
+					},
+					"partialCarton": {
+						"type": "string",
+						"description": "尾箱标识",
+						"nullable": true
+					},
+					"setsFlag": {
+						"type": "string",
+						"description": "多套件标识",
+						"nullable": true
+					},
+					"chargeTimes": {
+						"type": "integer",
+						"description": "超期次数",
+						"format": "int64",
+						"nullable": true
+					},
+					"setsComments": {
+						"type": "string",
+						"description": "多套件备注内容，内容格式：第几箱/总箱数",
+						"nullable": true
+					},
+					"firstChargeTime": {
+						"type": "string",
+						"description": "首次充电时间",
+						"format": "date-time",
+						"nullable": true
+					},
+					"lastChargeTime": {
+						"type": "string",
+						"description": "上次充电时间",
+						"format": "date-time",
+						"nullable": true
+					},
+					"lpnCategory": {
+						"type": "string",
+						"description": "箱子大类:10原材料、20成品，30 提前箱单，40 工艺箱单",
+						"nullable": true
+					},
+					"lpnClass": {
+						"type": "string",
+						"description": "LPN属性",
+						"nullable": true
+					},
+					"taskNumber": {
+						"type": "string",
+						"description": "车辆登记号",
+						"nullable": true
+					},
+					"platformCode": {
+						"type": "string",
+						"description": "发货平台",
+						"nullable": true
+					},
+					"vehicleDepartureTime": {
+						"type": "string",
+						"description": "车辆离港时间",
+						"nullable": true
+					},
+					"shipmentNumber": {
+						"type": "string",
+						"description": "派送单号",
+						"nullable": true
+					},
+					"lpnScanDate": {
+						"type": "string",
+						"description": "LPN扫描日期",
+						"format": "date-time",
+						"nullable": true
+					},
+					"bcsFlag": {
+						"type": "string",
+						"description": "bs标识",
+						"nullable": true
+					},
+					"lpnMaterial": {
+						"type": "string",
+						"description": "箱材质",
+						"nullable": true
+					},
+					"sourceLpnName": {
+						"type": "string",
+						"description": "原箱名",
+						"nullable": true
+					},
+					"lpnNumber": {
+						"type": "integer",
+						"description": "箱序号",
+						"format": "int32",
+						"nullable": true
+					},
+					"clNo": {
+						"type": "string",
+						"description": "箱单号",
+						"nullable": true
+					},
+					"sourceClNo": {
+						"type": "string",
+						"description": "原始箱单号",
+						"nullable": true
+					},
+					"openFlag": {
+						"type": "string",
+						"description": "开箱标识",
+						"nullable": true
+					},
+					"shipmentBatch": {
+						"type": "string",
+						"description": "发货批次",
+						"nullable": true
+					},
+					"orderPriority": {
+						"type": "string",
+						"description": "订单优先级",
+						"nullable": true
+					},
+					"countryCode": {
+						"type": "string",
+						"description": "国家代码",
+						"nullable": true
+					},
+					"reverseConclusionByBox": {
+						"type": "string",
+						"description": "box箱逆向评审结论",
+						"nullable": true
+					},
+					"instoreType": {
+						"type": "string",
+						"description": "自动化入库标识",
+						"nullable": true
+					},
+					"palletCode": {
+						"type": "string",
+						"description": "载具号",
+						"nullable": true
+					},
+					"autoSealingFlag": {
+						"type": "string",
+						"description": "自动打带标识",
+						"nullable": true
+					},
+					"autoTallyFlag": {
+						"type": "string",
+						"description": "自动理货标识",
+						"nullable": true
+					},
+					"boxCode": {
+						"type": "string",
+						"description": "箱代码",
+						"nullable": true
+					},
+					"shipmentSet": {
+						"type": "string",
+						"description": "发运集",
+						"nullable": true
+					},
+					"transMode": {
+						"type": "string",
+						"description": "运输方式",
+						"nullable": true
+					},
+					"transModeCode": {
+						"type": "string",
+						"description": "运输方式代码",
+						"nullable": true
+					},
+					"shipToCnFlag": {
+						"type": "string",
+						"description": "是否发往国内",
+						"nullable": true
+					},
+					"customerName": {
+						"type": "string",
+						"description": "客户名称",
+						"nullable": true
+					},
+					"customerAddress": {
+						"type": "string",
+						"description": "客户地址",
+						"nullable": true
+					},
+					"machineNo": {
+						"type": "string",
+						"description": "机器码",
+						"nullable": true
+					},
+					"setNo": {
+						"type": "string",
+						"description": "集合号",
+						"nullable": true
+					},
+					"centralizedRiskFlag": {
+						"type": "string",
+						"description": "风险标识",
+						"nullable": true
+					},
+					"preInboundCode": {
+						"type": "string",
+						"description": "库存类型编码：10 虚拟库存，30 实物库存",
+						"nullable": true
+					},
+					"tenderNumber": {
+						"type": "string",
+						"description": "tender号",
+						"nullable": true
+					},
+					"autoInboundType": {
+						"type": "string",
+						"description": "",
+						"nullable": true
+					},
+					"deliveryHeaderScenario": {
+						"type": "string",
+						"description": "",
+						"nullable": true
+					},
+					"formalTenderFlag": {
+						"type": "string",
+						"description": "下线即发标识(Y表示tender,N表示pre-tender)",
+						"nullable": true
+					},
+					"deliveryNumber": {
+						"type": "string",
+						"description": "发运单号",
+						"nullable": true
+					},
+					"deliveryMode": {
+						"type": "string",
+						"description": "发货通道",
+						"nullable": true
+					},
+					"snFlag": {
+						"type": "string",
+						"description": "SN条码标识",
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			},
+			"Burn_Abp_HuaWei_WMS_InInstructionOrders_WisOrderHeaderDto": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "OrderHeader主键Id",
+						"format": "uuid"
+					},
+					"instructionBatch": {
+						"type": "string",
+						"description": "来料批次",
+						"nullable": true
+					},
+					"declarationType": {
+						"type": "string",
+						"description": "管控开关",
+						"nullable": true
+					},
+					"emsSupplierCode": {
+						"type": "string",
+						"description": "EMS供应商",
+						"nullable": true
+					},
+					"estimateArrivalDate": {
+						"type": "string",
+						"description": "预计到达日期",
+						"format": "date-time",
+						"nullable": true
+					},
+					"weight": {
+						"type": "number",
+						"description": "总重量",
+						"format": "double",
+						"nullable": true
+					},
+					"volume": {
+						"type": "number",
+						"description": "总体积",
+						"format": "double",
+						"nullable": true
+					},
+					"contractNo": {
+						"type": "string",
+						"description": "合同号",
+						"nullable": true
+					},
+					"projectId": {
+						"type": "integer",
+						"description": "项目ID（ID不参与关联）",
+						"format": "int64",
+						"nullable": true
+					},
+					"projectCode": {
+						"type": "string",
+						"description": "项目编码",
+						"nullable": true
+					},
+					"projectName": {
+						"type": "string",
+						"description": "项目名称",
+						"nullable": true
+					},
+					"supplierCode": {
+						"type": "string",
+						"description": "供应商编码",
+						"nullable": true
+					},
+					"supplierName": {
+						"type": "string",
+						"description": "供应商名称",
+						"nullable": true
+					},
+					"orgCode": {
+						"type": "string",
+						"description": "ERP库存组织代码",
+						"nullable": true
+					},
+					"orgId": {
+						"type": "integer",
+						"description": "ERP库存组织ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"instanceId": {
+						"type": "integer",
+						"description": "ERP实例ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"emsFactory": {
+						"type": "string",
+						"description": "EMS厂代码",
+						"nullable": true
+					},
+					"createdBy": {
+						"type": "integer",
+						"description": "创建人",
+						"format": "int64",
+						"nullable": true
+					},
+					"creator": {
+						"type": "string",
+						"description": "创建人W3姓名",
+						"nullable": true
+					},
+					"receiveSystem": {
+						"type": "string",
+						"description": "收货系统",
+						"nullable": true
+					},
+					"containerNo": {
+						"type": "string",
+						"description": "柜号",
+						"nullable": true
+					},
+					"physicalHandingFlag": {
+						"type": "string",
+						"description": "实物管控标识 10:实物操作；20：非实物操作",
+						"nullable": true
+					},
+					"applicantId": {
+						"type": "integer",
+						"description": "申请人",
+						"format": "int64",
+						"nullable": true
+					},
+					"applicantCode": {
+						"type": "string",
+						"description": "申请人工号",
+						"nullable": true
+					},
+					"applicantName": {
+						"type": "string",
+						"description": "申请人名称",
+						"nullable": true
+					},
+					"approveBy": {
+						"type": "integer",
+						"description": "审批人",
+						"format": "int64",
+						"nullable": true
+					},
+					"approveCode": {
+						"type": "string",
+						"description": "审批人编号",
+						"nullable": true
+					},
+					"approveName": {
+						"type": "string",
+						"description": "审批人姓名",
+						"nullable": true
+					},
+					"financeApproveCode": {
+						"type": "string",
+						"description": "财经审批人编号",
+						"nullable": true
+					},
+					"financeApproveBy": {
+						"type": "integer",
+						"description": "财经审批人",
+						"format": "int64",
+						"nullable": true
+					},
+					"financeApproveName": {
+						"type": "string",
+						"description": "财经审批人姓名",
+						"nullable": true
+					},
+					"fromEntityId": {
+						"type": "integer",
+						"description": "来源实体ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"fromWarehouseCode": {
+						"type": "string",
+						"description": "来源仓库编码",
+						"nullable": true
+					},
+					"sourceApplyNumber": {
+						"type": "string",
+						"description": "来源申请单号",
+						"nullable": true
+					},
+					"accidentReturn": {
+						"type": "string",
+						"description": "是否出险物料",
+						"nullable": true
+					},
+					"totalBoxQty": {
+						"type": "number",
+						"description": "总箱数",
+						"format": "double",
+						"nullable": true
+					},
+					"province": {
+						"type": "string",
+						"description": "省份",
+						"nullable": true
+					},
+					"city": {
+						"type": "string",
+						"description": "城市",
+						"nullable": true
+					},
+					"rdFlag": {
+						"type": "string",
+						"description": "研发采购标识",
+						"nullable": true
+					},
+					"errorMsg": {
+						"type": "string",
+						"description": "错误消息",
+						"nullable": true
+					},
+					"sourceBillNumber": {
+						"type": "string",
+						"nullable": true
+					},
+					"instructionSubType": {
+						"type": "string",
+						"nullable": true
+					},
+					"sourceCode": {
+						"type": "string",
+						"nullable": true
+					},
+					"jit": {
+						"type": "string",
+						"nullable": true
+					},
+					"instructionNo": {
+						"type": "string",
+						"nullable": true
+					},
+					"asnNumber": {
+						"type": "string",
+						"nullable": true
+					},
+					"transportNo": {
+						"type": "string",
+						"nullable": true
+					},
+					"sourceBillHeaderId": {
+						"type": "integer",
+						"format": "int64",
+						"nullable": true
+					},
+					"warehouseId": {
+						"type": "integer",
+						"format": "int64",
+						"nullable": true
+					},
+					"asnHeaderId": {
+						"type": "integer",
+						"format": "int64",
+						"nullable": true
+					},
+					"warehouseCode": {
+						"type": "string",
+						"nullable": true
+					},
+					"sourceBillType": {
+						"type": "string",
+						"nullable": true
+					},
+					"entityId": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"expectedReceiptEndDate": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"receiveLocation": {
+						"type": "string",
+						"nullable": true
+					},
+					"asnType": {
+						"type": "string",
+						"nullable": true
+					},
+					"sourceBillremark": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			},
+			"Burn_Abp_HuaWei_WMS_InInstructionOrders_WisOrderLinesDto": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "OrderLines主键Id",
+						"format": "uuid"
+					},
+					"orderHeaderId": {
+						"type": "string",
+						"description": "OrderHeaderId",
+						"format": "uuid"
+					},
+					"asnLineId": {
+						"type": "integer",
+						"description": "入库指令行ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"qcType": {
+						"type": "integer",
+						"description": "质检属性(0:免检,1:抽检,2:外检)",
+						"format": "int32"
+					},
+					"lpnBarcode": {
+						"type": "string",
+						"description": "LPN条码",
+						"nullable": true
+					},
+					"lpnName": {
+						"type": "string",
+						"description": "箱名",
+						"nullable": true
+					},
+					"itemCode": {
+						"type": "string",
+						"description": "物料编码",
+						"nullable": true
+					},
+					"itemDesc": {
+						"type": "string",
+						"description": "物料名称",
+						"nullable": true
+					},
+					"itemDescEn": {
+						"type": "string",
+						"description": "物料名称(英文)",
+						"nullable": true
+					},
+					"produceItemCode": {
+						"type": "string",
+						"description": "制造编码",
+						"nullable": true
+					},
+					"toWarehouseId": {
+						"type": "integer",
+						"description": "目的仓库ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"toWarehouseCode": {
+						"type": "string",
+						"description": "目的仓库编码",
+						"nullable": true
+					},
+					"toWarehouseName": {
+						"type": "string",
+						"description": "目的仓库名称",
+						"nullable": true
+					},
+					"manufacturerPlantCode": {
+						"type": "string",
+						"description": "制造商品牌",
+						"nullable": true
+					},
+					"manufacturerPlantName": {
+						"type": "string",
+						"description": "制造商名称",
+						"nullable": true
+					},
+					"clNo": {
+						"type": "string",
+						"description": "箱单号",
+						"nullable": true
+					},
+					"shipToOrgCode": {
+						"type": "string",
+						"description": "ERP接收组织代码",
+						"nullable": true
+					},
+					"shipToOrgId": {
+						"type": "integer",
+						"description": "ERP接收组织ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"poNumber": {
+						"type": "string",
+						"description": "ERP PO号",
+						"nullable": true
+					},
+					"wipOrderNumber": {
+						"type": "string",
+						"description": "任务令",
+						"nullable": true
+					},
+					"wipOrderNumberId": {
+						"type": "integer",
+						"description": "任务令Id",
+						"format": "int64",
+						"nullable": true
+					},
+					"fromLocator": {
+						"type": "string",
+						"description": "FROM  ERP货位",
+						"nullable": true
+					},
+					"locator": {
+						"type": "string",
+						"description": "ERP货位编码",
+						"nullable": true
+					},
+					"fromLocatorCode": {
+						"type": "string",
+						"description": "产线货位编码FROM",
+						"nullable": true
+					},
+					"toLocatorCode": {
+						"type": "string",
+						"description": "产线货位编码TO",
+						"nullable": true
+					},
+					"instructionBatch": {
+						"type": "string",
+						"description": "来料批次",
+						"nullable": true
+					},
+					"managementSystem": {
+						"type": "string",
+						"description": "管理系统",
+						"nullable": true
+					},
+					"sceneType": {
+						"type": "string",
+						"description": "场景类型(wimLineSceneTypeEnum)",
+						"nullable": true
+					},
+					"asnLineNum": {
+						"type": "string",
+						"description": "来源行号",
+						"nullable": true
+					},
+					"errorMsg": {
+						"type": "string",
+						"description": "错误消息",
+						"nullable": true
+					},
+					"dueDate": {
+						"type": "string",
+						"description": "到期日期",
+						"format": "date-time",
+						"nullable": true
+					},
+					"asnNumber": {
+						"type": "string",
+						"description": "ASN单号",
+						"nullable": true
+					},
+					"sourceBillLineId": {
+						"type": "integer",
+						"description": "来源行ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"sourceBillNumber": {
+						"type": "string",
+						"description": "来源单据号",
+						"nullable": true
+					},
+					"sourceSubBillNumber": {
+						"type": "string",
+						"description": "来源子单据号(预留)",
+						"nullable": true
+					},
+					"entityId": {
+						"type": "integer",
+						"description": "供应实体ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"warehouseId": {
+						"type": "integer",
+						"description": "仓库ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"warehouseCode": {
+						"type": "string",
+						"description": "仓库编码",
+						"nullable": true
+					},
+					"instanceId": {
+						"type": "integer",
+						"description": "ERP实例",
+						"format": "int64",
+						"nullable": true
+					},
+					"poLineLocationId": {
+						"type": "integer",
+						"description": "ERP PO发运行ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"parentPoNumber": {
+						"type": "string",
+						"description": "关联PO号(目前华技使用)",
+						"nullable": true
+					},
+					"parentPoLineLocationId": {
+						"type": "integer",
+						"description": "关联PO 发运行ID(目前华技使用)",
+						"format": "int64",
+						"nullable": true
+					},
+					"poReleaseNumber": {
+						"type": "integer",
+						"description": "ERP PO发放号",
+						"format": "int64",
+						"nullable": true
+					},
+					"poLineNumber": {
+						"type": "integer",
+						"description": "ERP PO行",
+						"format": "int64",
+						"nullable": true
+					},
+					"poSendLineNumber": {
+						"type": "string",
+						"description": "ERP PO发运行",
+						"nullable": true
+					},
+					"poShipmentRemark": {
+						"type": "string",
+						"description": "PO发运行备注",
+						"nullable": true
+					},
+					"poShipmentSpecialRemark": {
+						"type": "string",
+						"description": "PO发运行特殊备注(电缆)",
+						"nullable": true
+					},
+					"contractNumber": {
+						"type": "string",
+						"description": "合同号",
+						"nullable": true
+					},
+					"projectId": {
+						"type": "integer",
+						"description": "项目ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"projectCode": {
+						"type": "string",
+						"description": "项目CODE",
+						"nullable": true
+					},
+					"projectName": {
+						"type": "string",
+						"description": "项目NAME",
+						"nullable": true
+					},
+					"revision": {
+						"type": "string",
+						"description": "物料版本",
+						"nullable": true
+					},
+					"costItemCode": {
+						"type": "string",
+						"description": "费用编码",
+						"nullable": true
+					},
+					"dangeGoodsFlag": {
+						"type": "string",
+						"description": "危险品标识",
+						"nullable": true
+					},
+					"productLevel": {
+						"type": "string",
+						"description": "产品质量等级",
+						"nullable": true
+					},
+					"packUnit": {
+						"type": "string",
+						"description": "单位",
+						"nullable": true
+					},
+					"requestQuantity": {
+						"type": "number",
+						"description": "需求数量",
+						"format": "double",
+						"nullable": true
+					},
+					"subinventoryCode": {
+						"type": "string",
+						"description": "ERP子库",
+						"nullable": true
+					},
+					"locatorCode": {
+						"type": "string",
+						"description": "ERP货位编码",
+						"nullable": true
+					},
+					"propertyType": {
+						"type": "string",
+						"description": "物权类型(10:华为物权,80:供应商物权)",
+						"nullable": true
+					},
+					"actualProperty": {
+						"type": "string",
+						"description": "实际物权",
+						"nullable": true
+					},
+					"urgent": {
+						"type": "string",
+						"description": "急料标识(N:非急料,Y:急料)",
+						"nullable": true
+					},
+					"fufilRohsFlag": {
+						"type": "string",
+						"description": "环保属性(N:非环保,Y:环保)",
+						"nullable": true
+					},
+					"specialItemFlag": {
+						"type": "string",
+						"description": "特殊物料标识（日韩专用）(N:非日韩专用,Y:日韩专用)",
+						"nullable": true
+					},
+					"legalInspectionFlag": {
+						"type": "string",
+						"description": "法检标识(N:未法检,Y:法检)",
+						"nullable": true
+					},
+					"totalBoxQty": {
+						"type": "integer",
+						"description": "总箱数",
+						"format": "int64",
+						"nullable": true
+					},
+					"fromOrganizationId": {
+						"type": "integer",
+						"description": "来源组织ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"fromSubinventoryCode": {
+						"type": "string",
+						"description": "FROM  ERP子库",
+						"nullable": true
+					},
+					"soLineId": {
+						"type": "string",
+						"description": "关联ERP的SO_LINE_ID",
+						"nullable": true
+					},
+					"crpNo": {
+						"type": "string",
+						"description": "CRP号",
+						"nullable": true
+					},
+					"analyzer": {
+						"type": "string",
+						"description": "分析人",
+						"nullable": true
+					},
+					"supplierCode": {
+						"type": "string",
+						"description": "供应商编码",
+						"nullable": true
+					},
+					"supplierName": {
+						"type": "string",
+						"description": "供应商名称",
+						"nullable": true
+					},
+					"itemReuseType": {
+						"type": "string",
+						"description": "再利用类型",
+						"nullable": true
+					},
+					"abFlag": {
+						"type": "string",
+						"description": "物料管控标识",
+						"nullable": true
+					},
+					"materialSource": {
+						"type": "string",
+						"description": "物料来源",
+						"nullable": true
+					},
+					"customerCode": {
+						"type": "string",
+						"description": "需求公司",
+						"nullable": true
+					},
+					"invoiceNo": {
+						"type": "string",
+						"description": "发票号",
+						"nullable": true
+					},
+					"eccn": {
+						"type": "string",
+						"description": "ECCN",
+						"nullable": true
+					},
+					"onwayOrganizationId": {
+						"type": "integer",
+						"description": "在途组织ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"onwaySubinventoryCode": {
+						"type": "string",
+						"description": "在途ERP子库",
+						"nullable": true
+					},
+					"onwayLocator": {
+						"type": "string",
+						"description": "在途ERP货位",
+						"nullable": true
+					},
+					"truckNo": {
+						"type": "string",
+						"description": "车牌号",
+						"nullable": true
+					},
+					"createdBy": {
+						"type": "integer",
+						"description": "创建人",
+						"format": "int64",
+						"nullable": true
+					},
+					"creator": {
+						"type": "string",
+						"description": "创建人W3姓名",
+						"nullable": true
+					},
+					"fromZoneCode": {
+						"type": "string",
+						"description": "来源货区",
+						"nullable": true
+					},
+					"toZoneCode": {
+						"type": "string",
+						"description": "产线货区编码TO",
+						"nullable": true
+					},
+					"foNumber": {
+						"type": "string",
+						"description": "SO",
+						"nullable": true
+					},
+					"doNumber": {
+						"type": "string",
+						"description": "TO",
+						"nullable": true
+					},
+					"declarationNumber": {
+						"type": "string",
+						"description": "清关单号",
+						"nullable": true
+					},
+					"declarationDate": {
+						"type": "string",
+						"description": "清关日期",
+						"format": "date-time",
+						"nullable": true
+					},
+					"fromEntityId": {
+						"type": "integer",
+						"description": "来源主体ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"needAnalysis": {
+						"type": "string",
+						"description": "是否分析坏件",
+						"nullable": true
+					},
+					"reverseConclusionByItem": {
+						"type": "string",
+						"description": "Item逆向评审结论",
+						"nullable": true
+					},
+					"is3cFlag": {
+						"type": "string",
+						"description": "是否有3C标识",
+						"nullable": true
+					},
+					"mergesNumber": {
+						"type": "string",
+						"description": "合并号",
+						"nullable": true
+					},
+					"handlingMethod": {
+						"type": "string",
+						"description": "处理方式",
+						"nullable": true
+					},
+					"specialItemRemark": {
+						"type": "string",
+						"description": "特殊物料备注",
+						"nullable": true
+					},
+					"isMerges": {
+						"type": "string",
+						"description": "是否合并子项",
+						"nullable": true
+					},
+					"firstAllocateFlag": {
+						"type": "string",
+						"description": "优先匹配标识",
+						"nullable": true
+					},
+					"sbFlag": {
+						"type": "string",
+						"description": "SB标识",
+						"nullable": true
+					},
+					"needSnFlag": {
+						"type": "string",
+						"description": "SN管控标识",
+						"nullable": true
+					},
+					"remark": {
+						"type": "string",
+						"description": "备注",
+						"nullable": true
+					},
+					"originalInboundDate": {
+						"type": "string",
+						"description": "原始到货日期",
+						"format": "date-time",
+						"nullable": true
+					},
+					"productCode": {
+						"type": "string",
+						"description": "项目CODE",
+						"nullable": true
+					},
+					"receiver": {
+						"type": "string",
+						"description": "收货人",
+						"nullable": true
+					},
+					"receivedDate": {
+						"type": "string",
+						"description": "接收时间",
+						"format": "date-time",
+						"nullable": true
+					},
+					"manufacturerBrand": {
+						"type": "string",
+						"description": "制造商品牌",
+						"nullable": true
+					},
+					"businessLotNumber": {
+						"type": "string",
+						"description": "09码",
+						"nullable": true
+					},
+					"manufacturerName": {
+						"type": "string",
+						"description": "制造商名称",
+						"nullable": true
+					},
+					"mfgPartNo": {
+						"type": "string",
+						"description": "型号",
+						"nullable": true
+					},
+					"countryOfOriginal": {
+						"type": "string",
+						"description": "原产国",
+						"nullable": true
+					},
+					"manufacturerPartNumber": {
+						"type": "string",
+						"description": "型号(制造商零件号)",
+						"nullable": true
+					},
+					"inspectionTimes": {
+						"type": "integer",
+						"description": "送检次数",
+						"format": "int32"
+					},
+					"chargeTimes": {
+						"type": "integer",
+						"description": "超期次数",
+						"format": "int64",
+						"nullable": true
+					},
+					"productionDateLabel": {
+						"type": "string",
+						"description": "生产日期",
+						"nullable": true
+					},
+					"itemRemark": {
+						"type": "string",
+						"description": "箱备注信息",
+						"nullable": true
+					},
+					"seriesPartNo": {
+						"type": "string",
+						"description": "多件套部件号",
+						"nullable": true
+					},
+					"seriesNo": {
+						"type": "string",
+						"description": "多件套编号",
+						"nullable": true
+					},
+					"bondedFlag": {
+						"type": "string",
+						"description": "保税/非保税(Y/N)",
+						"nullable": true
+					},
+					"controlType": {
+						"type": "string",
+						"description": "AC属性类型",
+						"nullable": true
+					},
+					"innerBarcode": {
+						"type": "string",
+						"description": "PSN",
+						"nullable": true
+					},
+					"currencyCode": {
+						"type": "string",
+						"description": "币种",
+						"nullable": true
+					},
+					"hsCode": {
+						"type": "string",
+						"description": "海关编码",
+						"nullable": true
+					},
+					"price": {
+						"type": "number",
+						"description": "单价",
+						"format": "double",
+						"nullable": true
+					},
+					"asnReqLineId": {
+						"type": "integer",
+						"description": "ASN箱明细行ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"supplierLotNumber": {
+						"type": "string",
+						"description": "供应商批次",
+						"nullable": true
+					},
+					"productionDate": {
+						"type": "string",
+						"description": "生产日期Date",
+						"format": "date-time",
+						"nullable": true
+					},
+					"productionDateCode": {
+						"type": "string",
+						"description": "生产日期Date Code（YYWW）",
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			},
+			"Burn_Abp_HuaWei_WMS_InInstructionOrders_WisSnLinesDto": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "OrderLines主键Id",
+						"format": "uuid"
+					},
+					"orderHeaderId": {
+						"type": "string",
+						"description": "OrderHeaderId",
+						"format": "uuid"
+					},
+					"snBarcodeInfos": {
+						"type": "string",
+						"description": "条码集合，逗号分割",
+						"nullable": true
+					},
+					"lpnName": {
+						"type": "string",
+						"description": "箱条码/车载VMI以SKU的维度下发SN",
+						"nullable": true
+					},
+					"snQty": {
+						"type": "number",
+						"description": "装箱数量",
+						"format": "double",
+						"nullable": true
+					},
+					"itemCode": {
+						"type": "string",
+						"description": "物料编码",
+						"nullable": true
+					},
+					"sourceLineId": {
+						"type": "integer",
+						"description": "入库指令行ID",
+						"format": "int64",
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			},
+			"Burn_Abp_HuaWei_WMS_InInstructionOrders_WisWaferLinesDto": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"format": "uuid"
+					},
+					"orderHeaderId": {
+						"type": "string",
+						"format": "uuid"
+					},
+					"lpnName": {
+						"type": "string",
+						"nullable": true
+					},
+					"itemCode": {
+						"type": "string",
+						"nullable": true
+					},
+					"waferSize": {
+						"type": "string",
+						"nullable": true
+					},
+					"waferId": {
+						"type": "string",
+						"nullable": true
+					},
+					"waferBin": {
+						"type": "string",
+						"nullable": true
+					},
+					"grossDie": {
+						"type": "string",
+						"nullable": true
+					},
+					"dieQuantity": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			},
+			"Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"format": "uuid"
+					},
+					"creationTime": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"creatorId": {
+						"type": "string",
+						"format": "uuid",
+						"nullable": true
+					},
+					"lastModificationTime": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"lastModifierId": {
+						"type": "string",
+						"format": "uuid",
+						"nullable": true
+					},
+					"isDeleted": {
+						"type": "boolean"
+					},
+					"deleterId": {
+						"type": "string",
+						"format": "uuid",
+						"nullable": true
+					},
+					"deletionTime": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"orderType": {
+						"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionOrderType"
+					},
+					"sourceOrderType": {
+						"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_SourceOrderType"
+					},
+					"typeValue": {
+						"type": "string",
+						"nullable": true
+					},
+					"remarks": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			},
+			"Burn_Abp_HuaWei_WMS_InstructionInterceptions_SourceOrderType": {
+				"enum": [10, 20],
+				"type": "integer",
+				"format": "int32"
+			},
+			"Burn_Abp_HuaWei_WMS_InstructionOrderType": {
+				"enum": [1, 5],
+				"type": "integer",
+				"format": "int32"
+			},
+			"Burn_Abp_HuaWei_WMS_LoggerSystem_IoInstructionLifeCycleDto": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"format": "uuid"
+					},
+					"eventName": {
+						"type": "string",
+						"nullable": true
+					},
+					"eventStatus": {
+						"type": "string",
+						"nullable": true
+					},
+					"resultStatus": {
+						"type": "string",
+						"nullable": true
+					},
+					"jsonString": {
+						"type": "string",
+						"nullable": true
+					},
+					"eventUserCode": {
+						"type": "string",
+						"nullable": true
+					},
+					"eventUserName": {
+						"type": "string",
+						"nullable": true
+					},
+					"remark": {
+						"type": "string",
+						"nullable": true
+					},
+					"eventTime": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"additionalProperties": false
+			},
+			"Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"format": "uuid"
+					},
+					"sourceHeaderId": {
+						"type": "integer",
+						"description": "来源出库需求头ID（指令取自上游）",
+						"format": "int64",
+						"nullable": true
+					},
+					"sourceBillNumber": {
+						"type": "string",
+						"description": "来源出库需求号（指令取自上游）",
+						"nullable": true
+					},
+					"requestHeaderId": {
+						"type": "integer",
+						"description": "来源库房任务ID(指令生成的，出库指令头ID)",
+						"format": "int64",
+						"nullable": true
+					},
+					"requestNumber": {
+						"type": "string",
+						"description": "来源库房任务号(指令生成的，出库指令号)",
+						"nullable": true
+					},
+					"instructionLineGroupNumber": {
+						"type": "string",
+						"description": "班组拣料号",
+						"nullable": true
+					},
+					"requestType": {
+						"type": "string",
+						"description": "来源单据类型",
+						"nullable": true
+					},
+					"orderType": {
+						"type": "string",
+						"description": "出库单类型",
+						"nullable": true
+					},
+					"orderRemark": {
+						"type": "string",
+						"description": "订单备注",
+						"nullable": true
+					},
+					"customerId": {
+						"type": "integer",
+						"description": "客户ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"customerCode": {
+						"type": "string",
+						"description": "客户编码",
+						"nullable": true
+					},
+					"customerName": {
+						"type": "string",
+						"description": "客户名称",
+						"nullable": true
+					},
+					"deliveryAddress": {
+						"type": "string",
+						"description": "客户收货地址",
+						"nullable": true
+					},
+					"contractNumber": {
+						"type": "string",
+						"description": "需求合同",
+						"nullable": true
+					},
+					"transportMode": {
+						"type": "string",
+						"description": "运输方式",
+						"nullable": true
+					},
+					"actualArrivalDate": {
+						"type": "string",
+						"description": "实际到达时间",
+						"format": "date-time",
+						"nullable": true
+					},
+					"requestArrivalDate": {
+						"type": "string",
+						"description": "要求到达时间",
+						"format": "date-time",
+						"nullable": true
+					},
+					"requestShippingDate": {
+						"type": "string",
+						"description": "要求发货时间",
+						"format": "date-time",
+						"nullable": true
+					},
+					"estimateArrivalDate": {
+						"type": "string",
+						"description": "预计达到时间",
+						"format": "date-time",
+						"nullable": true
+					},
+					"actualPickedDate": {
+						"type": "string",
+						"description": "实际拣料时间",
+						"format": "date-time",
+						"nullable": true
+					},
+					"truckEstimateArrivalDate": {
+						"type": "string",
+						"description": "车辆预计到达时间",
+						"format": "date-time",
+						"nullable": true
+					},
+					"customePoNumber": {
+						"type": "string",
+						"description": "客户PO",
+						"nullable": true
+					},
+					"deliveryPurpose": {
+						"type": "string",
+						"description": "派送方式",
+						"nullable": true
+					},
+					"orginationId": {
+						"type": "integer",
+						"description": "组织ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"orginationCode": {
+						"type": "string",
+						"description": "组织编码",
+						"nullable": true
+					},
+					"toOrganizationId": {
+						"type": "integer",
+						"description": "转入组织ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"toOrganizationCode": {
+						"type": "string",
+						"description": "转入组织编码",
+						"nullable": true
+					},
+					"deliveryPerson": {
+						"type": "string",
+						"description": "目的地接收人",
+						"nullable": true
+					},
+					"allowShortFlag": {
+						"type": "string",
+						"description": "欠料标识",
+						"nullable": true
+					},
+					"sourceCode": {
+						"type": "string",
+						"description": "来源系统",
+						"nullable": true
+					},
+					"deliveryPersonPhone": {
+						"type": "string",
+						"description": "目的接收人电话",
+						"nullable": true
+					},
+					"purpose": {
+						"type": "string",
+						"description": "用途",
+						"nullable": true
+					},
+					"transactionTypeName": {
+						"type": "string",
+						"description": "分类号",
+						"nullable": true
+					},
+					"departmentNo": {
+						"type": "string",
+						"description": "使用部门编号",
+						"nullable": true
+					},
+					"departmentName": {
+						"type": "string",
+						"description": "使用部门名称",
+						"nullable": true
+					},
+					"deliveryProvince": {
+						"type": "string",
+						"description": "省份",
+						"nullable": true
+					},
+					"deliveryCity": {
+						"type": "string",
+						"description": "城市",
+						"nullable": true
+					},
+					"physicalHandingFlag": {
+						"type": "string",
+						"description": "实物管控标识",
+						"nullable": true
+					},
+					"deliveryArea": {
+						"type": "string",
+						"description": "交付区域",
+						"nullable": true
+					},
+					"deliveryObject": {
+						"type": "string",
+						"description": "交付对象",
+						"nullable": true
+					},
+					"destinationWarehouseId": {
+						"type": "integer",
+						"description": "目的仓库ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"destinationWarehouseCode": {
+						"type": "string",
+						"description": "目的仓库编码",
+						"nullable": true
+					},
+					"destinationWarehouseName": {
+						"type": "string",
+						"description": "目的仓库名称",
+						"nullable": true
+					},
+					"warehouseId": {
+						"type": "integer",
+						"description": "仓库ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"warehouseCode": {
+						"type": "string",
+						"description": "仓库编码",
+						"nullable": true
+					},
+					"warehouseName": {
+						"type": "string",
+						"description": "仓库名称",
+						"nullable": true
+					},
+					"entityId": {
+						"type": "integer",
+						"description": "主体ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"creator": {
+						"type": "string",
+						"description": "创建人",
+						"nullable": true
+					},
+					"createdBy": {
+						"type": "integer",
+						"description": "创建人ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"creationDate": {
+						"type": "string",
+						"description": "创建日期",
+						"format": "date-time",
+						"nullable": true
+					},
+					"lastUpdater": {
+						"type": "string",
+						"description": "更新人",
+						"nullable": true
+					},
+					"lastUpdatedBy": {
+						"type": "integer",
+						"description": "更新人ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"lastUpdateDate": {
+						"type": "string",
+						"description": "更新日期",
+						"format": "date-time",
+						"nullable": true
+					},
+					"lspId": {
+						"type": "integer",
+						"description": "物流ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"lspCode": {
+						"type": "string",
+						"description": "物流编码",
+						"nullable": true
+					},
+					"lspName": {
+						"type": "string",
+						"description": "物流承运商",
+						"nullable": true
+					},
+					"specialRequest": {
+						"type": "string",
+						"description": "特殊装载需求",
+						"nullable": true
+					},
+					"projectId": {
+						"type": "string",
+						"description": "项目ID",
+						"nullable": true
+					},
+					"projectCode": {
+						"type": "string",
+						"description": "项目编码",
+						"nullable": true
+					},
+					"projectName": {
+						"type": "string",
+						"description": "项目名称",
+						"nullable": true
+					},
+					"subcontractorId": {
+						"type": "string",
+						"description": "分包商ID",
+						"nullable": true
+					},
+					"subcontractorCode": {
+						"type": "string",
+						"description": "分包商编码",
+						"nullable": true
+					},
+					"subcontractorName": {
+						"type": "string",
+						"description": "分包商名称",
+						"nullable": true
+					},
+					"planPickupPerson": {
+						"type": "string",
+						"description": "计划提货人",
+						"nullable": true
+					},
+					"toWarehouseId": {
+						"type": "integer",
+						"description": "转入仓库ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"toWarehouseCode": {
+						"type": "string",
+						"description": "转入仓库编码",
+						"nullable": true
+					},
+					"toWarehouseName": {
+						"type": "string",
+						"description": "转入仓库名称",
+						"nullable": true
+					},
+					"toEntityId": {
+						"type": "integer",
+						"description": "转入主体",
+						"format": "int64",
+						"nullable": true
+					},
+					"toSubinventoryCode": {
+						"type": "string",
+						"description": "转入子库",
+						"nullable": true
+					},
+					"applicantId": {
+						"type": "integer",
+						"description": "申请人",
+						"format": "int64",
+						"nullable": true
+					},
+					"applicantCode": {
+						"type": "string",
+						"description": "申请人工号",
+						"nullable": true
+					},
+					"applicantName": {
+						"type": "string",
+						"description": "申请人名称",
+						"nullable": true
+					},
+					"applicationDate": {
+						"type": "string",
+						"description": "申请时间",
+						"format": "date-time",
+						"nullable": true
+					},
+					"approveBy": {
+						"type": "integer",
+						"description": "审批人",
+						"format": "int64",
+						"nullable": true
+					},
+					"approveCode": {
+						"type": "string",
+						"description": "审批人编号",
+						"nullable": true
+					},
+					"approveName": {
+						"type": "string",
+						"description": "审批人姓名",
+						"nullable": true
+					},
+					"financeApproveBy": {
+						"type": "integer",
+						"description": "财经审批人",
+						"format": "int64",
+						"nullable": true
+					},
+					"financeApproveCode": {
+						"type": "string",
+						"description": "财经审批人编号",
+						"nullable": true
+					},
+					"financeApproveName": {
+						"type": "string",
+						"description": "财经审批人姓名",
+						"nullable": true
+					},
+					"toZoneCode": {
+						"type": "string",
+						"description": "目的货区代码",
+						"nullable": true
+					},
+					"toWmsLocatorCode": {
+						"type": "string",
+						"description": "目的WMS货位",
+						"nullable": true
+					},
+					"foNumber": {
+						"type": "string",
+						"description": "SO",
+						"nullable": true
+					},
+					"doNumber": {
+						"type": "string",
+						"description": "TO",
+						"nullable": true
+					},
+					"completeSequence": {
+						"type": "string",
+						"description": "齐套号",
+						"nullable": true
+					},
+					"cpd": {
+						"type": "string",
+						"description": "CPD",
+						"format": "date-time",
+						"nullable": true
+					},
+					"psd": {
+						"type": "string",
+						"description": "PSD",
+						"format": "date-time",
+						"nullable": true
+					},
+					"countryCode": {
+						"type": "string",
+						"description": "国家编码",
+						"nullable": true
+					},
+					"orderPriority": {
+						"type": "string",
+						"description": "订单优先级",
+						"nullable": true
+					},
+					"scheduleDate": {
+						"type": "string",
+						"description": "发运时间",
+						"format": "date-time",
+						"nullable": true
+					},
+					"shipmentBatch": {
+						"type": "string",
+						"description": "发运批次",
+						"format": "date-time",
+						"nullable": true
+					},
+					"scheduleNo": {
+						"type": "string",
+						"description": "订单排产波次",
+						"nullable": true
+					},
+					"sourceApplyNumber": {
+						"type": "string",
+						"description": "来源申请单号(领料单)",
+						"nullable": true
+					},
+					"coaAccountCode": {
+						"type": "string",
+						"description": "COA七段值(拼接)",
+						"nullable": true
+					},
+					"toSuspendFlag": {
+						"type": "string",
+						"description": "TO挂起标识",
+						"nullable": true
+					},
+					"scrapSupplier": {
+						"type": "string",
+						"description": "报废供应商名称",
+						"nullable": true
+					},
+					"groupName": {
+						"type": "string",
+						"description": "流通排产波次号",
+						"nullable": true
+					},
+					"deliveryRegion": {
+						"type": "string",
+						"description": "目的地地区",
+						"nullable": true
+					},
+					"deliveryCountry": {
+						"type": "string",
+						"description": "目的地国家",
+						"nullable": true
+					},
+					"orderLines": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_WisOutInstructionOrderLineDto"
+						},
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			},
+			"Burn_Abp_HuaWei_WMS_OutInstructionOrders_WisOutInstructionOrderLineDto": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"format": "uuid"
+					},
+					"outInstructionOrderId": {
+						"type": "string",
+						"format": "uuid"
+					},
+					"onhandId": {
+						"type": "integer",
+						"description": "库存ID(预占库存此字段才有值)",
+						"format": "int64",
+						"nullable": true
+					},
+					"sourceLineId": {
+						"type": "integer",
+						"description": "来源行ID(取值上游)",
+						"format": "int64",
+						"nullable": true
+					},
+					"requestLineId": {
+						"type": "integer",
+						"description": "来源库房任务行ID（出库指令行ID）",
+						"format": "int64",
+						"nullable": true
+					},
+					"requestHeaderId": {
+						"type": "integer",
+						"description": "来源库房任务ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"invContractNumber": {
+						"type": "string",
+						"description": "库存合同",
+						"nullable": true
+					},
+					"itemCode": {
+						"type": "string",
+						"description": "物料编码",
+						"nullable": true
+					},
+					"itemDescCn": {
+						"type": "string",
+						"description": "物料中文说明",
+						"nullable": true
+					},
+					"itemDescEn": {
+						"type": "string",
+						"description": "物料英文说明",
+						"nullable": true
+					},
+					"revision": {
+						"type": "string",
+						"description": "物料版本",
+						"nullable": true
+					},
+					"unit": {
+						"type": "string",
+						"description": "物料单位",
+						"nullable": true
+					},
+					"actualProperty": {
+						"type": "string",
+						"description": "实际物权",
+						"nullable": true
+					},
+					"propertyType": {
+						"type": "string",
+						"description": "物权类型",
+						"nullable": true
+					},
+					"boxBarcode": {
+						"type": "string",
+						"description": "箱子条码",
+						"nullable": true
+					},
+					"specialItemIdentifyCode": {
+						"type": "string",
+						"description": "特殊物料标识",
+						"nullable": true
+					},
+					"forceSubinventoryFlag": {
+						"type": "string",
+						"description": "是否从指定子库发货",
+						"nullable": true
+					},
+					"subinventoryCode": {
+						"type": "string",
+						"description": "子库编码",
+						"nullable": true
+					},
+					"locatorCode": {
+						"type": "string",
+						"description": "转入子库编码",
+						"nullable": true
+					},
+					"toSubinventoryCode": {
+						"type": "string",
+						"description": "货位编码",
+						"nullable": true
+					},
+					"toLocatorCode": {
+						"type": "string",
+						"description": "转入货位编码",
+						"nullable": true
+					},
+					"organizationId": {
+						"type": "integer",
+						"description": "组织ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"organizationCode": {
+						"type": "string",
+						"description": "组织编码",
+						"nullable": true
+					},
+					"vendorSiteId": {
+						"type": "integer",
+						"description": "供应商siteId",
+						"format": "int64",
+						"nullable": true
+					},
+					"supplierCode": {
+						"type": "string",
+						"description": "供应商编码",
+						"nullable": true
+					},
+					"manufacturerName": {
+						"type": "string",
+						"description": "制造商编码",
+						"nullable": true
+					},
+					"manufacturerPartNumber": {
+						"type": "string",
+						"description": "制造商型号",
+						"nullable": true
+					},
+					"productionDate": {
+						"type": "string",
+						"description": "生产日期",
+						"format": "date-time",
+						"nullable": true
+					},
+					"productionDateCodeYs": {
+						"type": "string",
+						"description": "DC运算符",
+						"nullable": true
+					},
+					"businessLotNumber": {
+						"type": "string",
+						"description": "LOT/09码",
+						"nullable": true
+					},
+					"itemRemark": {
+						"type": "string",
+						"description": "需求行备注",
+						"nullable": true
+					},
+					"lineRemark": {
+						"type": "string",
+						"description": "需求行备注",
+						"nullable": true
+					},
+					"requestQty": {
+						"type": "number",
+						"description": "需求数量",
+						"format": "double",
+						"nullable": true
+					},
+					"parentItemCode": {
+						"type": "string",
+						"description": "上层物料code",
+						"nullable": true
+					},
+					"parentItemBarcode": {
+						"type": "string",
+						"description": "上层物料barcode",
+						"nullable": true
+					},
+					"parentItemDesc": {
+						"type": "string",
+						"description": "上层物料描述",
+						"nullable": true
+					},
+					"parentItemRevision": {
+						"type": "string",
+						"description": "上层物料版本",
+						"nullable": true
+					},
+					"parentItemQuantity": {
+						"type": "number",
+						"description": "上层物料需求数量（批量）",
+						"format": "double",
+						"nullable": true
+					},
+					"customerCode": {
+						"type": "string",
+						"description": "客户编码",
+						"nullable": true
+					},
+					"manufacturerBrand": {
+						"type": "string",
+						"description": "品牌",
+						"nullable": true
+					},
+					"countryOfOriginal": {
+						"type": "string",
+						"description": "原产国",
+						"nullable": true
+					},
+					"description": {
+						"type": "string",
+						"description": "本条记录描述",
+						"nullable": true
+					},
+					"creator": {
+						"type": "string",
+						"description": "创建人",
+						"nullable": true
+					},
+					"createdBy": {
+						"type": "integer",
+						"description": "创建人ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"creationDate": {
+						"type": "string",
+						"description": "创建日期",
+						"format": "date-time",
+						"nullable": true
+					},
+					"lastUpdater": {
+						"type": "string",
+						"description": "更新人",
+						"nullable": true
+					},
+					"lastUpdatedBy": {
+						"type": "integer",
+						"description": "更新人ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"lastUpdateDate": {
+						"type": "string",
+						"description": "更新日期",
+						"format": "date-time",
+						"nullable": true
+					},
+					"fufilRohsFlag": {
+						"type": "string",
+						"description": "环保标识",
+						"nullable": true
+					},
+					"specialItemFlag": {
+						"type": "string",
+						"description": "日本物料标示，0：其他物料1：日本物料，默认为0",
+						"nullable": true
+					},
+					"workGroupCode": {
+						"type": "string",
+						"description": "班组ID",
+						"nullable": true
+					},
+					"onwaySubinventoryCode": {
+						"type": "string",
+						"description": "在途子库",
+						"nullable": true
+					},
+					"onwayLocatorCode": {
+						"type": "string",
+						"description": "在途货位",
+						"nullable": true
+					},
+					"deliveryPerson": {
+						"type": "string",
+						"description": "交付对象负责人",
+						"nullable": true
+					},
+					"overIssueFlag": {
+						"type": "string",
+						"description": "超发标识",
+						"nullable": true
+					},
+					"lotNumber": {
+						"type": "string",
+						"description": "供应商批次",
+						"nullable": true
+					},
+					"onwayOrganizationId": {
+						"type": "integer",
+						"description": "在途组织ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"managerSystemCode": {
+						"type": "string",
+						"description": "管理系统",
+						"nullable": true
+					},
+					"toManagerSystemCode": {
+						"type": "string",
+						"description": "转入管理系统",
+						"nullable": true
+					},
+					"physicalHandingFlag": {
+						"type": "string",
+						"description": "实物管控标识",
+						"nullable": true
+					},
+					"isOnway": {
+						"type": "string",
+						"description": "是否启用在途",
+						"nullable": true
+					},
+					"cableCount": {
+						"type": "integer",
+						"description": "线缆根数",
+						"format": "int64",
+						"nullable": true
+					},
+					"cableSpecification": {
+						"type": "integer",
+						"description": "线缆规格",
+						"format": "int64",
+						"nullable": true
+					},
+					"sumCutFlag": {
+						"type": "string",
+						"description": "线缆合并标识Y/N",
+						"nullable": true
+					},
+					"itemRemarkForDc": {
+						"type": "string",
+						"description": "物料备注",
+						"nullable": true
+					},
+					"softwareVersion": {
+						"type": "string",
+						"description": "软件版本",
+						"nullable": true
+					},
+					"doLineId": {
+						"type": "integer",
+						"description": "DO行ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"doSourceLineId": {
+						"type": "integer",
+						"description": "DO行SOURCE_LINE_ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"fromZoneCode": {
+						"type": "string",
+						"description": "来源货区(线边仓MO需要给线边仓货区)",
+						"nullable": true
+					},
+					"clBatchNumber": {
+						"type": "string",
+						"description": "客户PO号",
+						"nullable": true
+					},
+					"itemType": {
+						"type": "string",
+						"description": "物料类型",
+						"nullable": true
+					},
+					"seriesNo": {
+						"type": "string",
+						"description": "多件套序号",
+						"nullable": true
+					},
+					"seriesPartNo": {
+						"type": "string",
+						"description": "多件套部件号",
+						"nullable": true
+					},
+					"externalModel": {
+						"type": "string",
+						"description": "外部型号",
+						"nullable": true
+					},
+					"toEntityId": {
+						"type": "integer",
+						"description": "转入主体",
+						"format": "int64",
+						"nullable": true
+					},
+					"toWarehouseId": {
+						"type": "integer",
+						"description": "转入仓库ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"toWarehouseCode": {
+						"type": "string",
+						"description": "转入仓库编码",
+						"nullable": true
+					},
+					"toWarehouseName": {
+						"type": "string",
+						"description": "转入仓库名称",
+						"nullable": true
+					},
+					"toOrganizationId": {
+						"type": "integer",
+						"description": "转入组织ID",
+						"format": "int64",
+						"nullable": true
+					},
+					"toOrganizationCode": {
+						"type": "string",
+						"description": "转入组织编码",
+						"nullable": true
+					},
+					"lpnName": {
+						"type": "string",
+						"description": "箱名",
+						"nullable": true
+					},
+					"customerPoNumber": {
+						"type": "string",
+						"description": "客户PO号",
+						"nullable": true
+					},
+					"erpOnhandQuantity": {
+						"type": "number",
+						"description": "ERP物料库存存量",
+						"format": "double",
+						"nullable": true
+					},
+					"headerComment": {
+						"type": "string",
+						"description": "行备注",
+						"nullable": true
+					},
+					"height": {
+						"type": "number",
+						"description": "高",
+						"format": "double",
+						"nullable": true
+					},
+					"length": {
+						"type": "number",
+						"description": "长",
+						"format": "double",
+						"nullable": true
+					},
+					"width": {
+						"type": "number",
+						"description": "宽",
+						"format": "double",
+						"nullable": true
+					},
+					"volume": {
+						"type": "number",
+						"description": "体积",
+						"format": "double",
+						"nullable": true
+					},
+					"netWeight": {
+						"type": "number",
+						"description": "净重",
+						"format": "double",
+						"nullable": true
+					},
+					"grossWeight": {
+						"type": "number",
+						"description": "毛重",
+						"format": "double",
+						"nullable": true
+					},
+					"originalCountries": {
+						"type": "string",
+						"description": "原产地",
+						"nullable": true
+					},
+					"lpnNumber": {
+						"type": "integer",
+						"description": "箱号",
+						"format": "int64",
+						"nullable": true
+					},
+					"packType": {
+						"type": "string",
+						"description": "包装方式",
+						"nullable": true
+					},
+					"shipRemark": {
+						"type": "string",
+						"description": "发货备注",
+						"nullable": true
+					},
+					"packlistPrintFlag": {
+						"type": "string",
+						"description": "箱单打印标识",
+						"nullable": true
+					},
+					"shipmarkPrintFlag": {
+						"type": "string",
+						"description": "唛头打印标示",
+						"nullable": true
+					},
+					"shipmarkPrintType": {
+						"type": "string",
+						"description": "唛头打印类型",
+						"nullable": true
+					},
+					"shipmarkPrintCount": {
+						"type": "integer",
+						"description": "唛头打印次数",
+						"format": "int64",
+						"nullable": true
+					},
+					"packlistPrintType": {
+						"type": "string",
+						"description": "包列表打印类型",
+						"nullable": true
+					},
+					"customerPacklistPrintType": {
+						"type": "string",
+						"description": "客户发货清单打印类型",
+						"nullable": true
+					},
+					"sourceLpnName": {
+						"type": "string",
+						"description": "原箱名",
+						"nullable": true
+					},
+					"sourceLpnCode": {
+						"type": "string",
+						"description": "来源箱名",
+						"nullable": true
+					},
+					"platformId": {
+						"type": "string",
+						"description": "发货平台ID",
+						"nullable": true
+					},
+					"platformCode": {
+						"type": "string",
+						"description": "发货平台",
+						"nullable": true
+					},
+					"productCode": {
+						"type": "string",
+						"description": "产品编码",
+						"nullable": true
+					},
+					"productName": {
+						"type": "string",
+						"description": "产品名称",
+						"nullable": true
+					},
+					"emsCode": {
+						"type": "string",
+						"description": "EMS编码",
+						"nullable": true
+					},
+					"emsName": {
+						"type": "string",
+						"description": "EMS名称",
+						"nullable": true
+					},
+					"emsVendorCode": {
+						"type": "string",
+						"description": "EMS供应商编码",
+						"nullable": true
+					},
+					"emsPrePoNo": {
+						"type": "string",
+						"description": "EMS PO号",
+						"nullable": true
+					},
+					"toWmsLocatorCode": {
+						"type": "string",
+						"description": "目标WMS货位",
+						"nullable": true
+					},
+					"cpoNo": {
+						"type": "string",
+						"description": "客户采购订单号",
+						"nullable": true
+					},
+					"toSuspendFlag": {
+						"type": "string",
+						"description": "TO挂起标识",
+						"nullable": true
+					},
+					"maxMpq": {
+						"type": "integer",
+						"description": "系数",
+						"format": "int64",
+						"nullable": true
+					},
+					"emsPrNo": {
+						"type": "string",
+						"description": "EMS PR号",
+						"nullable": true
+					},
+					"emsPn": {
+						"type": "string",
+						"description": "富士康物料编码",
+						"nullable": true
+					},
+					"itemCategory": {
+						"type": "string",
+						"description": "物料品类",
+						"nullable": true
+					},
+					"forceSupplierCode": {
+						"type": "string",
+						"description": "指定供应商",
+						"nullable": true
+					},
+					"forceManufacturerName": {
+						"type": "string",
+						"description": "指定制造商",
+						"nullable": true
+					},
+					"forceManufacturerPartNumber": {
+						"type": "string",
+						"description": "指定型号",
+						"nullable": true
+					},
+					"forceBusinessLotNumber": {
+						"type": "string",
+						"description": "指定09批次",
+						"nullable": true
+					},
+					"autoTallyFlag": {
+						"type": "string",
+						"description": "自动理货标识",
+						"nullable": true
+					},
+					"instructionNo": {
+						"type": "string",
+						"description": "RFS单号(非WWS的才有下发)",
+						"nullable": true
+					},
+					"doNumber": {
+						"type": "string",
+						"description": "TO",
+						"nullable": true
+					},
+					"forceBillNo": {
+						"type": "string",
+						"description": "指定单号",
+						"nullable": true
+					},
+					"workGroupName": {
+						"type": "string",
+						"description": "班组名称",
+						"nullable": true
+					},
+					"transactionQuantity": {
+						"type": "number",
+						"description": "实际交易数量",
+						"format": "double",
+						"nullable": true
+					},
+					"requestLines": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_WisOutInstructionOrderRequestLineDto"
+						},
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			},
+			"Burn_Abp_HuaWei_WMS_OutInstructionOrders_WisOutInstructionOrderRequestLineDto": {
+				"type": "object",
+				"properties": {
+					"outInstructionOrderLineId": {
+						"type": "string",
+						"format": "uuid"
+					},
+					"parentItemCode": {
+						"type": "string",
+						"nullable": true
+					},
+					"parentItemRevision": {
+						"type": "string",
+						"nullable": true
+					},
+					"parentItemDesc": {
+						"type": "string",
+						"nullable": true
+					},
+					"parentRequestQuantity": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"remark": {
+						"type": "string",
+						"nullable": true
+					},
+					"groupTaskName": {
+						"type": "string",
+						"nullable": true
+					},
+					"contractNumber": {
+						"type": "string",
+						"nullable": true
+					},
+					"emsFactoryCode": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			},
+			"Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"format": "uuid"
+					},
+					"creationTime": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"creatorId": {
+						"type": "string",
+						"format": "uuid",
+						"nullable": true
+					},
+					"lastModificationTime": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"lastModifierId": {
+						"type": "string",
+						"format": "uuid",
+						"nullable": true
+					},
+					"extraIndexProperties": {
+						"type": "object",
+						"additionalProperties": {
+							"nullable": true
+						},
+						"nullable": true
+					},
+					"isDeleted": {
+						"type": "boolean"
+					},
+					"deleterId": {
+						"type": "string",
+						"format": "uuid",
+						"nullable": true
+					},
+					"deletionTime": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"creator": {
+						"type": "string",
+						"nullable": true
+					},
+					"lastModifier": {
+						"type": "string",
+						"nullable": true
+					},
+					"deleter": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty1": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty2": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty3": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty4": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty5": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty6": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty7": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty8": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty9": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty10": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty11": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty12": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty13": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty14": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty15": {
+						"type": "string",
+						"nullable": true
+					},
+					"preDefineProperty16": {
+						"type": "integer",
+						"format": "int64",
+						"nullable": true
+					},
+					"preDefineProperty17": {
+						"type": "integer",
+						"format": "int64",
+						"nullable": true
+					},
+					"preDefineProperty18": {
+						"type": "integer",
+						"format": "int64",
+						"nullable": true
+					},
+					"preDefineProperty19": {
+						"type": "integer",
+						"format": "int64",
+						"nullable": true
+					},
+					"preDefineProperty20": {
+						"type": "integer",
+						"format": "int64",
+						"nullable": true
+					},
+					"preDefineProperty21": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"preDefineProperty22": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"preDefineProperty23": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"preDefineProperty24": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"preDefineProperty25": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"preDefineProperty26": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"preDefineProperty27": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"preDefineProperty28": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"preDefineProperty29": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"preDefineProperty30": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"warehouseId": {
+						"type": "string",
+						"description": "库房ID",
+						"nullable": true
+					},
+					"warehouseCode": {
+						"type": "string",
+						"description": "库房编码",
+						"nullable": true
+					},
+					"warehouseName": {
+						"type": "string",
+						"description": "库房名称",
+						"nullable": true
+					},
+					"orgId": {
+						"type": "string",
+						"nullable": true
+					},
+					"warehouseCodeMap": {
+						"type": "string",
+						"description": "子库映射名称（华为子库名称）",
+						"nullable": true
+					},
+					"subinventoryCode": {
+						"type": "string",
+						"description": "子库编码",
+						"nullable": true
+					},
+					"realRightCode": {
+						"type": "string",
+						"description": "物权编码",
+						"nullable": true
+					},
+					"realRightName": {
+						"type": "string",
+						"description": "物权名称",
+						"nullable": true
+					},
+					"acProperty": {
+						"type": "string",
+						"description": "AC属性     属性值A、B、C",
+						"nullable": true
+					},
+					"isStockSync": {
+						"type": "boolean"
+					},
+					"remark": {
+						"type": "string",
+						"description": "备注",
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			},
+			"Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_InInstructionOrders_WisOrderHeaderDto": {
+				"type": "object",
+				"properties": {
+					"items": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InInstructionOrders_WisOrderHeaderDto"
+						},
+						"nullable": true
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int64"
+					}
+				},
+				"additionalProperties": false
+			},
+			"Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto": {
+				"type": "object",
+				"properties": {
+					"items": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_InstructionInterceptions_InstructionInterceptionDto"
+						},
+						"nullable": true
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int64"
+					}
+				},
+				"additionalProperties": false
+			},
+			"Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_LoggerSystem_IoInstructionLifeCycleDto": {
+				"type": "object",
+				"properties": {
+					"items": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_LoggerSystem_IoInstructionLifeCycleDto"
+						},
+						"nullable": true
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int64"
+					}
+				},
+				"additionalProperties": false
+			},
+			"Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto": {
+				"type": "object",
+				"properties": {
+					"items": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_OutInstructionOrders_OutputInstructionOrderDto"
+						},
+						"nullable": true
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int64"
+					}
+				},
+				"additionalProperties": false
+			},
+			"Volo_Abp_Application_Dtos_PagedResultDto_Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto": {
+				"type": "object",
+				"properties": {
+					"items": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Burn_Abp_HuaWei_WMS_WareHouseMap_Dto_ExternalWarehouseMapDto"
+						},
+						"nullable": true
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int64"
+					}
+				},
+				"additionalProperties": false
+			},
+			"Volo_Abp_Http_RemoteServiceErrorInfo": {
+				"type": "object",
+				"properties": {
+					"code": {
+						"type": "string",
+						"nullable": true
+					},
+					"message": {
+						"type": "string",
+						"nullable": true
+					},
+					"details": {
+						"type": "string",
+						"nullable": true
+					},
+					"data": {
+						"type": "object",
+						"additionalProperties": {},
+						"nullable": true
+					},
+					"validationErrors": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceValidationErrorInfo"
+						},
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			},
+			"Volo_Abp_Http_RemoteServiceErrorResponse": {
+				"type": "object",
+				"properties": {
+					"error": {
+						"$ref": "#/components/schemas/Volo_Abp_Http_RemoteServiceErrorInfo"
+					}
+				},
+				"additionalProperties": false
+			},
+			"Volo_Abp_Http_RemoteServiceValidationErrorInfo": {
+				"type": "object",
+				"properties": {
+					"message": {
+						"type": "string",
+						"nullable": true
+					},
+					"members": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"nullable": true
+					}
+				},
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"oauth2": {
+				"type": "oauth2",
+				"flows": {
+					"authorizationCode": {
+						"authorizationUrl": "http://172.16.2.17:8082/identity/connect/authorize",
+						"tokenUrl": "http://172.16.2.17:8082/identity/connect/token",
+						"scopes": {
+							"HuaHao": "HuaHao API"
+						}
+					}
+				}
+			}
+		}
+	},
+	"security": [
+		{
+			"oauth2": []
+		}
+	]
+}

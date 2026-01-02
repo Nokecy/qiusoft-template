@@ -1,0 +1,18 @@
+[submodule "src/pages/appWMS"]
+	path = src/pages/appWMS
+	url = https://cnb.cool/qc_software/sub_common/web_WMS.git
+[submodule "src/pages/appCommon"]
+	path = src/pages/appCommon
+	url = https://cnb.cool/qc_software/sub_common/sub_web_erpCommon
+[submodule "src/pages/appSYS"]
+	path = src/pages/appSYS
+	url = https://cnb.cool/qc_software/sub_common/web_appSys
+[submodule "src/pages/appPdm"]
+	path = src/pages/appPdm
+	url = https://cnb.cool/qc_software/sub_common/web_pdm
+[submodule "src/pages/appWorkflow"]
+	path = src/pages/appWorkflow
+	url = https://cnb.cool/qc_software/sub_common/web_workflow.git
+[submodule "src/pages/appDataCopilot"]
+	path = src/pages/appDataCopilot
+	url = https://cnb.cool/qc_software/sub_common/web_dataCopilot.git

@@ -1,0 +1,317 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('iconfont.ttf?t=1655540946531') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-application:before {
+  content: "\e63b";
+}
+
+.icon-business:before {
+  content: "\e63c";
+}
+
+.icon-category:before {
+  content: "\e63d";
+}
+
+.icon-commodity-operate:before {
+  content: "\e63e";
+}
+
+.icon-address-book:before {
+  content: "\e63f";
+}
+
+.icon-companu-main-data:before {
+  content: "\e640";
+}
+
+.icon-basic-configuration:before {
+  content: "\e641";
+}
+
+.icon-commodity:before {
+  content: "\e642";
+}
+
+.icon-approval:before {
+  content: "\e643";
+}
+
+.icon-brand:before {
+  content: "\e644";
+}
+
+.icon-distribution:before {
+  content: "\e645";
+}
+
+.icon-b-sales:before {
+  content: "\e646";
+}
+
+.icon-cost-calculate:before {
+  content: "\e647";
+}
+
+.icon-company-manage:before {
+  content: "\e648";
+}
+
+.icon-conpou-sales:before {
+  content: "\e649";
+}
+
+.icon-data-dictionary:before {
+  content: "\e64a";
+}
+
+.icon-information-maintain:before {
+  content: "\e64b";
+}
+
+.icon-group-sales:before {
+  content: "\e64c";
+}
+
+.icon-numbering-device:before {
+  content: "\e64d";
+}
+
+.icon-gross-profit:before {
+  content: "\e64e";
+}
+
+.icon-commodity-audit:before {
+  content: "\e64f";
+}
+
+.icon-main-price:before {
+  content: "\e650";
+}
+
+.icon-message-center:before {
+  content: "\e651";
+}
+
+.icon-order:before {
+  content: "\e652";
+}
+
+.icon-image-gallery:before {
+  content: "\e653";
+}
+
+.icon-organization-tree:before {
+  content: "\e654";
+}
+
+.icon-instant-message:before {
+  content: "\e655";
+}
+
+.icon-order-configure:before {
+  content: "\e656";
+}
+
+.icon-price:before {
+  content: "\e657";
+}
+
+.icon-label:before {
+  content: "\e658";
+}
+
+.icon-logistics-track:before {
+  content: "\e659";
+}
+
+.icon-payable:before {
+  content: "\e65a";
+}
+
+.icon-data-check:before {
+  content: "\e65b";
+}
+
+.icon-c-sales:before {
+  content: "\e65c";
+}
+
+.icon-returned-purchase:before {
+  content: "\e65d";
+}
+
+.icon-mall-manage:before {
+  content: "\e65e";
+}
+
+.icon-purchase-base:before {
+  content: "\e65f";
+}
+
+.icon-Invoice:before {
+  content: "\e660";
+}
+
+.icon-reconciliation:before {
+  content: "\e661";
+}
+
+.icon-bill:before {
+  content: "\e662";
+}
+
+.icon-organize-main-data:before {
+  content: "\e663";
+}
+
+.icon-stock:before {
+  content: "\e664";
+}
+
+.icon-stock-batch:before {
+  content: "\e665";
+}
+
+.icon-commodity-manage:before {
+  content: "\e666";
+}
+
+.icon-structure-manage:before {
+  content: "\e667";
+}
+
+.icon-register:before {
+  content: "\e668";
+}
+
+.icon-process-inquire:before {
+  content: "\e669";
+}
+
+.icon-process-manage:before {
+  content: "\e66a";
+}
+
+.icon-order-settings:before {
+  content: "\e66b";
+}
+
+.icon-organize:before {
+  content: "\e66c";
+}
+
+.icon-settlement:before {
+  content: "\e66d";
+}
+
+.icon-purchase-price:before {
+  content: "\e66e";
+}
+
+.icon-performance-manage:before {
+  content: "\e66f";
+}
+
+.icon-workflow:before {
+  content: "\e670";
+}
+
+.icon-process-operate:before {
+  content: "\e671";
+}
+
+.icon-stock-business:before {
+  content: "\e672";
+}
+
+.icon-staff-manage:before {
+  content: "\e673";
+}
+
+.icon-platform-manage:before {
+  content: "\e674";
+}
+
+.icon-supplier-ship:before {
+  content: "\e675";
+}
+
+.icon-template-manage:before {
+  content: "\e676";
+}
+
+.icon-supplier-cycle:before {
+  content: "\e677";
+}
+
+.icon-role-permissions:before {
+  content: "\e678";
+}
+
+.icon-logistics:before {
+  content: "\e679";
+}
+
+.icon-supplier-manage:before {
+  content: "\e67a";
+}
+
+.icon-srock-parameter:before {
+  content: "\e67b";
+}
+
+.icon-shopping-cart:before {
+  content: "\e67c";
+}
+
+.icon-shopping-settings:before {
+  content: "\e67d";
+}
+
+.icon-system-center:before {
+  content: "\e67e";
+}
+
+.icon-supplier-assessment:before {
+  content: "\e67f";
+}
+
+.icon-storehouse:before {
+  content: "\e680";
+}
+
+.icon-store-manage:before {
+  content: "\e681";
+}
+
+.icon-price-audit:before {
+  content: "\e682";
+}
+
+.icon-srock-inquire:before {
+  content: "\e683";
+}
+
+.icon-project-manage:before {
+  content: "\e684";
+}
+
+.icon-stock-operate:before {
+  content: "\e685";
+}
+
+.icon-target:before {
+  content: "\e686";
+}
+

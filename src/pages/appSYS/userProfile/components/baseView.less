@@ -1,0 +1,36 @@
+// /*    @import '~antd/lib/style/themes/default.less';*/
+
+.baseView {
+    display: flex;
+    width: 800px;
+/*    margin: auto;*/
+    padding-top: 12px;
+
+    .left {
+        max-width: 672px;
+        min-width: 448px;
+    }
+
+    .right {
+        flex: 1;
+        padding-left: 104px;
+    }
+}
+
+@media screen and (max-width: @screen-xl) {
+    .baseView {
+        flex-direction: column-reverse;
+
+        .right {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 448px;
+
+            .avatar_title {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,89 @@
+.project-task-manager {
+  height: 600px;
+  min-height: 600px;
+
+  .task-manager-card {
+    height: 100%;
+
+    :global {
+      .ant-pro-card-body {
+        padding: 0;
+        height: 100%;
+      }
+    }
+
+    .milestone-panel {
+      height: 100%;
+
+      :global(.ant-pro-card-body) {
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+    }
+
+    .task-panel {
+      height: 100%;
+
+      :global(.ant-pro-card-body) {
+        padding: 0;
+        height: 100%;
+        overflow: auto;
+      }
+
+      .task-table-wrapper {
+        padding: 16px;
+
+        .task-list {
+          .ant-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #f0f0f0;
+
+            thead {
+              background: #fafafa;
+
+              th {
+                padding: 12px 16px;
+                font-weight: 600;
+                text-align: left;
+                border-bottom: 1px solid #f0f0f0;
+              }
+            }
+
+            tbody {
+              tr {
+                border-bottom: 1px solid #f0f0f0;
+
+                &:hover {
+                  background: #fafafa;
+                }
+
+                td {
+                  padding: 8px;
+                  vertical-align: top;
+
+                  :global {
+                    .ant-input,
+                    .ant-select,
+                    .ant-input-number {
+                      width: 100%;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .ant-formily-array-base-addition {
+            margin-top: 16px;
+
+            button {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

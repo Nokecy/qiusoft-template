@@ -1,0 +1,33 @@
+﻿export default {
+    "AbpUi:Logout": "Logout",
+    "AbpUi:AccountSetting": "AccountSetting",
+    "AbpUi:Actions": "Actions",
+    "AbpUi:Query": "Query",
+    "AbpUi:Reset": "Reset",
+    "AbpUi:AddNew": "AddNew",
+    "AbpUi:Save": "Save",
+    "AbpUi:Cancel": "Cancel",
+    "AbpUi:SureCancel": "Sure Cancel?",
+    "AbpUi:Edit": "Edit",
+    "AbpUi:Delete": "Delete",
+    "AbpUi:SureDelete": "SureDelete?",
+    "AbpUi:Audit": "Audit",
+    "AbpUi:Import": "Import",
+    "AbpUi:Export": "Export",
+    "AbpUi:Filter": "Filter",
+    "AbpUi:Operation": "Operation",
+    "AbpUi:IsDefault": "IsDefault",
+    "AbpUi:LayoutSelect": "LayoutSelect",
+    "navBar.lang": "当前语言",
+    "AbpUi:Attachment": "Attachment",
+
+
+    "app.setting.themecolor.daybreak": "daybreak",
+    "app.setting.themecolor.dust": "dust",
+    "app.setting.themecolor.volcano": "volcano",
+    "app.setting.themecolor.sunset": "sunset",
+    "app.setting.themecolor.cyan": "cyan",
+    "app.setting.themecolor.green": "green",
+    "app.setting.themecolor.geekblue": "geekblue",
+    "app.setting.themecolor.purple": "purple"
+};

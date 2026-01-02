@@ -1,0 +1,20 @@
+[
+  {
+    "path": "/appLogin/emailConfirmation",
+    "component": "./appLogin/emailConfirmation",
+    "name": "登录",
+    "layout": false
+  },
+  {
+    "path": "/appLogin/forgetPassword",
+    "component": "./appLogin/forgetPassword",
+    "name": "登录",
+    "layout": false
+  },
+  {
+    "path": "/appLogin",
+    "component": "./appLogin",
+    "name": "登录",
+    "layout": false
+  }
+]

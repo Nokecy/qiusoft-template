@@ -170,13 +170,39 @@ async function copyMappings(opts: {
 }
 
 async function copyExtraFiles(repoDir: string, targetRoot: string) {
-  const extraFiles = ['package.json', 'yarn.lock'];
+  const extraFiles = ['package.json', 'yarn.lock', '.gitmodules'];
   for (const file of extraFiles) {
     const src = path.join(repoDir, file);
     if (!(await fs.pathExists(src))) continue;
     const dst = path.join(targetRoot, file);
     await fs.ensureDir(path.dirname(dst));
     await fs.copyFile(src, dst);
+  }
+}
+
+function ensureSubmodules(targetRoot: string) {
+  const gitmodulesPath = path.join(targetRoot, '.gitmodules');
+  if (!fs.existsSync(gitmodulesPath)) return;
+
+  const hasGit = spawnSync('git', ['--version'], { stdio: 'ignore' });
+  if (hasGit.status !== 0) {
+    throw new Error('检测到 .gitmodules，但未找到 git，请先安装 git。');
+  }
+
+  const gitDir = path.join(targetRoot, '.git');
+  if (!fs.existsSync(gitDir)) {
+    const init = spawnSync('git', ['init'], { cwd: targetRoot, stdio: 'inherit' });
+    if (init.status !== 0) {
+      throw new Error('git init 失败，请检查 git 环境。');
+    }
+  }
+
+  const update = spawnSync('git', ['submodule', 'update', '--init', '--recursive'], {
+    cwd: targetRoot,
+    stdio: 'inherit',
+  });
+  if (update.status !== 0) {
+    throw new Error('子模块初始化失败，请检查网络或访问权限。');
   }
 }
 
@@ -292,6 +318,8 @@ async function main() {
     ref: opts.ref,
     resolvedSha: snapshot.resolvedSha,
   });
+
+  ensureSubmodules(targetRoot);
 
   if (snapshot.tempRoot) {
     await fs.remove(snapshot.tempRoot).catch(() => {});

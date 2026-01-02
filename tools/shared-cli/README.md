@@ -1,4 +1,4 @@
-# @nokecy/shared-cli
+# qiusoft-shared-cli
 
 用于同步共享模板到项目。
 

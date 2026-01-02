@@ -1,5 +1,5 @@
 {
-  "name": "@nokecy/shared-cli",
+  "name": "qiusoft-shared-cli",
   "version": "0.1.0",
   "description": "Sync shared code into projects",
   "license": "MIT",

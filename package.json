@@ -85,6 +85,6 @@
     "prettier-plugin-packagejson": "^2",
     "sass": "1.49.9",
     "typescript": "5.0.4",
-    "@nokecy/shared-cli": "^0.1.0"
+    "qiusoft-shared-cli": "^0.1.0"
   }
 }

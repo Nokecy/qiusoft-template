@@ -12,7 +12,7 @@ import { spawnSync } from 'child_process';
 type SharedMapping = { from: string; to: string };
 type SharedManifest = { includes: SharedMapping[]; exclude?: string[] };
 
-const DEFAULT_REPO = process.env.QIUSOFT_TEMPLATE_REPO || 'file:.';
+const DEFAULT_REPO = process.env.QIUSOFT_TEMPLATE_REPO || 'github:Nokecy/qiusoft-template';
 const DEFAULT_REF = 'main';
 const DEFAULT_TOKEN_ENV = 'GITHUB_TOKEN';
 const DEFAULT_MANIFEST = 'shared.manifest.json';

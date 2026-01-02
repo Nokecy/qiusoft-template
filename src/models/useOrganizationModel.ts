@@ -10,10 +10,19 @@ export type OrganizationOption = {
 };
 
 const normalizeOrganization = (item: any): OrganizationOption => {
+    const key =
+        item?.code ??
+        item?.organizationCode ??
+        item?.orgCode ??
+        item?.OrganizationCode ??
+        item?.Code ??
+        item?.id ??
+        item?.Id;
+    const label = item?.name ?? item?.organizationName ?? item?.displayName ?? item?.Name;
     return {
-        key: item.code,
-        label: item.name,
-        isDefault: item.isDefault || item.IsDefault || item.isdefault,
+        key: key ? String(key) : '',
+        label: label ? String(label) : '',
+        isDefault: item?.isDefault || item?.IsDefault || item?.isdefault,
     };
 };
 
@@ -60,11 +69,19 @@ export default function useOrganizationModel() {
         setLoading(true);
         try {
             const res = await OrganizationInfoGetCurrentUserOrganizationsAsync();
-            const list = (res || []).map(normalizeOrganization);
-            setOrganizationList(list);
+            const list = (res || []).map(normalizeOrganization).filter(item => item.key);
+            const seen = new Set<string>();
+            const uniqueList = list.filter(item => {
+                if (seen.has(item.key)) {
+                    return false;
+                }
+                seen.add(item.key);
+                return true;
+            });
+            setOrganizationList(uniqueList);
 
             const currentCode = organizationCode || readStoredOrganizationCode();
-            const nextCode = resolveOrganizationCode(list, currentCode);
+            const nextCode = resolveOrganizationCode(uniqueList, currentCode);
             if (nextCode !== currentCode) {
                 setOrganizationCode(nextCode);
             }

@@ -15,6 +15,10 @@ try {
 
 const appName = projectLocal.appName || projectDefaults.appName;
 const port = Number(process.env.PORT) || projectLocal.port || projectDefaults.port;
+if (!process.env.PORT) {
+  // max dev 通过环境变量 PORT 取端口，这里用于读取本地配置后注入
+  process.env.PORT = String(port);
+}
 const themeToken = {
   ...projectDefaults.themeToken,
   ...(projectLocal.themeToken || {}),
@@ -63,9 +67,6 @@ export default defineConfig({
 	// 使用 hash 路由，避免在 nginx/网关未正确配置 history fallback 时，直接刷新子路由导致静态资源被错误回退为 index.html（出现 MIME/Unexpected token '<'）
 	history: { type: 'hash' },
   hash: true,
-  devServer: {
-    port,
-  },
 	fastRefresh: true,
 	mfsu: {
 		// strategy: 'normal',

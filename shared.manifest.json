@@ -23,6 +23,7 @@
     { "from": "public/scripts", "to": "public/scripts" },
     { "from": "public/styles", "to": "public/styles" },
     { "from": "src/hooks", "to": "src/hooks" },
+    { "from": "src/pages/appLogin", "to": "src/pages/appLogin" },
     { "from": "src/initStates", "to": "src/initStates" },
     { "from": "src/layouts", "to": "src/layouts" },
     { "from": "src/models", "to": "src/models" },

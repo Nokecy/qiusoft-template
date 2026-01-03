@@ -7,7 +7,7 @@ import {
     InboxOutlined
 } from '@ant-design/icons';
 import { useControllableValue } from "ahooks";
-import { MediaTempBlobUploadImagesAsync } from "@/services/attachment/MediaTempBlob";
+import { MediaTempBlobUploadImagesAsync } from "@/services/openApi/MediaTempBlob";
 import DraggerUploadCopy from "./draggerCopy";
 import { useModel } from "@umijs/max";
 import moment from "moment";

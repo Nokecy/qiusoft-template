@@ -81,10 +81,9 @@ export const formSchema: { form: Record<string, any>; schema: ISchema } = {
             type: 'string',
             title: '客户',
             'x-decorator': 'FormItem',
-            'x-component': 'CustomerSelect',
+            'x-component': 'Input',
             'x-component-props': {
-              placeholder: '请选择客户',
-              useCode: true,
+              placeholder: '请输入客户',
             },
           },
 

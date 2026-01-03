@@ -7,8 +7,8 @@ import {
 } from '@ant-design/icons';
 import { Access, useAccess } from '@umijs/max';
 import ImportPublic from '@/components/importPublic';
-import { useApiErrorHandler } from '@/pages/appCommon/_utils';
-import { downloadFile } from '@/pages/appCommon/_utils/downloadUtils';
+import { useApiErrorHandler } from '@/components/apiErrorHandler';
+import { downloadFile } from '@/components/downloadUtils';
 import { ToolbarActionConfig, FormDialogConfig, ApiConfig } from './types';
 
 interface ConfigurableToolbarProps {

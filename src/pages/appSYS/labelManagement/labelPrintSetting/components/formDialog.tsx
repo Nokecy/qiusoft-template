@@ -7,7 +7,6 @@ import { formId, formSchema } from './schema';
 import { fromApiFormat, toApiFormat, validateConversion } from './ruleConverter';
 import { RuleBuilderWrapper } from './RuleBuilderWrapper';
 import PrintFeatureSelect from '../../_utils/printFeatureSelect';
-import CustomerSelect from '@/pages/appCommon/_utils/CustomerSelect';
 
 const LabelPrintSettingFormDialog = (props: any) => {
   const { entityId, title, buttonProps, onAfterSubmit, getRequest, createRequest, updateRequest } =
@@ -19,7 +18,6 @@ const LabelPrintSettingFormDialog = (props: any) => {
     FormCollapse,
     RuleBuilderWrapper,
     PrintFeatureSelect,
-    CustomerSelect,
   });
 
   const formProps = {

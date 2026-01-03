@@ -6,7 +6,7 @@ import {
     LoadingOutlined,
 } from '@ant-design/icons';
 import { useControllableValue } from "ahooks";
-import { MediaTempBlobUploadImagesAsync } from "@/services/attachment/MediaTempBlob";
+import { MediaTempBlobUploadImagesAsync } from "@/services/openApi/MediaTempBlob";
 import { serverUrl } from "@umijs/max";
 type FileType = Parameters<any>[0];
 

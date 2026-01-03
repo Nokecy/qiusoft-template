@@ -4,7 +4,7 @@ import { Space, Button, message } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Access, useAccess, useIntl } from '@umijs/max';
 import DeleteConfirm from '@/components/deleteConfirm';
-import { useApiErrorHandler } from '@/pages/appCommon/_utils';
+import { useApiErrorHandler } from '@/components/apiErrorHandler';
 import { OptionsComponentProps } from './types';
 
 /**

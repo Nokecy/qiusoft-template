@@ -11,6 +11,8 @@ export interface SmartNavigationConfig {
   targetPath: string;
   /** 新的参数对象 */
   newParams?: Record<string, any>;
+  /** route state */
+  state?: Record<string, any>;
   /** 确认对话框标题 */
   confirmTitle?: string;
   /** 确认对话框内容模板，支持变量：{currentId}、{newId} */
@@ -42,6 +44,7 @@ export const useSmartNavigation = () => {
     const {
       targetPath,
       newParams = {},
+      state,
       confirmTitle = '切换编辑记录确认',
       confirmContent = '检测到已有该表单页面打开编辑记录 {currentId}，是否要切换到编辑记录 {newId}？',
       okText = '是，切换',
@@ -61,7 +64,11 @@ export const useSmartNavigation = () => {
     // 检查KeepAlive上下文是否可用
     if (!keepAliveContext || !keepAliveContext.keepElements) {
       if (debug) console.log('[SmartNavigation] KeepAlive上下文不可用，直接跳转');
-      history.push(newUrl);
+      history.push({
+        pathname: targetPath,
+        search: searchParams.toString() ? `?${searchParams.toString()}` : '',
+        state
+      });
       return;
     }
 
@@ -115,9 +122,13 @@ export const useSmartNavigation = () => {
                 if (debug) console.log('[SmartNavigation] 用户选择切换到新记录');
                 
                 // 更新KeepAlive中缓存的location信息
-                updateTabLocation(targetPathLower, targetPath, searchParams, existingTab);
+                updateTabLocation(targetPathLower, targetPath, searchParams, existingTab, state);
                 
-                history.push(newUrl);
+                history.push({
+                  pathname: targetPath,
+                  search: searchParams.toString() ? `?${searchParams.toString()}` : '',
+                  state
+                });
               },
               onCancel() {
                 if (debug) console.log('[SmartNavigation] 用户选择保持当前页面');
@@ -162,9 +173,13 @@ export const useSmartNavigation = () => {
                 if (debug) console.log('[SmartNavigation] 用户选择切换到新表单页面');
                 
                 // 更新KeepAlive中缓存的location信息
-                updateTabLocation(targetPathLower, targetPath, searchParams, existingTab);
+                updateTabLocation(targetPathLower, targetPath, searchParams, existingTab, state);
                 
-                history.push(newUrl);
+                history.push({
+                  pathname: targetPath,
+                  search: searchParams.toString() ? `?${searchParams.toString()}` : '',
+                  state
+                });
               },
               onCancel() {
                 if (debug) console.log('[SmartNavigation] 用户选择取消切换');
@@ -175,7 +190,11 @@ export const useSmartNavigation = () => {
           } else {
             // ID相同，直接切换到已有tab
             if (debug) console.log('[SmartNavigation] 切换到已有相同记录的tab');
-            history.push(newUrl);
+            history.push({
+              pathname: targetPath,
+              search: searchParams.toString() ? `?${searchParams.toString()}` : '',
+              state
+            });
             return;
           }
         }
@@ -184,7 +203,11 @@ export const useSmartNavigation = () => {
 
     // 其他情况直接跳转
     if (debug) console.log('[SmartNavigation] 直接跳转到:', newUrl);
-    history.push(newUrl);
+    history.push({
+      pathname: targetPath,
+      search: searchParams.toString() ? `?${searchParams.toString()}` : '',
+      state
+    });
   };
 
   /**
@@ -194,13 +217,15 @@ export const useSmartNavigation = () => {
     targetPathLower: string,
     targetPath: string,
     searchParams: URLSearchParams,
-    existingTab: any
+    existingTab: any,
+    state?: Record<string, any>
   ) => {
     if (keepAliveContext && keepAliveContext.updateTab) {
       const newLocation = {
         ...existingTab.location,
         search: searchParams.toString() ? `?${searchParams.toString()}` : '',
-        pathname: targetPath
+        pathname: targetPath,
+        state: state ?? existingTab.location?.state
       };
       
       console.log('[SmartNavigation] 更新KeepAlive tab的location:', {

@@ -24,6 +24,8 @@
     { "from": "public/styles", "to": "public/styles" },
     { "from": "src/assets/loginBg.jpg", "to": "src/assets/loginBg.jpg" },
     { "from": "src/assets/loginimg2.png", "to": "src/assets/loginimg2.png" },
+    { "from": "src/_utils", "to": "src/_utils" },
+    { "from": "src/components", "to": "src/components" },
     { "from": "src/hooks", "to": "src/hooks" },
     { "from": "src/pages/appLogin", "to": "src/pages/appLogin" },
     { "from": "src/pages/404.tsx", "to": "src/pages/404.tsx" },

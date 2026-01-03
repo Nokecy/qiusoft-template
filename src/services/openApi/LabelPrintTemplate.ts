@@ -101,6 +101,24 @@ export async function LabelPrintTemplateExportAtlAsync(
 	});
 }
 
+/** 此处后端没有提供注释 GET /api/label-management/label-print-template/${param0}/export-prn */
+export async function LabelPrintTemplateExportPrnAsync(
+	// 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+	params: API.LabelPrintTemplateExportPrnAsyncParams,
+	options?: { [key: string]: any }
+) {
+	const { id: param0, ...queryParams } = params;
+	return request<string>(`/api/label-management/label-print-template/${param0}/export-prn`, {
+		method: 'GET',
+		params: {
+			...queryParams,
+			Data: undefined,
+			...queryParams['Data'],
+		},
+		...(options || {}),
+	});
+}
+
 /** 此处后端没有提供注释 POST /api/label-management/label-print-template/${param0}/update */
 export async function LabelPrintTemplateUpdateAsync(
 	// 叠加生成的Param类型 (非body参数swagger默认没有生成对象)

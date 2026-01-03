@@ -26,6 +26,7 @@
     { "from": "src/assets/loginimg2.png", "to": "src/assets/loginimg2.png" },
     { "from": "src/hooks", "to": "src/hooks" },
     { "from": "src/pages/appLogin", "to": "src/pages/appLogin" },
+    { "from": "src/pages/404.tsx", "to": "src/pages/404.tsx" },
     { "from": "src/initStates", "to": "src/initStates" },
     { "from": "src/layouts", "to": "src/layouts" },
     { "from": "src/models", "to": "src/models" },

@@ -9,6 +9,7 @@ declare var APP_TYPE: string;
 declare const OAUTH_ClientID: string;
 declare const OAUTH_ClientSecret: string;
 declare const OAUTH_Scope: string;
+declare const APP_TITLE: string;
 /**
  * 是否启用Oidc
  */

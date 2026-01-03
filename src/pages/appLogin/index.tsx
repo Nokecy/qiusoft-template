@@ -85,6 +85,7 @@ const Login = () => {
     const [userLoginState, setUserLoginState] = useState<any>({});
     const [type, setType] = useState<string>('account');
     const { initialState, setInitialState, refresh } = useModel('@@initialState');
+    const appTitle = APP_TITLE || '数字平台';
     const { styles } = useStyles();
     const intl = useIntl();
     const { status, type: loginType } = userLoginState;
@@ -175,7 +176,7 @@ const Login = () => {
         <div className={styles.container} style={{ backgroundImage: `url(${loginImg})` }}>
 
             <Helmet>
-                <title>登录--财门数字平台</title>
+                <title>登录--{appTitle}</title>
             </Helmet>
 
             <Lang />
@@ -183,7 +184,7 @@ const Login = () => {
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
                 <div className='login-content' style={{ backgroundImage: `url(${loginimg2})` }}>
                     <div>
-                        <div className='login-title'>财门数字平台</div>
+                        <div className='login-title'>{appTitle}</div>
 
                         <Form
                             form={form}

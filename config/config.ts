@@ -14,6 +14,10 @@ try {
 }
 
 const appName = projectLocal.appName || projectDefaults.appName;
+const appTitle =
+  projectLocal.appTitle ||
+  projectDefaults.appTitle ||
+  `${appName}数字平台`;
 const port = Number(process.env.PORT) || projectLocal.port || projectDefaults.port;
 if (!process.env.PORT) {
   // max dev 通过环境变量 PORT 取端口，这里用于读取本地配置后注入
@@ -31,14 +35,15 @@ const openAPIConfig =
   projectLocal.openAPI && projectLocal.openAPI.length > 0 ? projectLocal.openAPI : projectDefaults.openAPI;
 
 export default defineConfig({
-	define: {
-		OAUTH_ClientID: 'WMS_App',
-		OAUTH_ClientSecret: '1q2w3e*',
-		OAUTH_Scope: 'offline_access',
+        define: {
+                OAUTH_ClientID: 'WMS_App',
+                OAUTH_ClientSecret: '1q2w3e*',
+                OAUTH_Scope: 'offline_access',
 
-		OidcConfigName: '',
-		enableOidc: false,
-	},
+                OidcConfigName: '',
+                enableOidc: false,
+                APP_TITLE: appTitle,
+        },
   npmClient: 'yarn',
 	routes: routes,
 	mako: {},

@@ -1,5 +1,6 @@
 export const projectDefaults = {
   appName: '财门',
+  appTitle: '',
   port: 8001,
   themeToken: {
     colorPrimary: '#00b96b',

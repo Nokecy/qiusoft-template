@@ -20,4 +20,3 @@ export { default as usePrevLocation } from './usePrevLocation';
 export { default as usePromiseQueue } from './usePromiseQueue';
 export { default as useSound } from './useSound';
 export { default as useWorkflow } from './useWorkflow';
-export { useAttachmentUpload } from './useAttachmentUpload';

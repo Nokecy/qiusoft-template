@@ -16,7 +16,6 @@
     { "from": "config/project.defaults.ts", "to": "config/project.defaults.ts" },
     { "from": "config/routers.ts", "to": "config/routers.ts", "skipIfExists": true },
     { "from": "config/routeItems/appSYS.json", "to": "config/routeItems/appSYS.json" },
-    { "from": "config/swaggers/swagger.json", "to": "config/swaggers/swagger.json" },
     { "from": "plugins", "to": "plugins" },
     { "from": "scripts", "to": "scripts" },
     { "from": "public/assets", "to": "public/assets" },

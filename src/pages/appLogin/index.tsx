@@ -1,11 +1,10 @@
-import { login } from '@/services/loginApi';
 import { OrganizationInfoGetOrganizationsByUserNameAsync } from '@/services/openApi/OrganizationInfo';
 import {
     ApartmentOutlined,
     LockOutlined,
     UserOutlined,
 } from '@ant-design/icons';
-import { Helmet, history, SelectLang, useIntl, useModel } from 'umi';
+import { Helmet, history, request, SelectLang, useIntl, useModel } from 'umi';
 import { Alert, Button, Flex, Form, FormProps, Input, message, Select } from 'antd';
 import { createStyles } from 'antd-style';
 import React, { useState } from 'react';
@@ -95,6 +94,20 @@ const Login = () => {
     const [loadingOrgs, setLoadingOrgs] = useState(false);
     const [selectedOrgCode, setSelectedOrgCode] = useState<string | undefined>();
     const [form] = Form.useForm();
+
+    const login = ({ username, password }: { username?: string; password?: string }) => {
+        const clientId = OAUTH_ClientID;
+        const clientSecret = OAUTH_ClientSecret;
+        const scope = OAUTH_Scope;
+
+        return request<any>(`/connect/token`, {
+            method: 'POST',
+            //@ts-ignore
+            baseURL: window.serverUrl.authServerUrl,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            data: `grant_type=password&scope=${scope}&client_id=${clientId}&client_secret=${clientSecret}&username=${username || ''}&password=${password || ''}`,
+        });
+    };
 
     const fetchUserInfo = async () => {
         await refresh();

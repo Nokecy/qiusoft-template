@@ -1,5 +1,9 @@
 # 项目文档索引
 
+## 📌 同步原则
+
+- 📖 [共享同步原则](./shared-sync-principles.md) - 共享目录同步规则与一次性初始化项
+
 ## 📚 组件文档
 
 ### SmartNavigation 智能导航组件

@@ -70,8 +70,8 @@ export default defineConfig({
 	},
 	keepalive: [/./],
 	// 使用 hash 路由，避免在 nginx/网关未正确配置 history fallback 时，直接刷新子路由导致静态资源被错误回退为 index.html（出现 MIME/Unexpected token '<'）
-	history: { type: 'hash' },
-  hash: true,
+	// history: { type: 'hash' },
+  hash: false,
 	fastRefresh: true,
 	mfsu: {
 		// strategy: 'normal',

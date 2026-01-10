@@ -5,6 +5,7 @@ import { RequestConfig } from '@@/plugin-request/request';
 import { PreviewText } from '@formily/antd-v5';
 import { message } from 'antd';
 import Cookies from 'js-cookie';
+import qs from 'qs';
 import React from 'react';
 import { getInitState, RuntimeAntdConfig } from 'umi';
 // import EntityObjectRuntimeListPage from './pages/appSYS/appExtraObjectForm/entityObjectRuntime/list';
@@ -156,6 +157,12 @@ export const layout = ({ initialState }) => {
 export const request: RequestConfig = {
   headers: {
           'Accept-Language': Cookies.get('Accept-Language') || 'zh-Hans',
+  },
+  paramsSerializer: (params) => {
+    // 使用 repeat 格式序列化数组参数，兼容 ASP.NET Core
+    // Features[]=value -> Features=value1&Features=value2
+    // @author nokecy
+    return qs.stringify(params, { arrayFormat: 'repeat' });
   },
   requestInterceptors: [
           config => {

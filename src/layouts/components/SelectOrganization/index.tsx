@@ -28,8 +28,14 @@ export const SelectOrganization = (props) => {
     }, [loadOrganizations]);
 
     const handleItemClick = ({ key }) => {
+        // 如果选择的组织与当前组织相同，不做任何操作
+        if (key === organizationCode) {
+            return;
+        }
         setOrganizationCode(key);
         onItemClick?.({ key });
+        // 刷新整个页面以重新加载数据
+        window.location.reload();
     };
 
     return (

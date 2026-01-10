@@ -31,7 +31,7 @@ export async function PrintTaskGetAsync(
 	});
 }
 
-/** 重新打印 POST /api/PrintTemplateManagement/print-task/${param0}/reprint */
+/** 此处后端没有提供注释 POST /api/PrintTemplateManagement/print-task/${param0}/reprint */
 export async function PrintTaskReprintAsync(
 	// 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
 	params: API.PrintTaskReprintAsyncParams,

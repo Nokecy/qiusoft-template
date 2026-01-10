@@ -17,10 +17,12 @@ interface IDialogSelectProps extends SelectProps<any> {
 	queryFun?: (item: any) => void;
 	onChangeItem?: (item: any) => void;
 	useAutoComplete?: boolean;
+	modalWidth?: number;
+	hideBtn?: boolean;
 }
 
 const NewDialogSelect = (props: IDialogSelectProps) => {
-	const { request, columnDefs, value, labelField, valueField, onChangeItem, ...rest } = props;
+	const { request, columnDefs, value, labelField, valueField, onChangeItem, modalWidth = 960, hideBtn, ...rest } = props;
 	console.log('record1 props',props)
 	const [state, setState]: any = useControllableValue<SelectValue>(props);
 	const [gridApi, setGridApi] = useState<GridApi | undefined>();
@@ -58,7 +60,7 @@ const NewDialogSelect = (props: IDialogSelectProps) => {
 		<>
 			<div style={{ display: 'flex', flexDirection: 'row' }}>
 				{props.useAutoComplete && !props.labelInValue ? <AutoComplete {...rest} value={state} style={{ ...rest?.style, width: "calc(100% - 110px)", minWidth: '150px', marginRight: 5 }} /> : <Select {...rest} value={state} style={{ width: "calc(100% - 110px)", minWidth: '150px', marginRight: 5, ...(rest.style || {}) }} />}
-				{!props.disabled ? (
+				{!props.disabled && !hideBtn ? (
 					<Button
 						icon={<DashOutlined />}
 						onClick={() => {
@@ -73,7 +75,7 @@ const NewDialogSelect = (props: IDialogSelectProps) => {
 					/>
 				) : null}
 			</div>
-			<Modal width={960} title='选择' style={{ zIndex: 9999 }} destroyOnClose open={visible} onOk={handleOk} onCancel={setFalse}>
+			<Modal width={modalWidth} title='选择' style={{ zIndex: 9999 }} destroyOnClose open={visible} onOk={handleOk} onCancel={setFalse}>
 				<AgGridPlus
 					style={{ height: 450 }}
 					onGridReady={(gridReadEvent: any) => {
@@ -91,8 +93,11 @@ const NewDialogSelect = (props: IDialogSelectProps) => {
 					}}
 					request={async (params, sort, filter) => {
 						let data = await request({ filterObj: filter, Filter: props?.queryFun ? props?.queryFun(params?.filter) : params?.filter, Sorting: params!.sorter, SkipCount: params!.skipCount, MaxResultCount: params!.maxResultCount });
-						let requestData: any = { success: true, data: data, total: data.length };
-						setItems(data);
+						// 兼容两种数据格式：数组 或 { items: [], totalCount: number }
+						const items = Array.isArray(data) ? data : (data?.items || []);
+						const total = Array.isArray(data) ? data.length : (data?.totalCount || 0);
+						let requestData: any = { success: true, data: items, total: total };
+						setItems(items);
 						return requestData;
 					}}
 					columnDefs={[

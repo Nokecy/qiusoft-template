@@ -42,7 +42,7 @@ export async function UserPrintFeaturePrinterGetSelfAsync(options?: { [key: stri
 	});
 }
 
-/** 为指定用户配置打印功能与打印机的绑定关系。 POST /api/PrintTemplateManagement/user-print-feature-printer/set */
+/** 此处后端没有提供注释 POST /api/PrintTemplateManagement/user-print-feature-printer/set */
 export async function UserPrintFeaturePrinterSetAsync(
 	body: API.BurnAbpPrintTemplateManagementUserPrintFeaturePrintersSetUserPrintFeaturePrinterInput,
 	options?: { [key: string]: any }
@@ -57,7 +57,7 @@ export async function UserPrintFeaturePrinterSetAsync(
 	});
 }
 
-/** 为当前登录用户设置打印功能与打印机的绑定关系。 POST /api/PrintTemplateManagement/user-print-feature-printer/set-self */
+/** 此处后端没有提供注释 POST /api/PrintTemplateManagement/user-print-feature-printer/set-self */
 export async function UserPrintFeaturePrinterSetSelfAsync(
 	body: API.BurnAbpPrintTemplateManagementUserPrintFeaturePrintersSetSelfUserPrintFeaturePrinterInput,
 	options?: { [key: string]: any }

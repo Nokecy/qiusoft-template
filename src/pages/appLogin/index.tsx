@@ -7,6 +7,7 @@ import {
 import { Helmet, history, request, SelectLang, useIntl, useModel } from 'umi';
 import { Alert, Button, Flex, Form, FormProps, Input, message, Select } from 'antd';
 import { createStyles } from 'antd-style';
+import Cookies from 'js-cookie';
 import React, { useState } from 'react';
 import loginImg from '../../assets/loginBg.jpg';
 import loginimg2 from '../../assets/loginimg2.png';
@@ -58,9 +59,26 @@ const useStyles = createStyles(({ token }) => {
 const Lang = () => {
     const { styles } = useStyles();
 
+    /**
+     * 语言切换回调 - 与 RightContent 保持一致
+     * @author nokecy
+     */
+    const handleLangChange = ({ key }: { key: string }) => {
+        let langKey = key;
+        if (langKey === 'zh-CN') {
+            langKey = 'zh-Hans';
+        }
+        if (langKey === 'en-US') {
+            langKey = 'en';
+        }
+        Cookies.set('Accept-Language', langKey);
+        const switchUrl = `/Abp/Languages/Switch?culture=${langKey}&uiCulture=${langKey}`;
+        window.location.href = switchUrl;
+    };
+
     return (
         <div className={styles.lang} data-lang>
-            {SelectLang && <SelectLang />}
+            {SelectLang && <SelectLang onItemClick={handleLangChange} />}
         </div>
     );
 };
@@ -84,9 +102,9 @@ const Login = () => {
     const [userLoginState, setUserLoginState] = useState<any>({});
     const [type, setType] = useState<string>('account');
     const { initialState, setInitialState, refresh } = useModel('@@initialState');
-    const appTitle = APP_TITLE || '数字平台';
     const { styles } = useStyles();
     const intl = useIntl();
+    const appTitle = APP_TITLE || intl.formatMessage({ id: 'login.defaultAppTitle' });
     const { status, type: loginType } = userLoginState;
 
     const [loginLoading, setLoginLoading] = useState(false);
@@ -153,7 +171,7 @@ const Login = () => {
         try {
             // 检查是否选择了组织机构
             if (organizations.length > 0 && !selectedOrgCode) {
-                message.warning('请选择组织机构');
+                message.warning(intl.formatMessage({ id: 'login.organization.required' }));
                 return;
             }
 
@@ -169,7 +187,7 @@ const Login = () => {
                 localStorage.setItem('_organizationCode', selectedOrgCode);
             }
 
-            message.success("登录成功！");
+            message.success(intl.formatMessage({ id: 'login.success' }));
             await fetchUserInfo();
             setLoginLoading(false);
             setTimeout(() => {
@@ -180,7 +198,7 @@ const Login = () => {
         } catch (error) {
             setLoginLoading(false);
             console.log(error, "error");
-            message.error("登录失败,用户名或密码错误，请重试！");
+            message.error(intl.formatMessage({ id: 'login.failed' }));
         }
     };
 
@@ -189,7 +207,7 @@ const Login = () => {
         <div className={styles.container} style={{ backgroundImage: `url(${loginImg})` }}>
 
             <Helmet>
-                <title>登录--{appTitle}</title>
+                <title>{intl.formatMessage({ id: 'login.title' })}--{appTitle}</title>
             </Helmet>
 
             <Lang />
@@ -209,10 +227,10 @@ const Login = () => {
                         >
                             <Form.Item
                                 name="username"
-                                rules={[{ required: true, message: '请输入账号!' }]}
+                                rules={[{ required: true, message: intl.formatMessage({ id: 'login.username.required' }) }]}
                             >
                                 <Input
-                                    placeholder="请输入账号"
+                                    placeholder={intl.formatMessage({ id: 'login.username.placeholder' })}
                                     prefix={<UserOutlined />}
                                     style={{ borderBottom: '1px solid #666666', borderRadius: '0px' }}
                                     variant="borderless"
@@ -225,7 +243,7 @@ const Login = () => {
                                     <div className="org-select-wrapper">
                                         <ApartmentOutlined className="org-select-icon" />
                                         <Select
-                                            placeholder="请选择组织机构"
+                                            placeholder={intl.formatMessage({ id: 'login.organization.placeholder' })}
                                             loading={loadingOrgs}
                                             style={{ borderRadius: '0px' }}
                                             variant="borderless"
@@ -242,23 +260,23 @@ const Login = () => {
 
                             <Form.Item
                                 name="password"
-                                rules={[{ required: true, message: '请输入密码!' }]}
+                                rules={[{ required: true, message: intl.formatMessage({ id: 'login.password.required' }) }]}
                             >
-                                <Input.Password prefix={<LockOutlined />} type="password" style={{ borderBottom: '1px solid #666666', borderRadius: '0px' }} placeholder="请输入密码" variant="borderless" />
+                                <Input.Password prefix={<LockOutlined />} type="password" style={{ borderBottom: '1px solid #666666', borderRadius: '0px' }} placeholder={intl.formatMessage({ id: 'login.password.placeholder' })} variant="borderless" />
                             </Form.Item>
                             <Form.Item>
                                 <Flex justify='space-between' align="center">
-                                    <a href="" className='register'>注册</a>
+                                    <a href="" className='register'>{intl.formatMessage({ id: 'login.register' })}</a>
                                     <a className='forget' onClick={() => history.push({
                                         pathname: '/appLogin/forgetPassword',
                                         // search: `?xurl=${window.location.href}`,
-                                    })} >忘记密码?</a>
+                                    })} >{intl.formatMessage({ id: 'login.forgetPassword' })}</a>
                                 </Flex>
                             </Form.Item>
 
                             <Form.Item >
                                 <Button type="primary" htmlType="submit" className='login-buttonx' loading={loginLoading}>
-                                    登录
+                                    {intl.formatMessage({ id: 'login.submit' })}
                                 </Button>
                             </Form.Item>
                         </Form>

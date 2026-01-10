@@ -34,13 +34,31 @@ const readStoredOrganizationCode = () => {
 const resolveOrganizationCode = (
     list: OrganizationOption[],
     currentCode?: string,
+    /** 是否保留当前值（即使不在列表中） */
+    preserveCurrentCode?: boolean,
 ) => {
     if (!list.length) {
-        return undefined;
+        return currentCode; // 列表为空时保留当前值
     }
 
     const normalized = currentCode && currentCode !== 'ALL' ? currentCode : undefined;
-    if (normalized && list.some(item => item.key === normalized)) {
+    if (normalized) {
+        // 先精确匹配
+        if (list.some(item => item.key === normalized)) {
+            return normalized;
+        }
+        // 再尝试不区分大小写匹配（兼容不同 API 返回的 code 格式差异）
+        const matchedItem = list.find(item =>
+            item.key.toLowerCase() === normalized.toLowerCase()
+        );
+        if (matchedItem) {
+            return matchedItem.key; // 返回列表中实际的 key
+        }
+    }
+
+    // 如果需要保留当前值且当前值存在，即使不在列表中也保留
+    // 这确保登录时选择的组织不会被覆盖
+    if (preserveCurrentCode && normalized) {
         return normalized;
     }
 
@@ -82,9 +100,17 @@ export default function useOrganizationModel() {
             });
             setOrganizationList(uniqueList);
 
-            const currentCode = organizationCode || readStoredOrganizationCode();
-            const nextCode = resolveOrganizationCode(uniqueList, currentCode);
-            if (nextCode !== currentCode) {
+            // 优先使用 localStorage 中的值，确保登录时选择的组织不会丢失
+            const storedCode = readStoredOrganizationCode();
+            const currentCode = storedCode || organizationCode;
+            // 首次加载时保留 localStorage 中的值（即使不在列表中）
+            const nextCode = resolveOrganizationCode(uniqueList, currentCode, !!storedCode);
+
+            // 如果状态与应该使用的值不同，更新状态
+            if (nextCode && nextCode !== organizationCode) {
+                setOrganizationCode(nextCode);
+            } else if (!organizationCode && nextCode) {
+                // 如果状态为空但有值需要设置
                 setOrganizationCode(nextCode);
             }
 
@@ -98,7 +124,16 @@ export default function useOrganizationModel() {
     }, [organizationCode, setOrganizationCode]);
 
     const selectedOrganization = useMemo(
-        () => organizationList.find(item => item.key === organizationCode),
+        () => {
+            if (!organizationCode) return undefined;
+            // 先精确匹配
+            const exactMatch = organizationList.find(item => item.key === organizationCode);
+            if (exactMatch) return exactMatch;
+            // 再尝试不区分大小写匹配
+            return organizationList.find(item =>
+                item.key.toLowerCase() === organizationCode.toLowerCase()
+            );
+        },
         [organizationList, organizationCode],
     );
 

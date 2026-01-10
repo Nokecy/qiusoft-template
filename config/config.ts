@@ -7,44 +7,40 @@ type ProjectLocal = Partial<typeof projectDefaults>;
 
 let projectLocal: ProjectLocal = {};
 try {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  projectLocal = require('./project.local').default || {};
+	// eslint-disable-next-line @typescript-eslint/no-var-requires
+	projectLocal = require('./project.local').default || {};
 } catch (error) {
-  projectLocal = {};
+	projectLocal = {};
 }
 
 const appName = projectLocal.appName || projectDefaults.appName;
-const appTitle =
-  projectLocal.appTitle ||
-  projectDefaults.appTitle ||
-  `${appName}数字平台`;
+const appTitle = projectLocal.appTitle || projectDefaults.appTitle || `${appName}数字平台`;
 const port = Number(process.env.PORT) || projectLocal.port || projectDefaults.port;
 if (!process.env.PORT) {
-  // max dev 通过环境变量 PORT 取端口，这里用于读取本地配置后注入
-  process.env.PORT = String(port);
+	// max dev 通过环境变量 PORT 取端口，这里用于读取本地配置后注入
+	process.env.PORT = String(port);
 }
 const themeToken = {
-  ...projectDefaults.themeToken,
-  ...(projectLocal.themeToken || {}),
-  inputNumber: {
-    ...(projectDefaults.themeToken?.inputNumber || {}),
-    ...(projectLocal.themeToken?.inputNumber || {}),
-  },
+	...projectDefaults.themeToken,
+	...(projectLocal.themeToken || {}),
+	inputNumber: {
+		...(projectDefaults.themeToken?.inputNumber || {}),
+		...(projectLocal.themeToken?.inputNumber || {}),
+	},
 };
-const openAPIConfig =
-  projectLocal.openAPI && projectLocal.openAPI.length > 0 ? projectLocal.openAPI : projectDefaults.openAPI;
+const openAPIConfig = projectLocal.openAPI && projectLocal.openAPI.length > 0 ? projectLocal.openAPI : projectDefaults.openAPI;
 
 export default defineConfig({
-        define: {
-                OAUTH_ClientID: 'WMS_App',
-                OAUTH_ClientSecret: '1q2w3e*',
-                OAUTH_Scope: 'offline_access',
+	define: {
+		OAUTH_ClientID: 'WMS_App',
+		OAUTH_ClientSecret: '1q2w3e*',
+		OAUTH_Scope: 'offline_access',
 
-                OidcConfigName: '',
-                enableOidc: false,
-                APP_TITLE: appTitle,
-        },
-  npmClient: 'yarn',
+		OidcConfigName: '',
+		enableOidc: false,
+		APP_TITLE: appTitle,
+	},
+	npmClient: 'yarn',
 	routes: routes,
 	mako: {},
 	plugins: [
@@ -69,9 +65,8 @@ export default defineConfig({
 		hasFixedHeader: true,
 	},
 	keepalive: [/./],
-	// 使用 hash 路由，避免在 nginx/网关未正确配置 history fallback 时，直接刷新子路由导致静态资源被错误回退为 index.html（出现 MIME/Unexpected token '<'）
 	// history: { type: 'hash' },
-  hash: false,
+	hash: false,
 	fastRefresh: true,
 	mfsu: {
 		// strategy: 'normal',
@@ -101,20 +96,20 @@ export default defineConfig({
 	reactQuery: {},
 	antd: {
 		import: false,
-        configProvider: {
-            input: { autoComplete: 'off' },
-            theme: {
-                token: themeToken,
-            },
-        },
-    },
-    layout: {
-        name: appName,
-        locale: false,
-        title: appName,
-        disableContentMargin: false,
-        iconfontUrl: iconfontUrl,
-    },
+		configProvider: {
+			input: { autoComplete: 'off' },
+			theme: {
+				token: themeToken,
+			},
+		},
+	},
+	layout: {
+		name: appName,
+		locale: false,
+		title: appName,
+		disableContentMargin: false,
+		iconfontUrl: iconfontUrl,
+	},
 	locale: {
 		default: 'zh-CN',
 		antd: true,
@@ -146,4 +141,3 @@ export default defineConfig({
 	extraBabelPlugins: ['lodash'],
 	openAPI: openAPIConfig,
 });
-

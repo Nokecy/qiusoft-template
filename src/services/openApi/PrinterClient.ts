@@ -64,7 +64,7 @@ export async function PrinterClientUpdateAsync(
 	});
 }
 
-/** 更新打印机信息 POST /api/PrintTemplateManagement/printer-client/${param0}/update-printer */
+/** 此处后端没有提供注释 POST /api/PrintTemplateManagement/printer-client/${param0}/update-printer */
 export async function PrinterClientUpdatePrinterAsync(
 	// 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
 	params: API.PrinterClientUpdatePrinterAsyncParams,
@@ -83,7 +83,7 @@ export async function PrinterClientUpdatePrinterAsync(
 	});
 }
 
-/** 发起打印任务 POST /api/PrintTemplateManagement/printer-client/print/${param0} */
+/** 此处后端没有提供注释 POST /api/PrintTemplateManagement/printer-client/print/${param0} */
 export async function PrinterClientPrintAsync(
 	// 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
 	params: API.PrinterClientPrintAsyncParams,
@@ -102,7 +102,7 @@ export async function PrinterClientPrintAsync(
 	});
 }
 
-/** 获取打印机分页列表 GET /api/PrintTemplateManagement/printer-client/printers */
+/** 此处后端没有提供注释 GET /api/PrintTemplateManagement/printer-client/printers */
 export async function PrinterClientGetPrintersAsync(
 	// 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
 	params: API.PrinterClientGetPrintersAsyncParams,

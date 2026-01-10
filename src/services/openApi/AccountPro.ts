@@ -26,7 +26,7 @@ export async function AccountProConfirmPhoneNumberAsync(body: API.VoloAbpAccount
 	});
 }
 
-/** 重置用户密码到默认密码 POST /api/account/pro/reset-default-password */
+/** 此处后端没有提供注释 POST /api/account/pro/reset-default-password */
 export async function AccountProResetDefaultPasswordAsync(
 	// 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
 	params: API.AccountProResetDefaultPasswordAsyncParams,

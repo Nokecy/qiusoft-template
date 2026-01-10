@@ -3157,7 +3157,7 @@ declare namespace API {
 
 	type BurnLabelEngineModelsEnumsContentAreaPaginationMode = 0 | 1;
 
-	type BurnLabelEngineModelsEnumsElementType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+	type BurnLabelEngineModelsEnumsElementType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 	type BurnLabelEngineModelsEnumsGridDirection = 0 | 1;
 
@@ -4030,6 +4030,13 @@ declare namespace API {
 
 	type LabelPrintTemplateExportAtlAsyncParams = {
 		id: string;
+	};
+
+	type LabelPrintTemplateExportPrnAsyncParams = {
+		id: string;
+		Data?: Record<string, any>;
+		ValidateBeforeConvert?: boolean;
+		PrinterDpi?: number;
 	};
 
 	type LabelPrintTemplateGetAsyncParams = {

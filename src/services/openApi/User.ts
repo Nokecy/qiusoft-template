@@ -157,7 +157,7 @@ export async function UserFindByUsernameAsync(
 	});
 }
 
-/** 创建客户子账户 GET /api/identity/users/customer-user-create */
+/** 此处后端没有提供注释 GET /api/identity/users/customer-user-create */
 export async function UserCreateCustomerUserAsync(
 	// 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
 	params: API.UserCreateCustomerUserAsyncParams,
@@ -174,7 +174,7 @@ export async function UserCreateCustomerUserAsync(
 	});
 }
 
-/** 获取客户子账户列表 GET /api/identity/users/list-with-customer */
+/** 此处后端没有提供注释 GET /api/identity/users/list-with-customer */
 export async function UserGetCustomerUserListAsync(
 	// 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
 	params: API.UserGetCustomerUserListAsyncParams,
@@ -189,7 +189,7 @@ export async function UserGetCustomerUserListAsync(
 	});
 }
 
-/** 获取角色对应的用户列表 GET /api/identity/users/list-with-role */
+/** 此处后端没有提供注释 GET /api/identity/users/list-with-role */
 export async function UserGetListWithRoleAsync(
 	// 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
 	params: API.UserGetListWithRoleAsyncParams,
@@ -204,7 +204,7 @@ export async function UserGetListWithRoleAsync(
 	});
 }
 
-/** 获取供应商用户列表 GET /api/identity/users/list-with-supplier */
+/** 此处后端没有提供注释 GET /api/identity/users/list-with-supplier */
 export async function UserGetSupplierUserListAsync(
 	// 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
 	params: API.UserGetSupplierUserListAsyncParams,
@@ -219,7 +219,7 @@ export async function UserGetSupplierUserListAsync(
 	});
 }
 
-/** 创建供应商子账户 GET /api/identity/users/supplier-user-create */
+/** 此处后端没有提供注释 GET /api/identity/users/supplier-user-create */
 export async function UserCreateSupplierUserAsync(
 	// 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
 	params: API.UserCreateSupplierUserAsyncParams,

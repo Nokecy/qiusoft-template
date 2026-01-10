@@ -28,5 +28,26 @@
     "app.setting.themecolor.cyan": "明青",
     "app.setting.themecolor.green": "极光绿",
     "app.setting.themecolor.geekblue": "极客蓝",
-    "app.setting.themecolor.purple": "酱紫"
+    "app.setting.themecolor.purple": "酱紫",
+    
+    // Tabs相关
+    "tabs.close.left": "关闭左侧",
+    "tabs.close.right": "关闭右侧",
+    "tabs.close.others": "关闭其他",
+    "tabs.refresh": "刷新",
+
+    // 登录页面
+    "login.title": "登录",
+    "login.defaultAppTitle": "数字平台",
+    "login.username.placeholder": "请输入账号",
+    "login.username.required": "请输入账号!",
+    "login.password.placeholder": "请输入密码",
+    "login.password.required": "请输入密码!",
+    "login.organization.placeholder": "请选择组织机构",
+    "login.organization.required": "请选择组织机构",
+    "login.register": "注册",
+    "login.forgetPassword": "忘记密码?",
+    "login.submit": "登录",
+    "login.success": "登录成功！",
+    "login.failed": "登录失败,用户名或密码错误，请重试！"
 };

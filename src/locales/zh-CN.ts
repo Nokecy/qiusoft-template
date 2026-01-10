@@ -5,7 +5,10 @@ import appHRMS from './zh-CN/appHRMS';
 import appPDM from './zh-CN/appPDM';
 import tenant from './zh-CN/tenant';
 import wms from './zh-CN/appWMS';
-import ewms from './zh-CN/appEWMS'
+import ewms from './zh-CN/appEWMS';
+import appMsd from './zh-CN/appMsd';
+import appQms from './zh-CN/appQms';
+
 export default {
     ...common,
     ...appPDM,
@@ -14,5 +17,7 @@ export default {
     ...appHRMS,
     ...tenant,
     ...wms,
-    ...ewms
+    ...ewms,
+    ...appMsd,
+    ...appQms
 };

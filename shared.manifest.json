@@ -30,6 +30,7 @@
     { "from": "src/_utils", "to": "src/_utils" },
     { "from": "src/components", "to": "src/components" },
     { "from": "src/hooks", "to": "src/hooks" },
+    { "from": "src/locales", "to": "src/locales" },
     { "from": "src/pages/appLogin", "to": "src/pages/appLogin" },
     { "from": "src/pages/appWorkflow", "to": "src/pages/appWorkflow" },
     { "from": "src/pages/404.tsx", "to": "src/pages/404.tsx" },

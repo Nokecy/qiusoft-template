@@ -29,5 +29,26 @@
     "app.setting.themecolor.cyan": "cyan",
     "app.setting.themecolor.green": "green",
     "app.setting.themecolor.geekblue": "geekblue",
-    "app.setting.themecolor.purple": "purple"
+    "app.setting.themecolor.purple": "purple",
+
+    // Tabs
+    "tabs.close.left": "Close Left",
+    "tabs.close.right": "Close Right",
+    "tabs.close.others": "Close Others",
+    "tabs.refresh": "Refresh",
+
+    // Login page
+    "login.title": "Login",
+    "login.defaultAppTitle": "Digital Platform",
+    "login.username.placeholder": "Please enter username",
+    "login.username.required": "Please enter username!",
+    "login.password.placeholder": "Please enter password",
+    "login.password.required": "Please enter password!",
+    "login.organization.placeholder": "Please select organization",
+    "login.organization.required": "Please select organization",
+    "login.register": "Register",
+    "login.forgetPassword": "Forgot password?",
+    "login.submit": "Login",
+    "login.success": "Login successful!",
+    "login.failed": "Login failed, incorrect username or password, please try again!"
 };

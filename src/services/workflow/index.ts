@@ -42,7 +42,6 @@ import * as AbpApplicationConfiguration from './AbpApplicationConfiguration';
 import * as AbpApplicationLocalization from './AbpApplicationLocalization';
 import * as AbpApiDefinition from './AbpApiDefinition';
 import * as WorkflowLaunchpad from './WorkflowLaunchpad';
-import * as WorkflowBadge from './WorkflowBadge';
 export default {
 	WorkflowInstances,
 	BulkActions,
@@ -84,5 +83,4 @@ export default {
 	AbpApplicationLocalization,
 	AbpApiDefinition,
 	WorkflowLaunchpad,
-	WorkflowBadge,
 };

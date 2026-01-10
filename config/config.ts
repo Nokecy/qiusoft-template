@@ -55,7 +55,6 @@ export default defineConfig({
 		'./plugins/dynamicSchema/index.ts',
 		// './plugins/getAllSchema/index.ts',
 		'./plugins/table-layout',
-		'./plugins/badges/badge.ts',
 		'./plugins/openapi',
 		'@alita/plugins/dist/keepalive',
 		'@alita/plugins/dist/tabs-layout',

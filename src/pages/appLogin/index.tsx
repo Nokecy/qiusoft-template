@@ -5,10 +5,11 @@ import {
     UserOutlined,
 } from '@ant-design/icons';
 import { Helmet, history, request, SelectLang, useIntl, useModel } from 'umi';
-import { Alert, Button, Flex, Form, FormProps, Input, message, Select } from 'antd';
+import { Button, Flex, Form, FormProps, Input, message, Select, Spin } from 'antd';
 import { createStyles } from 'antd-style';
+import { useDebounceFn } from 'ahooks';
 import Cookies from 'js-cookie';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import loginImg from '../../assets/loginBg.jpg';
 import loginimg2 from '../../assets/loginimg2.png';
 import './index.less';
@@ -19,6 +20,12 @@ type FieldType = {
     organizationId?: string;
     remember?: string;
 };
+
+/**
+ * 统一的输入框边框样式
+ * @author nokecy
+ */
+const inputBorderStyle = { borderBottom: '1px solid #666666', borderRadius: '0px' };
 
 const useStyles = createStyles(({ token }) => {
     return {
@@ -83,35 +90,20 @@ const Lang = () => {
     );
 };
 
-const LoginMessage: React.FC<{
-    content: string;
-}> = ({ content }) => {
-    return (
-        <Alert
-            style={{
-                marginBottom: 24,
-            }}
-            message={content}
-            type="error"
-            showIcon
-        />
-    );
-};
-
 const Login = () => {
-    const [userLoginState, setUserLoginState] = useState<any>({});
-    const [type, setType] = useState<string>('account');
-    const { initialState, setInitialState, refresh } = useModel('@@initialState');
+    const { refresh } = useModel('@@initialState');
     const { styles } = useStyles();
     const intl = useIntl();
     const appTitle = APP_TITLE || intl.formatMessage({ id: 'login.defaultAppTitle' });
-    const { status, type: loginType } = userLoginState;
 
     const [loginLoading, setLoginLoading] = useState(false);
     const [organizations, setOrganizations] = useState<any[]>([]);
     const [loadingOrgs, setLoadingOrgs] = useState(false);
     const [selectedOrgCode, setSelectedOrgCode] = useState<string | undefined>();
-    const [form] = Form.useForm();
+
+    // 配置：是否启用组织选择功能
+    // @author nokecy
+    const enableOrganization = (window as any).serverUrl?.enableOrganization ?? false;
 
     const login = ({ username, password }: { username?: string; password?: string }) => {
         const clientId = OAUTH_ClientID;
@@ -127,50 +119,54 @@ const Login = () => {
         });
     };
 
-    const fetchUserInfo = async () => {
-        await refresh();
-    };
+    /**
+     * 防抖获取组织机构列表
+     * 用户输入用户名时实时搜索，500ms 防抖后获取组织列表
+     * @author nokecy
+     */
+    const { run: fetchOrganizations } = useDebounceFn(
+        async (username: string) => {
+            if (!username?.trim()) {
+                setOrganizations([]);
+                setSelectedOrgCode(undefined);
+                return;
+            }
 
-    // 当用户名改变时获取组织机构列表
-    const handleUsernameChange = async (e: React.FocusEvent<HTMLInputElement>) => {
-        const username = e.target.value?.trim();
-        if (!username) {
-            setOrganizations([]);
-            form.setFieldValue('organizationId', undefined);
-            return;
-        }
-
-        try {
             setLoadingOrgs(true);
-            const orgs = await OrganizationInfoGetOrganizationsByUserNameAsync({ userName: username });
-            setOrganizations(orgs || []);
+            try {
+                const orgs = await OrganizationInfoGetOrganizationsByUserNameAsync({ userName: username });
+                setOrganizations(orgs || []);
 
-            // 自动选中默认组织，如果没有默认组织且只有一个则自动选中
-            if (orgs && orgs.length > 0) {
-                const defaultOrg = orgs.find((org: any) => org.isDefault === true || org.IsDefault === true || org.isdefault === true);
-                if (defaultOrg) {
-                    setSelectedOrgCode(defaultOrg.code);
-                } else if (orgs.length === 1) {
-                    setSelectedOrgCode(orgs[0].code);
+                // 自动选中默认组织，如果没有默认组织且只有一个则自动选中
+                // @author nokecy
+                if (orgs && orgs.length > 0) {
+                    const defaultOrg = orgs.find((org: any) => Boolean(org.isDefault));
+                    if (defaultOrg) {
+                        setSelectedOrgCode(defaultOrg.code);
+                    } else if (orgs.length === 1) {
+                        setSelectedOrgCode(orgs[0].code);
+                    } else {
+                        setSelectedOrgCode(undefined);
+                    }
                 } else {
                     setSelectedOrgCode(undefined);
                 }
-            } else {
+            } catch (error) {
+                console.error('获取组织机构失败:', error);
+                message.error(intl.formatMessage({ id: 'login.organization.fetchFailed' }));
+                setOrganizations([]);
                 setSelectedOrgCode(undefined);
+            } finally {
+                setLoadingOrgs(false);
             }
-        } catch (error) {
-            console.error('获取组织机构失败:', error);
-            setOrganizations([]);
-            form.setFieldValue('organizationId', undefined);
-        } finally {
-            setLoadingOrgs(false);
-        }
-    };
+        },
+        { wait: 500 }
+    );
 
     const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
         try {
-            // 检查是否选择了组织机构
-            if (organizations.length > 0 && !selectedOrgCode) {
+            // 检查是否选择了组织机构（仅在启用组织功能且有组织列表时）
+            if (enableOrganization && organizations.length > 0 && !selectedOrgCode) {
                 message.warning(intl.formatMessage({ id: 'login.organization.required' }));
                 return;
             }
@@ -188,16 +184,14 @@ const Login = () => {
             }
 
             message.success(intl.formatMessage({ id: 'login.success' }));
-            await fetchUserInfo();
+            await refresh();
             setLoginLoading(false);
             setTimeout(() => {
                 const urlParams = new URL(window.location.href).searchParams;
                 history.push(urlParams.get('redirect') || '/');
-            }, 500)
-            return;
+            }, 500);
         } catch (error) {
             setLoginLoading(false);
-            console.log(error, "error");
             message.error(intl.formatMessage({ id: 'login.failed' }));
         }
     };
@@ -218,7 +212,6 @@ const Login = () => {
                         <div className='login-title'>{appTitle}</div>
 
                         <Form
-                            form={form}
                             name="login"
                             style={{ width: 243, maxWidth: 600, }}
                             initialValues={{ remember: true }}
@@ -232,23 +225,28 @@ const Login = () => {
                                 <Input
                                     placeholder={intl.formatMessage({ id: 'login.username.placeholder' })}
                                     prefix={<UserOutlined />}
-                                    style={{ borderBottom: '1px solid #666666', borderRadius: '0px' }}
+                                    style={inputBorderStyle}
                                     variant="borderless"
-                                    onBlur={handleUsernameChange}
+                                    onChange={(e) => enableOrganization && fetchOrganizations(e.target.value)}
                                 />
                             </Form.Item>
 
-                            {organizations.length > 0 && (
+                            {enableOrganization && (
                                 <Form.Item>
                                     <div className="org-select-wrapper">
                                         <ApartmentOutlined className="org-select-icon" />
                                         <Select
-                                            placeholder={intl.formatMessage({ id: 'login.organization.placeholder' })}
+                                            placeholder={organizations.length === 0
+                                                ? intl.formatMessage({ id: 'login.organization.inputUsername' })
+                                                : intl.formatMessage({ id: 'login.organization.placeholder' })}
                                             loading={loadingOrgs}
-                                            style={{ borderRadius: '0px' }}
                                             variant="borderless"
                                             value={selectedOrgCode}
                                             onChange={setSelectedOrgCode}
+                                            disabled={organizations.length === 0 && !loadingOrgs}
+                                            notFoundContent={loadingOrgs
+                                                ? <Spin size="small" />
+                                                : intl.formatMessage({ id: 'login.organization.noOrganization' })}
                                             options={organizations.map(org => ({
                                                 label: org.name,
                                                 value: org.code,
@@ -262,7 +260,7 @@ const Login = () => {
                                 name="password"
                                 rules={[{ required: true, message: intl.formatMessage({ id: 'login.password.required' }) }]}
                             >
-                                <Input.Password prefix={<LockOutlined />} type="password" style={{ borderBottom: '1px solid #666666', borderRadius: '0px' }} placeholder={intl.formatMessage({ id: 'login.password.placeholder' })} variant="borderless" />
+                                <Input.Password prefix={<LockOutlined />} type="password" style={inputBorderStyle} placeholder={intl.formatMessage({ id: 'login.password.placeholder' })} variant="borderless" />
                             </Form.Item>
                             <Form.Item>
                                 <Flex justify='space-between' align="center">

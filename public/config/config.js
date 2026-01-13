@@ -4,4 +4,6 @@ window.serverUrl = {
 	workflowDesignerServerUrl: 'http://192.168.2.2:10009',
 	// 图纸查看器云API地址（新迪FingerHttp服务）
 	fingerHttpServerUrl: 'http://192.168.2.2:8090',
+	// 是否启用组织选择功能
+	enableOrganization: true,
 };

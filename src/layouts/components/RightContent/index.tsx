@@ -10,6 +10,10 @@ const RightContent = (props) => {
     const { initialState, refresh } = useModel('@@initialState');
     const { organizationCode } = useModel('useOrganizationModel');
 
+    // 配置：是否启用组织选择功能
+    // @author nokecy
+    const enableOrganization = (window as any).serverUrl?.enableOrganization ?? false;
+
     if (!initialState || !initialState.layout) {
         return null;
     }
@@ -42,17 +46,19 @@ const RightContent = (props) => {
 
             <Avatar menu={true} />
 
-            <SelectOrganization onItemClick={async ({ key }) => {
-                if (key === organizationCode) {
-                    return;
-                }
-                dropByCacheKey(window.location.pathname);
-                try {
-                    await refresh();
-                } catch (error) {
-                    console.error('Failed to refresh after organization change:', error);
-                }
-            }} />
+            {enableOrganization && (
+                <SelectOrganization onItemClick={async ({ key }) => {
+                    if (key === organizationCode) {
+                        return;
+                    }
+                    dropByCacheKey(window.location.pathname);
+                    try {
+                        await refresh();
+                    } catch (error) {
+                        console.error('Failed to refresh after organization change:', error);
+                    }
+                }} />
+            )}
 
             <SelectLang className={styles.action} onItemClick={({ key }) => {
                 if (key === "zh-CN") {

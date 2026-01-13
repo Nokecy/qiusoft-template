@@ -67,20 +67,13 @@ const Lang = () => {
     const { styles } = useStyles();
 
     /**
-     * 语言切换回调 - 与 RightContent 保持一致
+     * 语言切换回调 - Cookie 存储标准 locale 代码，请求拦截器转换为 ABP 格式
      * @author nokecy
      */
     const handleLangChange = ({ key }: { key: string }) => {
-        let langKey = key;
-        if (langKey === 'zh-CN') {
-            langKey = 'zh-Hans';
-        }
-        if (langKey === 'en-US') {
-            langKey = 'en';
-        }
-        Cookies.set('Accept-Language', langKey);
-        const switchUrl = `/Abp/Languages/Switch?culture=${langKey}&uiCulture=${langKey}`;
-        window.location.href = switchUrl;
+        // 直接存储标准 locale 代码（zh-CN, en-US），不做转换
+        Cookies.set('Accept-Language', key, { expires: 365 });
+        window.location.reload();
     };
 
     return (

@@ -19,8 +19,12 @@ const emailPath = '/appLogin/emailConfirmation';
 
 let extraRoutes: any[] = [];
 
+/**
+ * 获取当前语言设置，Cookie 已存储标准 locale 代码
+ * @author nokecy
+ */
 const getLocale = () => {
-	return Cookies.get('Accept-Language') === 'en' ? 'en-US' : 'zh-CN';
+	return Cookies.get('Accept-Language') || 'zh-CN';
 };
 
 export const rootContainer = container => {
@@ -155,9 +159,6 @@ export const layout = ({ initialState }) => {
 };
 
 export const request: RequestConfig = {
-  headers: {
-          'Accept-Language': Cookies.get('Accept-Language') || 'zh-Hans',
-  },
   paramsSerializer: (params) => {
     // 使用 repeat 格式序列化数组参数，兼容 ASP.NET Core
     // Features[]=value -> Features=value1&Features=value2
@@ -176,9 +177,16 @@ export const request: RequestConfig = {
                   const normalizedOrganizationCode =
                           organizationCode && organizationCode !== 'ALL' ? organizationCode : '';
 
+                  // 动态获取语言设置，通过 HTTP Header 传递给后端 @author nokecy
+                  // Cookie 存储标准 locale 代码（zh-CN, en-US），转换为 ABP 格式（zh-Hans, en）
+                  const localeFromCookie = Cookies.get('Accept-Language') || 'zh-CN';
+                  const acceptLanguage = localeFromCookie === 'zh-CN' ? 'zh-Hans' :
+                                         localeFromCookie === 'en-US' ? 'en' : localeFromCookie;
+
                   const headers = {
                           ...config.headers,
-                          Authorization: `Bearer ${accessToken}`
+                          Authorization: `Bearer ${accessToken}`,
+                          'Accept-Language': acceptLanguage,
                   }
                   const skipOrganization =
                           headers['x-skip-organization'] ||

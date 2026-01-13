@@ -60,17 +60,11 @@ const RightContent = (props) => {
                 }} />
             )}
 
+            {/* 语言切换：Cookie 存储标准 locale 代码，请求拦截器转换为 ABP 格式 @author nokecy */}
             <SelectLang className={styles.action} onItemClick={({ key }) => {
-                if (key === "zh-CN") {
-                    key = "zh-Hans";
-                }
-                if (key === "en-US") {
-                    key = "en";
-                }
-                Cookies.set('Accept-Language', key)
-                let switUrl = `/Abp/Languages/Switch?culture=${key}&uiCulture=${key}`;
-
-                window.location.href = switUrl;
+                // 直接存储标准 locale 代码（zh-CN, en-US）
+                Cookies.set('Accept-Language', key, { expires: 365 });
+                window.location.reload();
             }} />
 
         </div >

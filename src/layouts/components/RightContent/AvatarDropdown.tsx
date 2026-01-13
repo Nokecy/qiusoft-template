@@ -94,7 +94,28 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
 
         <HeaderDropdown overlay={menuHeaderDropdown}>
             <span className={`${styles.action} ${styles.account}`} style={{ color: "#dfdfdf", fontSize: 12 }}>
-                <Avatar size="small" className={styles.avatar} src={initialState.avatarUrl} alt="avatar" />
+                {/* 头像组件：有图片显示图片，无图片显示首字母 @author nokecy */}
+                {initialState.avatarUrl ? (
+                    <Avatar size="small" className={styles.avatar} src={initialState.avatarUrl} />
+                ) : (
+                    <span
+                        className={styles.avatar}
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: 24,
+                            height: 24,
+                            borderRadius: '50%',
+                            backgroundColor: '#f56a00',
+                            color: '#fff',
+                            fontSize: 12,
+                            fontWeight: 500,
+                        }}
+                    >
+                        {configuration.currentUser.name?.charAt(0)?.toUpperCase()}
+                    </span>
+                )}
                 <span className={`${styles.name} anticon`}>{configuration.currentUser.name}</span>
             </span>
         </HeaderDropdown>

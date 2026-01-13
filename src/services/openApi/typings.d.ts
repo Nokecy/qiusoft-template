@@ -1704,6 +1704,22 @@ declare namespace API {
 		providerName?: string;
 	};
 
+	type BurnAbpExtraObjectManagementApplication_biaogefanganSchemesApplyToGlobalRequestDto = {
+		/** 表格标识 */
+		gridId: string;
+		/** 源方案ID（用户的方案） */
+		sourceSchemeId: string;
+	};
+
+	type BurnAbpExtraObjectManagementApplication_biaogefanganSchemesApplyToGlobalResultDto = {
+		/** 操作是否成功 */
+		success?: boolean;
+		/** 全局方案ID（创建或更新后的） */
+		globalSchemeId?: string;
+		/** 操作消息 */
+		message?: string;
+	};
+
 	type BurnAbpExtraObjectManagementApplication_biaogefanganSchemesColumnTableSchemeDto = {
 		id?: string;
 		name?: string;
@@ -1753,6 +1769,39 @@ declare namespace API {
 		shareLevel?: BurnAbpExtraObjectManagementDomainShared_biaogefanganShareLevel;
 		concurrencyStamp?: string;
 		queryConfig?: string;
+	};
+
+	type BurnAbpExtraObjectManagementApplication_biaogefanganSchemesResetAllUsersRequestDto = {
+		/** 表格标识 */
+		gridId: string;
+	};
+
+	type BurnAbpExtraObjectManagementApplication_biaogefanganSchemesResetAllUsersResultDto = {
+		/** 操作是否成功 */
+		success?: boolean;
+		/** 删除的方案数量 */
+		deletedCount?: number;
+		/** 受影响的用户数量 */
+		affectedUsers?: number;
+		/** 操作消息 */
+		message?: string;
+	};
+
+	type BurnAbpExtraObjectManagementApplication_biaogefanganSchemesResetToGlobalRequestDto = {
+		/** 表格标识 */
+		gridId: string;
+		/** 指定删除的方案ID（可选）
+不传则删除该 GridId 下当前用户的所有个人方案 */
+		schemeId?: string;
+	};
+
+	type BurnAbpExtraObjectManagementApplication_biaogefanganSchemesResetToGlobalResultDto = {
+		/** 操作是否成功 */
+		success?: boolean;
+		/** 删除的方案数量 */
+		deletedCount?: number;
+		/** 操作消息 */
+		message?: string;
 	};
 
 	type BurnAbpExtraObjectManagementApplication_biaogefanganSchemesSaveColumnSchemeRequestDto = {

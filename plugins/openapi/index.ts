@@ -7,8 +7,10 @@ import type { IApi } from 'umi';
 import { lodash, winPath } from 'umi/plugin-utils';
 
 export default (api: IApi) => {
+  // 默认开发启动不加载 Swagger UI、不拉取远程 schema，降低 npm run start 内存与网络负担。@author nokecy
+  const enableDevOpenAPI = process.env.DEV_OPENAPI === '1' || process.env.DEV_OPENAPI === 'true';
   api.onStart(() => {
-    console.log('Using openapi Plugin');
+    console.log(`Using openapi Plugin${enableDevOpenAPI ? '' : ' (dev docs disabled)'}`);
   });
   api.describe({
     key: 'openAPI',
@@ -50,7 +52,7 @@ export default (api: IApi) => {
   });
 
   api.onGenerateFiles(() => {
-    if (api.env !== 'development') return;
+    if (api.env !== 'development' || !enableDevOpenAPI) return;
     const openAPIConfig = api.config.openAPI;
     const arrayConfig = lodash.flatten([openAPIConfig]);
     const config = arrayConfig?.[0]?.projectName || 'openapi';
@@ -103,7 +105,7 @@ export default (api: IApi) => {
     });
   });
 
-  if (api.env === 'development') {
+  if (api.env === 'development' && enableDevOpenAPI) {
     api.modifyRoutes((routes) => {
       routes['umi/plugin/openapi'] = {
         path: '/umi/plugin/openapi',
@@ -116,7 +118,7 @@ export default (api: IApi) => {
   }
 
   const genOpenAPIFiles = async (openAPIConfig: any) => {
-    if (api.env !== 'development') return;
+    if (api.env !== 'development' || !enableDevOpenAPI) return;
     const openAPIJson = await getSchema(openAPIConfig.schemaPath);
     writeFileSync(
       join(
@@ -127,7 +129,7 @@ export default (api: IApi) => {
     );
   };
   api.onDevCompileDone(async () => {
-    if (api.env !== 'development') return;
+    if (api.env !== 'development' || !enableDevOpenAPI) return;
     try {
       const openAPIConfig = api.config.openAPI;
       if (Array.isArray(openAPIConfig)) {

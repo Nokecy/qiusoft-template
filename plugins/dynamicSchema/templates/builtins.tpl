@@ -1,4 +1,4 @@
-import type { DynamicSchemaDefinition } from '@/dynamicSchemas/types';
+import type { DynamicSchemaDefinition } from '@/appShell/dynamicSchemas/types';
 
 {{{ imports }}}
 

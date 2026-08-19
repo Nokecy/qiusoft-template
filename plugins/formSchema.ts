@@ -69,7 +69,7 @@ import {
  TimePicker, Transfer, TreeSelect, Upload
 } from "@formily/antd-v5";
 import { ArrayTable , Editable } from "@nokecy/qc-ui";
-import { Card } from "@/components";
+import { Card } from "@/appShell/components";
 import { formComponents } from "umi";
 import { FormSchemaContext } from './context';
 

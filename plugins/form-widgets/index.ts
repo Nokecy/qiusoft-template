@@ -1,10 +1,33 @@
 import { IApi } from 'umi';
-import { basename, dirname, extname, join, relative } from 'path';
+import { basename, extname, join } from 'path';
 import { getWidgets } from './getWidget';
 import { readFileSync } from 'fs';
 import { Mustache, lodash, winPath } from '@umijs/utils';
 
 export default function (api: IApi) {
+
+  const enabledRouteModules = process.env.DEV_ROUTE_MODULES?.split(',').map(item => item.trim()).filter(Boolean);
+
+  function filterByEnabledRouteModules(paths: string[]) {
+    if (!enabledRouteModules?.length) return paths;
+
+    // 开发路由裁剪时，表单组件也只生成对应业务模块，避免 Webpack/Mako 仍加载全系统组件。@author nokecy
+    const pagesPath = winPath(api.paths.absPagesPath!);
+    return paths.filter(path => {
+      const normalizedPath = winPath(path);
+      if (!normalizedPath.startsWith(`${pagesPath}/`)) return true;
+
+      const moduleName = normalizedPath.slice(pagesPath.length + 1).split('/')[0];
+      return enabledRouteModules.includes(moduleName);
+    });
+  }
+
+  function getModelName(path: string) {
+    return `${lodash.upperFirst(
+      // lodash.camelCase(basename(path, extname(path))),
+      basename(path, extname(path)),
+    )}`;
+  }
 
   function getSrcModelsPath() {
     return join(api.paths.absSrcPath!, '_formWidgets');
@@ -16,7 +39,7 @@ export default function (api: IApi) {
       skipModelValidate: api.config.dva?.skipModelValidate,
       extraModels: api.config.dva?.extraModels,
     };
-    return lodash.uniq([
+    return filterByEnabledRouteModules(lodash.uniq([
       ...getWidgets({
         base: srcModelsPath,
         cwd: api.cwd,
@@ -28,7 +51,7 @@ export default function (api: IApi) {
         pattern: `**/${"_formWidgets"}/*.{ts,tsx,js,jsx}`,
         ...baseOpts,
       })
-    ]);
+    ]));
   }
 
 
@@ -37,16 +60,9 @@ export default function (api: IApi) {
     enableBy: api.EnableBy.register,
   })
 
-  let hasModels = false;
-
-  api.onStart(() => {
-    hasModels = getAllInitStates().length > 0;
-  });
-
   api.onGenerateFiles(() => {
 
     const models = getAllInitStates();
-    hasModels = models.length > 0;
 
     // if (!hasModels) return;
 
@@ -57,42 +73,32 @@ export default function (api: IApi) {
       content: Mustache.render(dvaTpl, {
         RegisterModelImports: models
           .map((path, index) => {
-            const modelName = `${lodash.upperFirst(
-              // lodash.camelCase(basename(path, extname(path))),
-              basename(path, extname(path)),
-            )}`;
-            return `import ${modelName}Component,{ ${modelName} } from '${path}';`;
+            const modelName = getModelName(path);
+            const componentName = `${modelName}Component${index}`;
+            const exportName = `${modelName}${index}`;
+            return `import ${componentName},{ ${modelName} as ${exportName} } from '${path}';`;
           })
           .join('\r\n'),
         RegisterModels: models
           .map((path, index) => {
             // prettier-ignore
-            const modelName = `${lodash.upperFirst(
-              // lodash.camelCase(basename(path, extname(path))),
-              basename(path, extname(path)),
-            )}`;
-            return `export { ${modelName} }`.trim();
+            const modelName = getModelName(path);
+            return `export { ${modelName}${index} }`.trim();
           })
           .join('\r\n'),
         Datas: models
           .map((path, index) => {
             // prettier-ignore
-            const modelName = `${lodash.upperFirst(
-              // lodash.camelCase(basename(path, extname(path))),
-              basename(path, extname(path)),
-            )}`;
-            return `${modelName}Component ,`.trim();
+            const modelName = getModelName(path);
+            return `${modelName}Component${index} ,`.trim();
           })
           .join('\r\n'),
 
         ComponentDatas: models
           .map((path, index) => {
             // prettier-ignore
-            const modelName = `${lodash.upperFirst(
-              // lodash.camelCase(basename(path, extname(path))),
-              basename(path, extname(path)),
-            )}`;
-            return `${modelName} ,`.trim();
+            const modelName = getModelName(path);
+            return `${JSON.stringify(modelName)}: ${modelName}${index} ,`.trim();
           })
           .join('\r\n'),
       })

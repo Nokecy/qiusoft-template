@@ -1,40 +1,63 @@
-import appSYS from './routeItems/appSYS.json';
+// @author nokecy
+// 路由表由客户配置的启用模块清单与各模块自述组装得出，本文件不含任何具体模块的页面知识。
+import { existsSync } from 'fs';
+import { join } from 'path';
+import { project } from './project';
 
-const routes = [
-  {
-    path: '/404',
-    component: './404',
-    name: '找不到页面',
-  },
-  {
-    path: '',
-    component: './',
-    name: '首页',
-  },
-  {
-    path: '/appLogin',
-    component: './appLogin',
-    name: '登录',
-    xLayout: false,
-  },
-  {
-    path: '/appLogin/forgetPassword',
-    component: './appLogin/forgetPassword',
-    name: '找回密码',
-    xLayout: false,
-  },
-  {
-    path: '/appLogin/emailConfirmation',
-    component: './appLogin/emailConfirmation',
-    name: '确认邮箱',
-    xLayout: false,
-  },
-  {
-    path: 'appDealer/index',
-    component: './appSYS',
-    name: '系统管理',
-  },
-  ...appSYS,
+type RouteItem = {
+	path?: string;
+	component?: string;
+	name?: string;
+	layout?: boolean;
+	redirect?: string;
+};
+
+// 业务模块在 src/pages，应用壳自带的模块（如登录）在 src/appShell。
+const moduleRoots = [join(__dirname, '../src/pages'), join(__dirname, '../src/appShell')];
+
+/** 读取模块自述。模块自述只承载路由，菜单标题、图标与权限由后端动态菜单下发。 */
+const readModuleRoutes = (moduleName: string): RouteItem[] => {
+	const selfDescription = moduleRoots.map(root => join(root, moduleName, 'routes.json')).find(existsSync);
+	if (!selfDescription) {
+		throw new Error(`模块 ${moduleName} 缺少模块自述 ${moduleName}/routes.json`);
+	}
+	// eslint-disable-next-line @typescript-eslint/no-var-requires
+	return require(selfDescription) as RouteItem[];
+};
+
+// DEV_ROUTE_MODULES 用于开发时裁剪路由模块，避免 max dev 一次加载全系统。@author nokecy
+const devModules = process.env.DEV_ROUTE_MODULES?.split(',')
+	.map(item => item.trim())
+	.filter(Boolean);
+// DEV_ROUTE_PREFIXES 进一步裁剪到指定路径前缀，只作用于前缀所属的那个模块。@author nokecy
+const devPrefixes =
+	process.env.DEV_ROUTE_PREFIXES?.split(',')
+		.map(item => item.trim())
+		.filter(Boolean) ?? [];
+const devPrefixOwners = new Set(devPrefixes.map(prefix => prefix.split('/').filter(Boolean)[0]));
+
+const takeModuleRoutes = (moduleName: string): RouteItem[] => {
+	if (devModules && !devModules.includes(moduleName)) return [];
+
+	const moduleRoutes = readModuleRoutes(moduleName);
+	if (!devPrefixes.length || !devPrefixOwners.has(moduleName)) return moduleRoutes;
+
+	return moduleRoutes.filter(route => devPrefixes.some(prefix => route.path?.startsWith(prefix)));
+};
+
+/** 按启用清单组装路由表。清单是唯一输入，停用一个模块只需把它从清单中移除。 */
+export const buildRoutes = (enabledModules: string[]): RouteItem[] => [
+	{
+		path: '/404',
+		component: './404',
+		name: '找不到页面',
+	},
+	{
+		path: '',
+		component: './',
+		name: '首页',
+	},
+	...enabledModules.flatMap(takeModuleRoutes),
 ];
 
-export default routes;
+export default buildRoutes(project.enabledModules);

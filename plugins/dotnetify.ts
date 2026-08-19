@@ -1,5 +1,3 @@
-import { Mustache } from '@umijs/utils';
-import { join } from 'path';
 import { IApi } from 'umi';
 import { withTmpPath } from './withTmpPath';
 

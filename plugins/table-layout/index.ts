@@ -1,8 +1,6 @@
 import { IApi } from 'umi';
-import { Mustache, lodash, winPath } from '@umijs/utils';
 import { withTmpPath } from '../withTmpPath';
-import { readFileSync } from 'fs';
-import { join, relative } from 'path';
+import { join } from 'path';
 
 export default (api: IApi) => {
 	api.describe({

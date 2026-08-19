@@ -1,26 +1,11 @@
 import { IApi } from 'umi';
 import { basename, extname, join } from 'path';
-import { getWidgets } from './getWidget';
+import { scanFiles as getWidgets } from '../scanFiles';
+import { filterByEnabledRouteModules } from '../routeModules';
 import { readFileSync } from 'fs';
-import { Mustache, lodash, winPath } from '@umijs/utils';
+import { Mustache, lodash } from '@umijs/utils';
 
 export default function (api: IApi) {
-
-  const enabledRouteModules = process.env.DEV_ROUTE_MODULES?.split(',').map(item => item.trim()).filter(Boolean);
-
-  function filterByEnabledRouteModules(paths: string[]) {
-    if (!enabledRouteModules?.length) return paths;
-
-    // 开发路由裁剪时，普通 widget 也只生成对应业务模块，避免临时入口加载全系统。@author nokecy
-    const pagesPath = winPath(api.paths.absPagesPath!);
-    return paths.filter(path => {
-      const normalizedPath = winPath(path);
-      if (!normalizedPath.startsWith(`${pagesPath}/`)) return true;
-
-      const moduleName = normalizedPath.slice(pagesPath.length + 1).split('/')[0];
-      return enabledRouteModules.includes(moduleName);
-    });
-  }
 
   function getModelName(path: string) {
     return `${lodash.upperFirst(
@@ -38,7 +23,7 @@ export default function (api: IApi) {
       skipModelValidate: api.config.dva?.skipModelValidate,
       extraModels: api.config.dva?.extraModels,
     };
-    return filterByEnabledRouteModules(lodash.uniq([
+    return filterByEnabledRouteModules(api, lodash.uniq([
       ...getWidgets({
         base: srcModelsPath,
         cwd: api.cwd,

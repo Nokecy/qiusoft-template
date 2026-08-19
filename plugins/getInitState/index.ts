@@ -1,7 +1,7 @@
 import { IApi } from 'umi';
-import { Mustache, lodash, winPath } from '@umijs/utils';
-import { basename, dirname, extname, join, relative } from 'path';
-import { getInitStates } from './getInitState';
+import { Mustache, lodash } from '@umijs/utils';
+import { basename, extname, join } from 'path';
+import { scanFiles as getInitStates } from '../scanFiles';
 import { readFileSync } from 'fs';
 
 export default function (api: IApi) {

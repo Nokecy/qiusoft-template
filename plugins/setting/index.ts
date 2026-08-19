@@ -1,9 +1,9 @@
 import { IApi } from 'umi';
-import { Mustache, lodash, winPath } from '@umijs/utils';
+import { Mustache, lodash } from '@umijs/utils';
 import { withTmpPath } from '../withTmpPath';
-import { getWidgets } from './getSettingWidget';
+import { scanFiles as getWidgets } from '../scanFiles';
 import { readFileSync } from 'fs';
-import { basename, dirname, extname, join, relative } from 'path';
+import { basename, extname, join } from 'path';
 
 export default (api: IApi) => {
 

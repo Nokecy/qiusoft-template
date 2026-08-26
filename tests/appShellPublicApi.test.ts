@@ -116,6 +116,36 @@ describe('应用壳公开接口', () => {
         assert.deepEqual([...new Set(leaked)].sort(), []);
     });
 
+    it('共享配置对应用壳内部资产的构建期引用必须真实存在', () => {
+        // config.ts 以 join(appShellPath, ...) 读取壳内的目录与资产（models、favicon 模板）。
+        // 这种拼接形态不在上面按 @/appShell/ 做的正则覆盖内，壳里改名或挪走不会有任何报错，
+        // 只会让 model 注册落空、四个客户的站点图标静默消失，所以在这里单独盯住。
+        const configSource = readFileSync(join(repoRoot, 'config/config.ts'), 'utf8');
+        const assets = [...configSource.matchAll(/join\(appShellPath, '([^']+)'\)/g)].map(m => m[1]);
+
+        assert.ok(
+            assets.length > 0,
+            'config.ts 已不再从应用壳读取构建期资产，本断言与被测代码脱节，应一并删除。',
+        );
+        assert.deepEqual(
+            assets.filter(path => !existsSync(join(appShellRoot, path))),
+            [],
+            'config.ts 引用了应用壳中不存在的路径，构建不会报错，但对应能力已静默失效。',
+        );
+
+        // 模板里的占位符同样是契约：壳改了占位符名，构建期填色会落空，图标里留下未替换的字面量。
+        for (const path of assets.filter(item => item.endsWith('.svg'))) {
+            const tokens = [
+                ...readFileSync(join(appShellRoot, path), 'utf8').matchAll(/\{\{(\w+)\}\}/g),
+            ].map(m => m[1]);
+            assert.deepEqual(
+                tokens.filter(token => !configSource.includes(token)),
+                [],
+                `${path} 里的占位符 config.ts 不认识，构建期填色会落空。`,
+            );
+        }
+    });
+
     it('公开面必须显著小于应用壳的全部内容，否则收窄没有发生', () => {
         const countMembers = (domain: string) => {
             const dir = join(appShellRoot, domain);

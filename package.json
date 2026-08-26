@@ -11,9 +11,12 @@
 		"max": "max g",
 		"openapi": "max openapi",
     "prepare": "husky install",
-    "update:shared": "shared-cli update",
+    "update:shared": "npx qiusoft-shared-cli update && node scripts/sharedFingerprint.js --write",
 		"dlrouter": "node plugins/downloadrouterfile.js --",
-    "start": "cross-env NODE_OPTIONS='--max-old-space-size=10240' max dev"
+    "start": "cross-env NODE_OPTIONS='--max-old-space-size=10240' max dev",
+    "test:contract": "node --import tsx --test \"tests/**/*.test.ts\"",
+    "shared:stamp": "node scripts/sharedFingerprint.js --write",
+    "shared:check": "node scripts/sharedFingerprint.js"
 	},
 	"dependencies": {
 		"@alita/plugins": "3.5.5",
@@ -85,6 +88,7 @@
     "prettier-plugin-packagejson": "^2",
     "sass": "1.49.9",
     "typescript": "5.0.4",
-    "qiusoft-shared-cli": "^0.1.0"
+    "qiusoft-shared-cli": "^0.1.0",
+    "tsx": "^4.20.0"
   }
 }

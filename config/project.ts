@@ -31,5 +31,11 @@ export const project = {
 		},
 	},
 	layoutDefaults: { ...projectDefaults.layoutDefaults, ...(projectLocal.layoutDefaults || {}) },
+	login: {
+		...projectDefaults.login,
+		...(projectLocal.login || {}),
+		features: { ...projectDefaults.login.features, ...(projectLocal.login?.features || {}) },
+		footer: { ...projectDefaults.login.footer, ...(projectLocal.login?.footer || {}) },
+	},
 	openAPI: projectLocal.openAPI?.length ? projectLocal.openAPI : projectDefaults.openAPI,
 };

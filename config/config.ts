@@ -1,4 +1,4 @@
-import { existsSync, readdirSync } from 'fs';
+import { existsSync, readFileSync, readdirSync } from 'fs';
 import { basename, extname, join } from 'path';
 import { defineConfig } from 'umi';
 import { project } from './project';
@@ -17,6 +17,40 @@ const appShellModels = existsSync(appShellModelsPath)
 			.filter(file => /\.tsx?$/.test(file) && !file.endsWith('.d.ts'))
 			.map(file => `${join(appShellModelsPath, file)}#${JSON.stringify({ namespace: basename(file, extname(file)) })}`)
 	: [];
+// 站点图标：图形取自应用壳（与登录页插画同形），颜色由客户主题色派生后在构建期填入，
+// 生成 data URI 直接挂到 head。四个客户开箱即有图标且各是各的颜色，不必各自维护一份 favicon 文件。
+// 客户要用自己的 logo，在客户配置里填 login.faviconUrl 覆盖。@author nokecy
+const shadeColor = (hex: string, ratio: number) => {
+	const raw = hex.replace('#', '');
+	const full = raw.length === 3 ? raw.split('').map(c => c + c).join('') : raw;
+	const num = parseInt(full, 16);
+	if (Number.isNaN(num)) {
+		return hex;
+	}
+	const channel = (shift: number) => {
+		const c = (num >> shift) & 255;
+		const next = ratio >= 0 ? c + (255 - c) * ratio : c * (1 + ratio);
+		return Math.max(0, Math.min(255, Math.round(next)));
+	};
+	return `#${[channel(16), channel(8), channel(0)].map(c => c.toString(16).padStart(2, '0')).join('')}`;
+};
+
+const faviconTemplatePath = join(appShellPath, 'assets/favicon.svg');
+const primaryColor = project.themeToken?.colorPrimary || '#1677ff';
+const generatedFavicon = existsSync(faviconTemplatePath)
+	? `data:image/svg+xml,${encodeURIComponent(
+			readFileSync(faviconTemplatePath, 'utf8')
+				// 注释与缩进只对读模板的人有用，编码进 data URI 会白白撑大每个页面的 head
+				.replace(/<!--[\s\S]*?-->/g, '')
+				.replace(/\s+/g, ' ')
+				.trim()
+				.replace(/\{\{colorLight\}\}/g, shadeColor(primaryColor, 0.22))
+				.replace(/\{\{colorBase\}\}/g, primaryColor)
+				.replace(/\{\{colorDark\}\}/g, shadeColor(primaryColor, -0.22)),
+		)}`
+	: '';
+const favicons = [project.login?.faviconUrl || generatedFavicon].filter(Boolean);
+
 // 开发默认关闭 source map，降低 max dev 常驻内存；需要调试映射时使用 DEV_SOURCE_MAP=1。@author nokecy
 const enableSourceMap = process.env.DEV_SOURCE_MAP === '1' || process.env.DEV_SOURCE_MAP === 'true';
 const devBundler = process.env.DEV_BUNDLER || 'webpack';
@@ -40,7 +74,9 @@ export default defineConfig({
 		APP_TITLE: appTitle,
 		APP_LAYOUT: project.layoutDefaults,
 		APP_THEME_TOKEN: project.themeToken,
+		APP_LOGIN: project.login,
 	},
+	favicons,
 	npmClient: 'yarn',
 	routes: routes,
 	// Vite 不再自动 polyfill Node 内置 querystring，这里先映射到现有浏览器库。@author nokecy

@@ -147,7 +147,10 @@ export default defineConfig({
 	headScripts: [
 		// 解决首次加载时白屏的问题
 		{ src: '/scripts/loading.js', async: true },
-		{ src: `/config/config.js`, async: true },
+		// 服务端地址是全局运行时配置，必须先于 umi bundle 执行，因此同步加载不能加 async。
+		// 加 async 时登录后的 window.location.replace 整页重载会让 umi.js 先命中缓存执行，
+		// getInitialState 抢在赋值前发请求，接口退到同源打成 404。@author nokecy
+		{ src: `/config/config.js` },
 		// Vite 下 ProLayout 未稳定注入 iconfont 脚本，显式加载保证菜单 SVG symbol 存在。@author nokecy
 		{ src: iconfontUrl, async: true },
 	],

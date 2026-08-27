@@ -65,11 +65,14 @@ export function innerProvider(container) {
 import React, { useMemo } from 'react';
 import { ISchema, createSchemaField } from '@formily/react'
 import {
-  ArrayCards,Cascader, Checkbox, DatePicker, Field, Form,FormItem, FormCollapse, FormGrid, FormLayout, FormTab, Input, NumberPicker, Password, Radio, Select, Space, Switch,
+  ArrayCards,Cascader, Checkbox, DatePicker, Field, Form, FormCollapse, FormGrid, FormLayout, FormTab, Input, NumberPicker, Password, Radio, Select, Space, Switch,
  TimePicker, Transfer, TreeSelect, Upload
 } from "@formily/antd-v5";
 import { ArrayTable , Editable } from "@nokecy/qc-ui";
 import { Card } from "@/appShell/components";
+// 表单项走应用壳的包装：校验反馈默认可见，且提交失败时说清是哪个字段拦住了。
+// 这是所有 schema 表单的唯一公共入口，规则只能挂在这里。@author nokecy
+import FormItem from "@/appShell/components/formItem";
 import { formComponents } from "umi";
 import { FormSchemaContext } from './context';
 

@@ -70,8 +70,9 @@ import {
 } from "@formily/antd-v5";
 import { ArrayTable , Editable } from "@nokecy/qc-ui";
 import { Card } from "@/appShell/components";
-// 表单项走应用壳的包装：校验反馈默认可见，且提交失败时说清是哪个字段拦住了。
-// 这是所有 schema 表单的唯一公共入口，规则只能挂在这里。@author nokecy
+// 表单项走应用壳的包装：布局不变，只补上「校验失败在提交时报」——
+// 规范承诺了这句，但各页面 createForm 时都没挂，于是提交失败后页面毫无反应。
+// SchemaField 是所有 schema 表单的唯一公共入口，这条规则只能挂在这里。@author nokecy
 import FormItem from "@/appShell/components/formItem";
 import { formComponents } from "umi";
 import { FormSchemaContext } from './context';

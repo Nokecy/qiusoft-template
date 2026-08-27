@@ -36,6 +36,16 @@ declare const APP_LOGIN: {
 };
 
 
+// 首页仪表板的客户覆盖，由客户配置在构建期注入。
+// 应用壳读取时须容错：未升级的宿主没有这个标识符。@author nokecy
+declare const APP_DASHBOARD: {
+	home: { include: string[]; exclude: string[] };
+};
+
+// 顶栏 logo 的兜底图形（data URI），与站点图标同源同色，由客户配置在构建期注入。
+// 应用壳读取时须容错：未升级的宿主没有这个标识符。@author nokecy
+declare const APP_BRAND_MARK: string;
+
 declare var APP_TYPE: string;
 declare module "*.css";
 declare module "*.less";

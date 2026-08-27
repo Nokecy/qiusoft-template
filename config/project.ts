@@ -31,6 +31,11 @@ export const project = {
 		},
 	},
 	layoutDefaults: { ...projectDefaults.layoutDefaults, ...(projectLocal.layoutDefaults || {}) },
+	dashboard: {
+		...projectDefaults.dashboard,
+		...(projectLocal.dashboard || {}),
+		home: { ...projectDefaults.dashboard.home, ...(projectLocal.dashboard?.home || {}) },
+	},
 	login: {
 		...projectDefaults.login,
 		...(projectLocal.login || {}),

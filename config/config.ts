@@ -75,6 +75,10 @@ export default defineConfig({
 		APP_LAYOUT: project.layoutDefaults,
 		APP_THEME_TOKEN: project.themeToken,
 		APP_LOGIN: project.login,
+		APP_DASHBOARD: project.dashboard,
+		// 顶栏 logo 的兜底图形，与站点图标同源同色。服务端 branding 没配 logoUrl 时用它，
+		// 免得顶栏挂一个没有 src 的 img（浏览器会画成一个空框）。@author nokecy
+		APP_BRAND_MARK: generatedFavicon,
 	},
 	favicons,
 	npmClient: 'yarn',

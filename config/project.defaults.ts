@@ -33,6 +33,48 @@ export const projectDefaults = {
       lineHeight: 'inherit',
     },
   },
+  // 首页仪表板。默认上首页的小程序由各小程序自己在元数据里声明（home.default），
+  // 这里只放本客户的覆盖：include 额外要的，exclude 不要的（exclude 优先）。
+  // 填的是小程序的注册名（文件名派生，如 RecentVisits），不是元数据里的中文名。
+  dashboard: {
+    home: {
+      include: [] as string[],
+      exclude: [] as string[],
+    },
+  },
+  // 登录页外观与功能。图形与版式代码在应用壳里，本客户的取值放这儿。
+  login: {
+    /** 版式：split 两栏品牌页 | centered 居中单卡（无品牌图的客户用它，版面不塌） */
+    layout: 'split' as 'split' | 'centered',
+    /** 品牌名，留空取站点标题 */
+    brandName: '',
+    /** 品牌面板副标题，留空不渲染 */
+    subtitle: '',
+    /** 以下三项是 public 下的 URL 而非打包资源，留空则该元素不渲染 */
+    logoUrl: '',
+    backgroundUrl: '',
+    /** 站点图标：留空用应用壳自带的图形并填入本客户主题色；要用自己的 logo 就填 public 下的 URL */
+    faviconUrl: '',
+    /** 插画：留空用应用壳自带的产线示意；填 '-' 表示不要插画 */
+    illustrationUrl: '',
+    features: {
+      /** 组织选择：登录时按账号拉取组织列表并写入 _organizationCode */
+      organization: false,
+      /** 注册入口 */
+      register: false,
+      /** 忘记密码入口 */
+      forgetPassword: true,
+      /** 语言切换 */
+      langSwitch: true,
+    },
+    footer: {
+      copyright: '© 深圳市秋创软件有限公司',
+      icp: '',
+      icpUrl: 'https://beian.miit.gov.cn/',
+    },
+    /** ABP 账号接口的应用名，决定找回密码与邮箱确认邮件回链的域名解析 */
+    accountAppName: 'React',
+  },
   openAPI: [
     {
       projectName: 'smarterp',

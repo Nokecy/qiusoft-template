@@ -41,6 +41,16 @@ export default function (api: IApi) {
         pattern: `**/widget.{ts,tsx,js,jsx}`,
         ...baseOpts,
       }),
+      // 应用壳自带的通用小程序（欢迎、最近访问、我的收藏）。
+      // 它们与客户装了哪些业务模块无关，四个宿主都该有，所以放在壳里而不是各宿主 src/_widgets 各抄一份。
+      // 只扫一层：以后 _widgets 下若放辅助文件，不该被当成小程序注册。
+      // 不在 src/pages 下，因此不受 DEV_ROUTE_MODULES 裁剪影响（见 filterByEnabledRouteModules）。@author nokecy
+      ...getWidgets({
+        base: join(api.paths.absSrcPath!, 'appShell', '_widgets'),
+        cwd: api.cwd,
+        pattern: `*.{ts,tsx,js,jsx}`,
+        ...baseOpts,
+      }),
     ]));
   }
 

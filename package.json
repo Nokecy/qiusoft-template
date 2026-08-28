@@ -10,13 +10,13 @@
 		"lint": "max lint",
 		"max": "max g",
 		"openapi": "max openapi",
-    "prepare": "husky install",
-    "update:shared": "npx qiusoft-shared-cli update && node scripts/sharedFingerprint.js --write",
+		"prepare": "husky install",
+		"update:shared": "npx qiusoft-shared-cli update && node scripts/sharedFingerprint.js --write",
 		"dlrouter": "node plugins/downloadrouterfile.js --",
-    "start": "cross-env NODE_OPTIONS='--max-old-space-size=10240' max dev",
-    "test:contract": "node --import tsx --test \"tests/**/*.test.ts\"",
-    "shared:stamp": "node scripts/sharedFingerprint.js --write",
-    "shared:check": "node scripts/sharedFingerprint.js"
+		"start": "cross-env NODE_OPTIONS='--max-old-space-size=10240' max dev",
+		"test:contract": "node --import tsx --test \"tests/**/*.test.ts\"",
+		"shared:stamp": "node scripts/sharedFingerprint.js --write",
+		"shared:check": "node scripts/sharedFingerprint.js"
 	},
 	"dependencies": {
 		"@alita/plugins": "3.5.5",
@@ -31,8 +31,11 @@
 		"@nokecy/designable-formily-antd": "2.0.0-beta.6",
 		"@nokecy/designable-formily-setters": "2.0.0-beta.6",
 		"@nokecy/designable-react-settings-form": "2.0.0-beta.6",
-		"@nokecy/qc-ui": "1.1.30",
+		"@nokecy/qc-ui": "1.1.46",
 		"@types/react-grid-layout": "^1.3.5",
+		"ag-grid-community": "33.3.2",
+		"ag-grid-enterprise": "33.3.2",
+		"ag-grid-react": "33.3.2",
 		"ahooks": "3.7.0",
 		"allotment": "1.15.0",
 		"antd": "5.21.3",
@@ -85,10 +88,10 @@
 		"lint-staged": "^13",
 		"prettier": "^2",
 		"prettier-plugin-organize-imports": "^2",
-    "prettier-plugin-packagejson": "^2",
-    "sass": "1.49.9",
-    "typescript": "5.0.4",
-    "qiusoft-shared-cli": "^0.1.0",
-    "tsx": "^4.20.0"
-  }
+		"prettier-plugin-packagejson": "^2",
+		"qiusoft-shared-cli": "^0.1.0",
+		"sass": "1.49.9",
+		"tsx": "^4.20.0",
+		"typescript": "5.0.4"
+	}
 }

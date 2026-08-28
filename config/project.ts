@@ -43,4 +43,5 @@ export const project = {
 		footer: { ...projectDefaults.login.footer, ...(projectLocal.login?.footer || {}) },
 	},
 	openAPI: projectLocal.openAPI?.length ? projectLocal.openAPI : projectDefaults.openAPI,
+	excludedRoutePrefixes: projectLocal.excludedRoutePrefixes ?? projectDefaults.excludedRoutePrefixes ?? [],
 };

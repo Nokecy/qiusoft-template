@@ -51,6 +51,28 @@ const generatedFavicon = existsSync(faviconTemplatePath)
 	: '';
 const favicons = [project.login?.faviconUrl || generatedFavicon].filter(Boolean);
 
+// 首屏 loading：图形取自应用壳（与站点图标、登录插画同形的等距立方体），颜色同样由客户主题色派生，
+// 构建期填好后**内联**进 head。内联而不是 <script src>，是因为从前那份要等一次网络往返才出现——
+// 用一个额外请求去缓解白屏，它自己就是白屏的一部分。
+// 与 favicon 一样对模板缺失容错：应用壳版本落后的宿主拿到本文件时不会崩，只是没有首屏动画。@author nokecy
+const bootTemplatePath = join(appShellPath, 'assets/boot-loading.html');
+const bootLoadingScript = existsSync(bootTemplatePath)
+	? `(function(){var h=${JSON.stringify(
+			readFileSync(bootTemplatePath, 'utf8')
+				// 注释与缩进只对读模板的人有用，内联进每个页面的 head 是白白占体积。
+				// 模板里的说明大多是 CSS 注释，只剥 HTML 注释会漏掉它们。
+				.replace(/<!--[\s\S]*?-->/g, '')
+				.replace(/\/\*[\s\S]*?\*\//g, '')
+				.replace(/\s+/g, ' ')
+				.trim()
+				.replace(/\{\{colorLight\}\}/g, shadeColor(primaryColor, 0.22))
+				.replace(/\{\{colorBase\}\}/g, primaryColor)
+				.replace(/\{\{colorDark\}\}/g, shadeColor(primaryColor, -0.22))
+				.replace(/\{\{appTitle\}\}/g, appTitle),
+		)};function p(){var r=document.querySelector('#root');if(r&&r.innerHTML===''){r.innerHTML=h;}}` +
+		`if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',p);}else{p();}})();`
+	: '';
+
 // 开发默认关闭 source map，降低 max dev 常驻内存；需要调试映射时使用 DEV_SOURCE_MAP=1。@author nokecy
 const enableSourceMap = process.env.DEV_SOURCE_MAP === '1' || process.env.DEV_SOURCE_MAP === 'true';
 const devBundler = process.env.DEV_BUNDLER || 'webpack';
@@ -185,8 +207,8 @@ export default defineConfig({
 		exclude: [/\/components\//, /\/models\//, /\/_widgets\//, /\/_utils\//, /\/_formWidgets\//],
 	},
 	headScripts: [
-		// 解决首次加载时白屏的问题
-		{ src: '/scripts/loading.js', async: true },
+		// 首屏 loading，内联注入，见上方 bootLoadingScript
+		...(bootLoadingScript ? [{ content: bootLoadingScript }] : []),
 		// 服务端地址是全局运行时配置，必须先于 umi bundle 执行，因此同步加载不能加 async。
 		// 加 async 时登录后的 window.location.replace 整页重载会让 umi.js 先命中缓存执行，
 		// getInitialState 抢在赋值前发请求，接口退到同源打成 404。@author nokecy

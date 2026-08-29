@@ -24,7 +24,6 @@
     { "from": "public/assets", "to": "public/assets" },
     { "from": "public/config", "to": "public/config", "skipIfExists": true },
     { "from": "public/font", "to": "public/font" },
-    { "from": "public/scripts", "to": "public/scripts" },
     { "from": "public/styles", "to": "public/styles" }
   ],
   "exclude": [

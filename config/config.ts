@@ -52,26 +52,36 @@ const generatedFavicon = existsSync(faviconTemplatePath)
 const favicons = [project.login?.faviconUrl || generatedFavicon].filter(Boolean);
 
 // 首屏 loading：图形取自应用壳（与站点图标、登录插画同形的等距立方体），颜色同样由客户主题色派生，
-// 构建期填好后**内联**进 head。内联而不是 <script src>，是因为从前那份要等一次网络往返才出现——
-// 用一个额外请求去缓解白屏，它自己就是白屏的一部分。
+// 构建期填好后内联进 head，不额外发一次请求——用一个请求去缓解白屏，它自己就是白屏的一部分。
+//
+// **没有一行运行时 JS**，靠 `#root:empty` 这条 CSS 规则显示与消失。理由见模板里的长注释，
+// 一句话是：umi 把 headScripts 和 scripts 都放在 <head>，那时 #root 还没解析；
+// 而挂 DOMContentLoaded 又太晚，umi.js 是同步脚本，等事件触发时 React 早已渲染进 #root，
+// 判空必然为假，loading 一次都不会出现。这个坑踩过一轮，别再改回 JS 注入。
+//
+// 图形只能经 ::before 的背景图进来，所以整幅（含文字）都在模板的那个 <svg> 里，
+// 这里把它编码成 data URI 填进 CSS。SVG 作为背景图时脚本被禁用，但内部 CSS 动画照常播放。
 // 与 favicon 一样对模板缺失容错：应用壳版本落后的宿主拿到本文件时不会崩，只是没有首屏动画。@author nokecy
 const bootTemplatePath = join(appShellPath, 'assets/boot-loading.html');
-const bootLoadingScript = existsSync(bootTemplatePath)
-	? `(function(){var h=${JSON.stringify(
-			readFileSync(bootTemplatePath, 'utf8')
-				// 注释与缩进只对读模板的人有用，内联进每个页面的 head 是白白占体积。
-				// 模板里的说明大多是 CSS 注释，只剥 HTML 注释会漏掉它们。
-				.replace(/<!--[\s\S]*?-->/g, '')
-				.replace(/\/\*[\s\S]*?\*\//g, '')
-				.replace(/\s+/g, ' ')
-				.trim()
-				.replace(/\{\{colorLight\}\}/g, shadeColor(primaryColor, 0.22))
-				.replace(/\{\{colorBase\}\}/g, primaryColor)
-				.replace(/\{\{colorDark\}\}/g, shadeColor(primaryColor, -0.22))
-				.replace(/\{\{appTitle\}\}/g, appTitle),
-		)};function p(){var r=document.querySelector('#root');if(r&&r.innerHTML===''){r.innerHTML=h;}}` +
-		`if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',p);}else{p();}})();`
-	: '';
+const bootStyle = (() => {
+	if (!existsSync(bootTemplatePath)) return '';
+	const filled = readFileSync(bootTemplatePath, 'utf8')
+		// 注释与缩进只对读模板的人有用，内联进每个页面是白白占体积。
+		// 模板里的说明大多是 CSS 注释，只剥 HTML 注释会漏掉它们。
+		.replace(/<!--[\s\S]*?-->/g, '')
+		.replace(/\/\*[\s\S]*?\*\//g, '')
+		.replace(/\s+/g, ' ')
+		.trim()
+		.replace(/\{\{colorLight\}\}/g, shadeColor(primaryColor, 0.22))
+		.replace(/\{\{colorBase\}\}/g, primaryColor)
+		.replace(/\{\{colorDark\}\}/g, shadeColor(primaryColor, -0.22))
+		.replace(/\{\{appTitle\}\}/g, appTitle);
+	const svg = (filled.match(/<svg[\s\S]*<\/svg>/) || [''])[0];
+	// 外层 <style> 排在 <svg> 之前，非贪婪匹配正好取到它，SVG 自己那个 <style> 随图形一起走。
+	const css = (filled.match(/<style>([\s\S]*?)<\/style>/) || ['', ''])[1];
+	// encodeURIComponent 会把 # 编成 %23——不编码的话 data URI 会在第一个颜色值处被截断。
+	return svg && css ? css.replace('{{svgUri}}', `data:image/svg+xml,${encodeURIComponent(svg)}`) : '';
+})();
 
 // 开发默认关闭 source map，降低 max dev 常驻内存；需要调试映射时使用 DEV_SOURCE_MAP=1。@author nokecy
 const enableSourceMap = process.env.DEV_SOURCE_MAP === '1' || process.env.DEV_SOURCE_MAP === 'true';
@@ -207,8 +217,6 @@ export default defineConfig({
 		exclude: [/\/components\//, /\/models\//, /\/_widgets\//, /\/_utils\//, /\/_formWidgets\//],
 	},
 	headScripts: [
-		// 首屏 loading，内联注入，见上方 bootLoadingScript
-		...(bootLoadingScript ? [{ content: bootLoadingScript }] : []),
 		// 服务端地址是全局运行时配置，必须先于 umi bundle 执行，因此同步加载不能加 async。
 		// 加 async 时登录后的 window.location.replace 整页重载会让 umi.js 先命中缓存执行，
 		// getInitialState 抢在赋值前发请求，接口退到同源打成 404。@author nokecy
@@ -218,6 +226,8 @@ export default defineConfig({
 	],
 	// 引入外部样式
 	styles: [
+		// 首屏 loading，见上方 bootStyle；靠 #root:empty 生效，React 一渲染即自动消失
+		...(bootStyle ? [bootStyle] : []),
 		// Designable 表单设计器样式 (从 node_modules 复制到 public 目录)
 		'/styles/designable.react.umd.production.css',
 		'/styles/designable.react-settings-form.umd.production.css',

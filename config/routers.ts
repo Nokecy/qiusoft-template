@@ -68,6 +68,19 @@ export const buildRoutes = (enabledModules: string[]): RouteItem[] => [
 		name: '首页',
 	},
 	...enabledModules.flatMap(takeModuleRoutes),
+	// 兜底必须排在所有模块路由之后：没有它，任何拼错的、失效的或指向未启用模块的地址
+	// 都匹配不到路由，react-router 只在控制台留一句 No routes matched location，
+	// 页面上是一片空白——用户看不出是走错了地址还是系统坏了，也没有回去的入口。
+	// 走 layout 渲染，导航还在，用户能自己离开这一页。
+	//
+	// 路径写 `/*` 而不是 `*`：keepalive 插件靠 `key !== '/*'` 把兜底路由排除在标签名匹配之外，
+	// 写成 `*` 命不中这个判断，兜底会抢在真实路由前面命名标签，
+	// 表现是每个页面的标签名都退化成它自己的路径。@author nokecy
+	{
+		path: '/*',
+		component: './404',
+		name: '找不到页面',
+	},
 ];
 
 export default buildRoutes(project.enabledModules);
